@@ -11,8 +11,7 @@ export const layouts = {
     width: 90%;
     margin: 0 auto;
     display: flex;
-    border: 1px solid red;
-    padding-top: 20px;
+    background-color: white;
   `,
 
   Section: styled.section`

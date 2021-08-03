@@ -4,7 +4,7 @@ import { layouts as S } from 'styles/layouts';
 import GlobalStyles from 'styles/GlobalStyles';
 import Navbar from 'components/Navbar';
 import Graph from 'components/Graph';
-import Table from 'components/Table';
+import UserTable from 'components/UserTable';
 import AccountButton from 'components/AccountButton';
 import SearchBox from 'components/SearchBox';
 
@@ -17,13 +17,11 @@ const Admin = () => {
     <>
       <GlobalStyles />
       <S.Wrap>
-        <NavDiv>
-          <Navbar user={user} menuList={menuList} />
-        </NavDiv>
+        <Navbar user={user} menuList={menuList} />
         <S.Body>
           <S.Section>
             <SearchBox />
-            <Table />
+            <UserTable />
           </S.Section>
           <S.Aside>
             <S.AccountContainer>
@@ -40,9 +38,6 @@ const Admin = () => {
   );
 };
 
-const NavDiv = styled.div`
-  display: flex;
-`;
 const Sidebar = styled.div`
   width: 100%;
   background-color: #bbbbbb;
