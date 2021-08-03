@@ -35,13 +35,13 @@ const Pagination = ({ userDataPerPage, totalUserData, paginate, currentPage }) =
   );
 
   useEffect(() => {
-    const nextPageNumbers = Array.from({ length: totalPage }, (v, i) => i + 1);
+    const totalPageNumbers = Array.from({ length: totalPage }, (v, i) => i + 1);
 
     if (currentPage <= DISPLAY_MIN_PAGE_NUM) {
-      const displayPage = nextPageNumbers.slice(0, currentPage + 2);
+      const displayPage = totalPageNumbers.slice(0, currentPage + 2);
       setPageNumbers(displayPage);
     } else if (currentPage > DISPLAY_MIN_PAGE_NUM) {
-      const displayPage = nextPageNumbers.slice(currentPage - 3, currentPage + 2);
+      const displayPage = totalPageNumbers.slice(currentPage - 3, currentPage + 2);
       setPageNumbers(displayPage);
     }
   }, [totalPage, currentPage]);
