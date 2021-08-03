@@ -10,7 +10,8 @@ export const layouts = {
   Body: styled.body`
     width: 100%;
     display: flex;
-    background-color: #dddddd;
+    /* background-color: #dddddd; */
+    background-color: white;
   `,
 
   Section: styled.section`

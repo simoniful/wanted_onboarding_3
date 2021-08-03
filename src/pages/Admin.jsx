@@ -2,7 +2,7 @@ import { layouts as S } from 'styles/layouts';
 import GlobalStyles from 'styles/GlobalStyles';
 import Navbar from 'components/Navbar';
 import Graph from 'components/Graph';
-import Table from 'components/Table';
+import UserTable from 'components/UserTable';
 
 import React from 'react';
 import styled from 'styled-components';
@@ -18,7 +18,7 @@ const Admin = () => {
         <Navbar user={user} menuList={menuList} />
         <S.Body>
           <S.Section>
-            <Table />
+            <UserTable />
           </S.Section>
           <S.Aside>
             <Button>Button</Button>
