@@ -1,5 +1,7 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import styled from 'styled-components';
+import { DISPLAY_MIN_PAGE_NUM } from 'utils/constants';
+import { getTotalPage } from '../utils/getTotalPage';
 
 const PaginationContainer = styled.div`
   max-width: 400px;
@@ -27,15 +29,22 @@ const PageLi = styled.li`
 
 const Pagination = ({ userDataPerPage, totalUserData, paginate, currentPage }) => {
   const [pageNumbers, setPageNumbers] = useState([]);
+  const totalPage = useMemo(
+    () => getTotalPage(totalUserData, userDataPerPage),
+    [totalUserData, userDataPerPage],
+  );
 
   useEffect(() => {
-    const nextPageNumbers = Array.from(
-      { length: Math.ceil(totalUserData / userDataPerPage) },
-      (v, i) => i + 1,
-    );
+    const nextPageNumbers = Array.from({ length: totalPage }, (v, i) => i + 1);
 
-    setPageNumbers(nextPageNumbers);
-  }, [totalUserData, userDataPerPage]);
+    if (currentPage <= DISPLAY_MIN_PAGE_NUM) {
+      const displayPage = nextPageNumbers.slice(0, currentPage + 2);
+      setPageNumbers(displayPage);
+    } else if (currentPage > DISPLAY_MIN_PAGE_NUM) {
+      const displayPage = nextPageNumbers.slice(currentPage - 3, currentPage + 2);
+      setPageNumbers(displayPage);
+    }
+  }, [totalPage, currentPage]);
 
   const goEdgePage = useCallback(
     (edgePage) => {
@@ -46,10 +55,10 @@ const Pagination = ({ userDataPerPage, totalUserData, paginate, currentPage }) =
 
   const goNextToPage = useCallback(
     (nextToPage) => {
-      if (nextToPage < 1 || nextToPage > Math.ceil(totalUserData / userDataPerPage)) return;
+      if (nextToPage < 1 || nextToPage > totalPage) return;
       paginate(nextToPage);
     },
-    [paginate, totalUserData, userDataPerPage],
+    [paginate, totalPage],
   );
 
   return (
@@ -64,7 +73,7 @@ const Pagination = ({ userDataPerPage, totalUserData, paginate, currentPage }) =
         ))}
       </PageUl>
       <p onClick={() => goNextToPage(currentPage + 1)}>{'>'}</p>
-      <p onClick={() => goEdgePage(Math.ceil(totalUserData / userDataPerPage))}>{'>|'}</p>
+      <p onClick={() => goEdgePage(totalPage)}>{'>|'}</p>
     </PaginationContainer>
   );
 };

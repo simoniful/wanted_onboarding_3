@@ -21,16 +21,16 @@ const TableContainer = styled.table`
 const App = () => {
   const [userData, setUserData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [indexOfLast, setIndexOfLast] = useState(null);
-  const [indexOfFirst, setIndexOfFirst] = useState(null);
+  const [lastIndex, setLastIndex] = useState(null);
+  const [firstIndex, setFirstIndex] = useState(null);
 
   useEffect(() => {
-    const nextIndexOfLast = currentPage * DATA_PER_PAGE;
-    const nextIndexOfFirst = indexOfLast - DATA_PER_PAGE;
+    const nextLastIndex = currentPage * DATA_PER_PAGE;
+    const nextFirstIndex = lastIndex - DATA_PER_PAGE;
 
-    setIndexOfLast(nextIndexOfLast);
-    setIndexOfFirst(nextIndexOfFirst);
-  }, [currentPage, indexOfLast]);
+    setLastIndex(nextLastIndex);
+    setFirstIndex(nextFirstIndex);
+  }, [currentPage, lastIndex]);
 
   useEffect(() => {
     setUserData(getStorage(GET_USER_STORAGE_KEYWARD));
@@ -54,7 +54,7 @@ const App = () => {
           </tr>
         </thead>
         <tbody>
-          <UserData userData={currentUsers(userData, indexOfFirst, indexOfLast)} />
+          <UserData userData={currentUsers(userData, firstIndex, lastIndex)} />
         </tbody>
       </TableContainer>
       <Pagination
