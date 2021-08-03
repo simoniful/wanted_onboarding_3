@@ -40,7 +40,7 @@
         "destructuring": "all"
       }
     ],
-    "arrow-body-style": [1, "as-needed"],
+    "arrow-body-style": [0, "as-needed"],
     "no-unused-expressions": [
       2,
       {
