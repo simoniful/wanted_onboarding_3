@@ -7,17 +7,40 @@ import { DATA_PER_PAGE, GET_USER_STORAGE_KEYWARD } from '../utils/constants';
 import { tempGetStoreage, tempSetStoreage } from '../utils/storage';
 
 const TableContainer = styled.table`
-  border: 1px solid black;
-  text-align: center;
-  margin: 0 auto;
-  min-width: 650px;
-  width: 90%;
+  
+  border-collapse: separate; 
+  border-spacing: 1px; 
+  text-align: center; 
+  border-radius: 6px 6px 6px 6px;
 
+  min-width: 650px;
+  width: 80%;
+  
   & tr,
   th,
   td {
-    border: 1px solid black;
     padding: 10px;
+  }
+
+  & th {
+    width: 155px; 
+    padding: 10px; 
+    font-weight: bold; 
+    vertical-align: top; 
+    color: #fff; 
+    background: #81c147;
+    border-radius: 3px;
+  }
+
+  & td {
+    width: 155px; 
+    padding: 10px; 
+    vertical-align: top; 
+    border-bottom: 1px solid #ccc; 
+    background: #efefef;
+    border-radius: 3px;
+    color: #555;
+    vertical-align: middle;
   }
 `;
 

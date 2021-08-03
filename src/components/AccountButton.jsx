@@ -11,7 +11,7 @@ const AccountButton = ({ onClick, content }) => {
 };
 
 const Button = styled.button`
-  width: 110px;
+  width: 45%;
   height: 36px;
   border-radius: 26px;
   border: none;

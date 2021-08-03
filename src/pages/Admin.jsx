@@ -18,29 +18,29 @@ const Admin = () => {
       <GlobalStyles />
       <S.Wrap>
         <Navbar user={user} menuList={menuList} />
-        <S.Body>
-          <S.Section>
+        <S.Container>
+          <S.ButtonBox>
             <SearchBox />
-            <UserTable />
-          </S.Section>
-          <S.Aside>
-            <S.AccountContainer>
+            <S.AccountBox>
               <AccountButton onClick={logout} content='계정 생성' />
               <AccountButton onClick={logout} content='로그아웃' />
-            </S.AccountContainer>
-            <Sidebar>
+            </S.AccountBox>
+          </S.ButtonBox>
+          <S.Section>
+            <S.Content>
+              <UserTable />
+            </S.Content>
+            <S.Aside>
+            <S.Sidebar>
               <Graph />
-            </Sidebar>
+            </S.Sidebar>
           </S.Aside>
-        </S.Body>
+          </S.Section>
+        </S.Container>
       </S.Wrap>
     </>
   );
 };
 
-const Sidebar = styled.div`
-  width: 100%;
-  background-color: #bbbbbb;
-`;
 
 export default Admin;

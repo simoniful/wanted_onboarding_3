@@ -10,4 +10,6 @@ const AccountSearchIcon = () => (
     </g>
   </svg>
 );
+
+
 export default AccountSearchIcon;

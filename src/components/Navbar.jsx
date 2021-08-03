@@ -58,6 +58,7 @@ const MenuList = styled.ul`
 
 const Menu = styled.li`
   cursor: pointer;
+  color: #656565;
   :hover {
     color: #aac14f;
     transition: 0.2s;
@@ -70,6 +71,7 @@ const Account = styled.div`
   align-items: center;
   flex: 1;
   width: 100%;
+  color: #656565;
 `;
 
 export default Navbar;

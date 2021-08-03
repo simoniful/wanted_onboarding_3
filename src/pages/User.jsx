@@ -15,7 +15,7 @@ const User = () => {
       <GlobalStyles />
       <S.Wrap>
         <Navbar user={user} menuList={menuList} />
-        <S.Body>
+        <S.Container>
           <S.Section>
             <h1>어서오세요 사용자 페이지입니다</h1>
           </S.Section>
@@ -27,7 +27,7 @@ const User = () => {
               ))}
             </SideMenu>
           </S.Aside>
-        </S.Body>
+        </S.Container>
       </S.Wrap>
     </>
   );

@@ -13,9 +13,12 @@ const Graph = () => {
 
 const Container = styled.div``;
 
-const Title = styled.h1`
+const Title = styled.div`
   width: 100%;
-  padding: 16px 0;
+  height: 100px;
+  border-radius: 6px;
+  background-color: #ececec;
+  margin-bottom: 10px;
 `;
 
 export default Graph;
