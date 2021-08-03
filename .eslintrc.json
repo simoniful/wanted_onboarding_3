@@ -72,6 +72,16 @@
     "react/no-unescaped-entities": 0,
     "jsx-a11y/accessible-emoji": 0,
     "react/require-default-props": 0,
+    // 임시 off
+    "react/prop-types": 0,
+    "no-plusplus": 0,
+    "jsx-a11y/click-events-have-key-events": 0,
+    "jsx-a11y/no-noninteractive-element-interactions": 0,
+    "no-return-assign": 0,
+    "arrow-body-style": 0,
+    "no-param-reassign": 0,
+    "import/prefer-default-export": 0,
+
     "react/jsx-filename-extension": [
       1,
       {
