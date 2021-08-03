@@ -5,25 +5,26 @@ import { REGEXP, validate } from 'utils/regex';
 import { getStore, saveStore } from 'utils/storage';
 
 function Signup() {
-  const id = useInput('');
-  const password = useInput('');
+  const [idStatus, setIdStatus] = useState('');
+  const [nameStatus, setNameStatus] = useState('');
+  const [passwordStatus, setPasswordStatus] = useState('');
+
+  const id = useInput('', (value) => value.length <= 12);
+  const password = useInput('', (value) => value.length <= 16);
   // const checkingPassword = useInput('');
-  const name = useInput('');
+  const name = useInput('', (value) => value.length <= 4);
   const age = useInput(0);
   const address = useInput('');
   const cardNumber = useInput('');
   const userType = useInput('parent');
 
-  const [idStatus, setIdStatus] = useState('');
-  const [nameStatus, setNameStatus] = useState('');
-  const [passwordStatus, setPasswordStatus] = useState('');
   const history = useHistory();
 
   useEffect(() => {
     if (!validate(id.value, REGEXP.idRegExp)) {
       setIdStatus('ID는 4~12자의 영문 대소문자와 숫자로만 입력하여 주세요.');
     } else {
-      setIdStatus('적절한 ID입니다. 중복 검사를 해주세요.');
+      setIdStatus('적절한 ID입니다.');
     }
 
     if (!validate(password.value, REGEXP.passwordRegExp)) {
@@ -82,12 +83,18 @@ function Signup() {
         <div>{idStatus}</div>
         <label htmlFor='password'>
           <h3>비밀번호</h3>
-          <input type='password' name='password' id='password' {...password} />
+          <input
+            type='password'
+            name='password'
+            id='password'
+            placeholder='비밀번호 입력'
+            {...password}
+          />
         </label>
         <div>{passwordStatus}</div>
         <label htmlFor='name'>
           <h3>성명</h3>
-          <input type='text' name='name' id='name' {...name} />
+          <input type='text' name='name' id='name' placeholder='이름 입력' {...name} />
         </label>
         <div>{nameStatus}</div>
         <label htmlFor='age'>
@@ -102,7 +109,9 @@ function Signup() {
           <h3>신용카드</h3>
           <input type='text' name='cardNumber' id='cardNumber' {...cardNumber} />
         </label>
-        <button type='submit'> 가입하기 </button>
+        <div>
+          <button type='submit'> 가입하기 </button>
+        </div>
       </form>
     </div>
   );
