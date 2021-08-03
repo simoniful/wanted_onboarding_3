@@ -6,9 +6,9 @@ import { getStore, saveStore } from 'utils/storage';
 
 function Signup() {
   const id = useInput('');
-  const password = useInput('', (value) => validate(value, REGEXP.passwordRegExp));
+  const password = useInput('');
   // const checkingPassword = useInput('');
-  const name = useInput('', (value) => validate(value, REGEXP.nameRegExp));
+  const name = useInput('');
   const age = useInput(0);
   const address = useInput('');
   const cardNumber = useInput('');
