@@ -20,12 +20,17 @@ const TableContainer = styled.table`
 
 const App = () => {
   const [userData, setUserData] = useState([]);
-  const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const [userDataPerPage] = useState(DATA_PER_PAGE);
+  const [indexOfLast, setIndexOfLast] = useState(null);
+  const [indexOfFirst, setIndexOfFirst] = useState(null);
 
-  const indexOfLast = currentPage * userDataPerPage;
-  const indexOfFirst = indexOfLast - userDataPerPage;
+  useEffect(() => {
+    const nextIndexOfLast = currentPage * DATA_PER_PAGE;
+    const nextIndexOfFirst = indexOfLast - DATA_PER_PAGE;
+
+    setIndexOfLast(nextIndexOfLast);
+    setIndexOfFirst(nextIndexOfFirst);
+  }, [currentPage, indexOfLast]);
 
   useEffect(() => {
     setUserData(getStorage(GET_USER_STORAGE_KEYWARD));
@@ -44,19 +49,16 @@ const App = () => {
             <th>이름</th>
             <th>나이</th>
             <th>주소</th>
-            <th>은행</th>
             <th>카드 번호</th>
+            <th>권한</th>
           </tr>
         </thead>
         <tbody>
-          <UserData
-            userData={currentUsers(userData, indexOfFirst, indexOfLast)}
-            loading={loading}
-          />
+          <UserData userData={currentUsers(userData, indexOfFirst, indexOfLast)} />
         </tbody>
       </TableContainer>
       <Pagination
-        userDataPerPage={userDataPerPage}
+        userDataPerPage={DATA_PER_PAGE}
         totalUserData={userData.length}
         paginate={setCurrentPage}
         currentPage={currentPage}
