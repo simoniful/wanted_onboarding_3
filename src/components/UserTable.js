@@ -23,22 +23,27 @@ const TableContainer = styled.table`
 
 const UserTable = () => {
   const [userData, setUserData] = useState([]);
+  const [currentUserData, setCurrentUserData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [lastIndex, setLastIndex] = useState(null);
   const [firstIndex, setFirstIndex] = useState(null);
+  const [lastIndex, setLastIndex] = useState(null);
+
+  useEffect(() => {
+    tempSetStoreage();
+    setUserData(tempGetStoreage(GET_USER_STORAGE_KEYWARD));
+  }, []);
 
   useEffect(() => {
     const nextLastIndex = currentPage * DATA_PER_PAGE;
-    const nextFirstIndex = lastIndex - DATA_PER_PAGE;
+    const nextFirstIndex = nextLastIndex - DATA_PER_PAGE;
 
     setLastIndex(nextLastIndex);
     setFirstIndex(nextFirstIndex);
   }, [currentPage, lastIndex]);
 
   useEffect(() => {
-    tempSetStoreage();
-    setUserData(tempGetStoreage(GET_USER_STORAGE_KEYWARD));
-  }, []);
+    setCurrentUserData(currentUsers(userData, firstIndex, lastIndex));
+  }, [userData, firstIndex, lastIndex]);
 
   if (userData.length === 0) {
     return <p>데이터가 비어 있습니다.</p>;
@@ -58,12 +63,11 @@ const UserTable = () => {
           </tr>
         </thead>
         <tbody>
-          <UserData userData={currentUsers(userData, firstIndex, lastIndex)} />
+          <UserData userData={currentUserData} />
         </tbody>
       </TableContainer>
       <Pagination
-        userDataPerPage={DATA_PER_PAGE}
-        totalUserData={userData.length}
+        totalDataNum={userData.length}
         currentPage={currentPage}
         paginate={setCurrentPage}
       />
