@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import Pagination from './components/Pagination';
 import UserData from './components/UserData';
 import { currentUsers } from './utils/currentUsers';
 import { getStorage } from './utils/storage';
@@ -48,9 +49,18 @@ const App = () => {
           </tr>
         </thead>
         <tbody>
-          <UserData userData={currentUsers(userData, indexOfFirst, indexOfLast)} />
+          <UserData
+            userData={currentUsers(userData, indexOfFirst, indexOfLast)}
+            loading={loading}
+          />
         </tbody>
       </TableContainer>
+      <Pagination
+        userDataPerPage={userDataPerPage}
+        totalUserData={userData.length}
+        paginate={setCurrentPage}
+        currentPage={currentPage}
+      />
     </>
   );
 };
