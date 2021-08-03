@@ -1,3 +1,3 @@
 export const setStorage = () => {};
 
-export const getStorage = (keyward) => {};
+export const getStorage = (keyword) => {};
