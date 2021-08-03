@@ -1,10 +1,29 @@
-export const getStorage = (keyward) => {
+import mockData from 'utils/usersData';
+
+// LocalStorage 함수 사용시 name 은 config.js 안에 있는 STORAGE.DATA 통해서 설정
+export const setLocalStorage = (name, data) => {
+  localStorage.removeItem(name);
+  localStorage.setItem(name, JSON.stringify(data));
+};
+
+export const getLocalStorage = (name) => {
+  const storageData = JSON.parse(localStorage.getItem(name)) || mockData;
+
+  return storageData;
+};
+
+export const clearLocalStorage = () => {
+  localStorage.clear();
+};
+
+export const tempGetStoreage = (keyward) => {
   const storage = JSON.parse(localStorage.getItem(`${keyward}`));
 
   return storage;
 };
 
-export const setStorage = () => {
+// 임시 스토리지 관련 함수입니다.
+export const tempSetStoreage = () => {
   localStorage.setItem(
     'data',
     JSON.stringify([

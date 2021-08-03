@@ -3,13 +3,14 @@ import styled from 'styled-components';
 import Pagination from './Pagination';
 import UserData from './UserData';
 import { currentUsers } from '../utils/currentUsers';
-import { getStorage } from '../utils/storage';
 import { DATA_PER_PAGE, GET_USER_STORAGE_KEYWARD } from '../utils/constants';
+import { tempGetStoreage } from '../utils/storage';
 
 const TableContainer = styled.table`
   border: 1px solid black;
   text-align: center;
   margin: 0 auto;
+  min-width: 650px;
   width: 90%;
 
   & tr,
@@ -35,7 +36,7 @@ const UserTable = () => {
   }, [currentPage, lastIndex]);
 
   useEffect(() => {
-    setUserData(getStorage(GET_USER_STORAGE_KEYWARD));
+    setUserData(tempGetStoreage(GET_USER_STORAGE_KEYWARD));
   }, []);
 
   if (userData.length === 0) {

@@ -6,3 +6,4 @@ export const currentUsers = (data, indexOfFirst, indexOfLast) => {
 
   return currentPageUsers;
 };
+

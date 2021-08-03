@@ -1,7 +1,7 @@
 import { currentUsers } from '../currentUsers';
 
-describe('test', () => {
-  test('return 체크', () => {
+describe('return 체크', () => {
+  test('일반적인 return 체크', () => {
     expect(currentUsers([1, 2, 3], 0, 2)).toEqual([1, 2]);
   });
 
