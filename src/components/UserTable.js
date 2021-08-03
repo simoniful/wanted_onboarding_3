@@ -4,7 +4,7 @@ import Pagination from './Pagination';
 import UserData from './UserData';
 import { currentUsers } from '../utils/currentUsers';
 import { DATA_PER_PAGE, GET_USER_STORAGE_KEYWARD } from '../utils/constants';
-import { tempGetStoreage } from '../utils/storage';
+import { tempGetStoreage, tempSetStoreage } from '../utils/storage';
 
 const TableContainer = styled.table`
   border: 1px solid black;
@@ -36,6 +36,7 @@ const UserTable = () => {
   }, [currentPage, lastIndex]);
 
   useEffect(() => {
+    tempSetStoreage();
     setUserData(tempGetStoreage(GET_USER_STORAGE_KEYWARD));
   }, []);
 
