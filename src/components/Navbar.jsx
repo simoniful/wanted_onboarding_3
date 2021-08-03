@@ -4,43 +4,72 @@ import styled from 'styled-components';
 
 const Navbar = ({ menuList, user }) => {
   return (
-    <Container>
-      <MenuList>
-        {menuList.map((menu) => (
-          <Menu>{menu}</Menu>
-        ))}
-      </MenuList>
-      <MyPage>{user}</MyPage>
-    </Container>
+    <NavWrap>
+      <NavContainer>
+        <NavContent>
+          <LogoImg />
+          <MenuList>
+            {menuList.map((menu) => (
+              <Menu>{menu}</Menu>
+            ))}
+          </MenuList>
+          <Account>{user}</Account>
+        </NavContent>
+      </NavContainer>
+    </NavWrap>
   );
 };
 
-const Container = styled.nav`
+const NavWrap = styled.nav`
   width: 100%;
-  height: 10vh;
-  background-color: gray;
-  margin-bottom: 20px;
+  height: 100%;
+  padding: 0;
+  color: #4a4a4a;
+  box-shadow: 1px 1px 1px #bababa;
+`;
+
+const NavContainer = styled.div`
+  width: 90%;
+  margin: 0 auto;
+`;
+
+const NavContent = styled.div`
   display: flex;
+  align-items: center;
+  height: 10vh;
+  padding: 0 15px;
+`;
+
+const LogoImg = styled.img.attrs({
+  src: 'images/jaranda-logo.png',
+})`
+  width: 63px;
+  height: 24px;
+  margin: 0 20% 1% 0;
 `;
 
 const MenuList = styled.ul`
-  width: 100%;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
+  width: 100%;
   flex: 3;
 `;
 
 const Menu = styled.li`
-  color: white;
+  cursor: pointer;
+  :hover {
+    color: #aac14f;
+    transition: 0.2s;
+  }
 `;
 
-const MyPage = styled.div`
-  width: 100%;
+const Account = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
   flex: 1;
+  width: 100%;
 `;
 
 export default Navbar;

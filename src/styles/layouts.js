@@ -1,16 +1,16 @@
 import styled from 'styled-components';
 
 export const layouts = {
-  Container: styled.div`
+  Wrap: styled.div`
     width: 100%;
     display: flex;
     flex-direction: column;
   `,
 
   Body: styled.body`
-    width: 100%;
+    width: 90%;
+    margin: 0 auto;
     display: flex;
-    /* background-color: #dddddd; */
     background-color: white;
   `,
 
@@ -23,5 +23,12 @@ export const layouts = {
     width: 100%;
     flex: 4;
     text-align: center;
+  `,
+
+  AccountContainer: styled.div`
+    width: 78%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
   `,
 };
