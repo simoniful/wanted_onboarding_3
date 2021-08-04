@@ -29,7 +29,7 @@ const Admin = () => {
     <>
       <GlobalStyles />
       <S.Wrap>
-        <Navbar user={user} menuList={menuList} />
+        <Navbar user={user} menuList={menuList} userMenu={[]} />
         <S.Container>
           <S.Section>
             <S.Content>

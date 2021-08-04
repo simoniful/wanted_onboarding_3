@@ -3,15 +3,15 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { color, fontSize } from '../styles/styles';
 
-const AccountButton = ({ onClick, content }) => (
-  <Button onClick={onClick}>
+const AccountButton = ({ onClick, content, width, height }) => (
+  <Button width={width} height={height} onClick={onClick}>
     <Link to='/login'>{content}</Link>
   </Button>
 );
 
 const Button = styled.button`
-  width: 45%;
-  height: 36px;
+  width: ${props => props.width ? props.width : '45%'};
+  height: ${props => props.height ? props.height : '36px;'};
   border: none;
   background: ${color.primaryDarker};
   &:hover {

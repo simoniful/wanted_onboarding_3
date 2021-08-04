@@ -1,52 +1,52 @@
+import React, { useEffect, useState } from 'react';
 import { layouts as S } from 'styles/layouts';
 import GlobalStyles from 'styles/GlobalStyles';
 import Navbar from 'components/Navbar';
+import Graph from 'components/Graph';
+import UserTable from 'components/UserTable';
+import AccountButton from 'components/AccountButton';
+import SearchBox from 'components/SearchBox';
+import { tempGetStoreage, tempSetStoreage } from 'utils/storage';
+import { GET_USER_STORAGE_KEYWARD } from '../utils/config';
 
-import React from 'react';
-import styled from 'styled-components';
+const Admin = () => {
+  // 사용자 test data & 버튼클릭 test 이벤트
+  const user = 'user1';
+  const userMenu = ['마이페이지', '이용안내'];
+  const menuList = ['선생님보기', '신청서작성', '신청내역', '방문일정', '방문일지'];
+  const logout = () => {};
 
-const User = () => {
-  const user = '부모님';
-  const menuList = ['menu1', 'menu2', 'menu3', 'menu4'];
-  const sideMenuList = ['side menu1', 'side menu2', 'side menu3', 'side menu4'];
+  // 데이터 테이블 관련 state 입니다.
+  const [userData, setUserData] = useState([]);
+  const [copiedData, setCopiedData] = useState([]);
+
+  useEffect(() => {
+    tempSetStoreage();
+    setUserData(tempGetStoreage(GET_USER_STORAGE_KEYWARD));
+    setCopiedData(tempGetStoreage(GET_USER_STORAGE_KEYWARD));
+  }, []);
 
   return (
     <>
       <GlobalStyles />
       <S.Wrap>
-        <Navbar user={user} menuList={menuList} />
+        <Navbar user={user} menuList={menuList} userMenu={userMenu} />
         <S.Container>
           <S.Section>
-            <h1>어서오세요 사용자 페이지입니다</h1>
+            <S.Content>
+              <SearchBox userData={userData} setUserData={setUserData} copiedData={copiedData} />
+              <UserTable userData={userData} />
+            </S.Content>
+            <S.Aside>
+              <S.Sidebar>
+                <Graph />
+              </S.Sidebar>
+            </S.Aside>
           </S.Section>
-          <S.Aside>
-            <Button>Button</Button>
-            <SideMenu>
-              {sideMenuList.map((sideMenu) => (
-                <Menu>{sideMenu}</Menu>
-              ))}
-            </SideMenu>
-          </S.Aside>
         </S.Container>
       </S.Wrap>
     </>
   );
 };
 
-const Button = styled.button`
-  width: 100%;
-  height: 50px;
-  background-color: #aaaaaa;
-`;
-
-const SideMenu = styled.div`
-  width: 100%;
-  background-color: #bbbbbb;
-`;
-
-const Menu = styled.div`
-  width: 100%;
-  padding: 16px 0;
-`;
-
-export default User;
+export default Admin;
