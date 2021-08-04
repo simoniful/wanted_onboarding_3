@@ -2,15 +2,17 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Navbar = ({ menuList, user }) => {
+const Navbar = ({ user }) => {
+  const menuList = ['공통메뉴1', '공통메뉴2', '공통메뉴3'];
+
   return (
     <NavWrap>
       <NavContainer>
         <NavContent>
           <LogoImg />
           <MenuList>
-            {menuList.map((menu) => (
-              <Menu>{menu}</Menu>
+            {menuList.map((menu, key) => (
+              <Menu key={key}>{menu}</Menu>
             ))}
           </MenuList>
           <Account>{user}</Account>
@@ -26,37 +28,37 @@ const NavWrap = styled.nav`
   padding: 0;
   color: #4a4a4a;
   box-shadow: 1px 1px 1px #bababa;
+  margin-bottom: 12px;
 `;
 
 const NavContainer = styled.div`
-  width: 90%;
+  width: 95%;
   margin: 0 auto;
 `;
 
 const NavContent = styled.div`
   display: flex;
   align-items: center;
-  height: 10vh;
+  height: 8vh;
   padding: 0 15px;
 `;
 
 const LogoImg = styled.img.attrs({
   src: 'images/jaranda-logo.png',
 })`
-  width: 63px;
-  height: 24px;
-  margin: 0 20% 1% 0;
+  width: 80px;
 `;
 
 const MenuList = styled.ul`
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   width: 100%;
-  flex: 3;
+  flex: 5;
 `;
 
 const Menu = styled.li`
+  font-size: 16px;
   cursor: pointer;
   :hover {
     color: #aac14f;
@@ -65,6 +67,7 @@ const Menu = styled.li`
 `;
 
 const Account = styled.div`
+  font-size: 16px;
   display: flex;
   justify-content: flex-end;
   align-items: center;
