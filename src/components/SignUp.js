@@ -3,42 +3,113 @@ import styled from 'styled-components';
 import { AiOutlineCheck } from 'react-icons/ai';
 import { color, fontSize, size } from 'styles/styles';
 import { InputWrapper } from 'styles/InputWrapper';
+import useForm from 'hooks/useForm';
+import { validate } from 'utils/regex';
 
 const SignUp = () => {
-  // isError && <label>
-  // isError && change input border color to red
+  function login() {
+    console.log('No errors, submit callback called!');
+  }
+
+  const { values, errors, handleChange, handleSubmit } = useForm(login, validate);
   // isChecked svg color change
+
   return (
     <Container>
       <h3>자란다 회원가입</h3>
       <p>10초만에 가입하고 아이와 함께 할 선생님 정보를 받아보세요</p>
-      <form>
+      <form onSubmit={handleSubmit} noValidate>
         <InputWrapper>
-          <input type='text' id='id' name='id' placeholder='아이디를 입력해주세요' />
-          {/* <label htmlFor='id'>아이디를 다시 입력해주세요.</label> */}
+          <input
+            autoComplete='off'
+            className={`input ${errors.id && 'is-danger'}`}
+            type='text'
+            id='id'
+            name='id'
+            placeholder='아이디를 입력해주세요'
+            onChange={handleChange}
+            value={values.id || ''}
+            required
+          />
+          {errors.id && (
+            <label htmlFor='id' className='help is-danger'>
+              {errors.id}
+            </label>
+          )}
         </InputWrapper>
 
         <InputWrapper double='true' marginR='true'>
           <input
+            autoComplete='off'
+            className={`input ${errors.password && 'is-danger'}`}
             type='password'
             id='password'
             name='password'
             placeholder='비밀번호를 입력해주세요'
+            onChange={handleChange}
+            value={values.password || ''}
+            required
           />
-          {/* <label htmlFor='password'>비밀번호를 다시 입력해주세요.</label> */}
+          {errors.password && (
+            <label htmlFor='password' className='help is-danger'>
+              {errors.password}
+            </label>
+          )}
         </InputWrapper>
         <InputWrapper double='true'>
-          <input type='password' id='password-re' name='password-re' placeholder='비밀번호 확인' />
-          {/* <label htmlFor='password-re'>비밀번호가 일치하지 않습니다.</label> */}
+          <input
+            autoComplete='off'
+            className={`input ${errors.checkingPassword && 'is-danger'}`}
+            type='password'
+            id='checkingPassword'
+            name='checkingPassword'
+            placeholder='비밀번호 확인'
+            onChange={handleChange}
+            value={values.checkingPassword || ''}
+            required
+          />
+          {errors.checkingPassword && (
+            <label htmlFor='checkingPassword' className='help is-danger'>
+              {errors.checkingPassword}
+            </label>
+          )}
         </InputWrapper>
 
         <InputWrapper double='true' marginR='true'>
-          <input type='text' id='name' name='name' placeholder='이름을 입력해주세요' />
-          {/* <label htmlFor='name'>이름을 다시 입력해주세요.</label> */}
+          <input
+            autoComplete='off'
+            className={`input ${errors.name && 'is-danger'}`}
+            type='text'
+            id='name'
+            name='name'
+            placeholder='이름을 입력해주세요'
+            onChange={handleChange}
+            value={values.name || ''}
+            required
+          />
+          {errors.name && (
+            <label htmlFor='name' className='help is-danger'>
+              {errors.name}
+            </label>
+          )}
         </InputWrapper>
         <InputWrapper double='true'>
-          <input type='text' id='age' name='age' placeholder='나이를 입력해주세요' />
-          {/* <label htmlFor='age'>not displaying</label> */}
+          <input
+            autoComplete='off'
+            className={`input ${errors.age && 'is-danger'}`}
+            type='text'
+            id='age'
+            name='age'
+            placeholder='나이를 입력해주세요'
+            onChange={handleChange}
+            value={values.age || ''}
+            required
+          />
+          {errors.age && (
+            <label htmlFor='name' className='help is-danger'>
+              {errors.age}
+            </label>
+          )}
         </InputWrapper>
         <InputWrapper>
           <input type='text' placeholder='주소를 입력해주세요' />

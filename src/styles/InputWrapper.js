@@ -28,4 +28,8 @@ export const InputWrapper = styled.div`
     cursor: pointer;
     color: ${color.red};
   }
+
+  .is-danger {
+    border-color: ${color.red};
+  }
 `;
