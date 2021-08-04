@@ -3,11 +3,17 @@ import styled from 'styled-components';
 import { AiOutlineCheck } from 'react-icons/ai';
 import { color, fontSize, size } from 'styles/styles';
 import { InputWrapper } from 'styles/InputWrapper';
+// import CardNumber from 'components/CardNumber';
+import Address from 'components/Address';
+import useInput from 'hooks/useInput';
 
 const SignUp = () => {
   // isError && <label>
   // isError && change input border color to red
   // isChecked svg color change
+
+  const address = useInput('');
+  const cardNumber = useInput('');
   return (
     <Container>
       <h3>자란다 회원가입</h3>
@@ -41,10 +47,12 @@ const SignUp = () => {
           {/* <label htmlFor='age'>not displaying</label> */}
         </InputWrapper>
         <InputWrapper>
-          <input type='text' placeholder='주소를 입력해주세요' />
+          {/* <input type='text' placeholder='주소를 입력해주세요' /> */}
+          <Address id='address' {...address} />
         </InputWrapper>
         <InputWrapper>
           <input type='text' placeholder='카드번호, 예) 1234-1234-1234-1234' />
+          {/* <CardNumber id='cardNumber' {...cardNumber} /> */}
         </InputWrapper>
 
         <TermWrapper className='term'>
