@@ -40,11 +40,8 @@
         "destructuring": "all"
       }
     ],
-<<<<<<< HEAD:.eslintrc.json
-    "arrow-body-style": [0, "as-needed"],
-=======
+
     // "arrow-body-style": [1, "as-needed"],
->>>>>>> 42fc14a961fbd347960e64c75a7d5fde7aaa0316:.eslintrc
     "no-unused-expressions": [
       2,
       {
@@ -124,6 +121,22 @@
       "warn",
       {
         "aspects": ["invalidHref"]
+      }
+    ],
+    "jsx-a11y/label-has-associated-control": [
+      "error",
+      {
+        "required": {
+          "some": ["nesting", "id"]
+        }
+      }
+    ],
+    "jsx-a11y/label-has-for": [
+      "error",
+      {
+        "required": {
+          "some": ["nesting", "id"]
+        }
       }
     ]
   },

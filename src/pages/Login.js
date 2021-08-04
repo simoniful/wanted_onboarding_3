@@ -5,9 +5,9 @@ import { SignIn, SignUp } from 'components';
 
 const Login = () => (
   <Container>
-    <LogoDiv>
+    <Logo href='/user'>
       <h2>Jaranda</h2>
-    </LogoDiv>
+    </Logo>
     <SignIn />
     <SignUp />
   </Container>
@@ -23,7 +23,7 @@ const Container = styled.div`
 `;
 
 // change to Link
-const LogoDiv = styled.div`
+const Logo = styled.a`
   position: absolute;
   top: 0;
   left: 0;
