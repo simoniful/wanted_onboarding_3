@@ -4,7 +4,7 @@ import SignInForm from './SignInForm';
 import AccountButton from './AccountButton';
 import Pagination from './Pagination';
 import SearchBox from './SearchBox';
-import UserData from './UserData';
+import TableData from './TableData';
 import UserTable from './UserTable';
 import Graph from './Graph';
 import Navbar from './Navbar';
@@ -20,6 +20,6 @@ export {
   AccountButton,
   Pagination,
   SearchBox,
-  UserData,
+  TableData,
   UserTable,
 };
