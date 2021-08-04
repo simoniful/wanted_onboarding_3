@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { color, fontSize } from 'styles/styles';
 import { SignIn, SignUp } from 'components';
 
 const Login = () => (
@@ -21,15 +22,17 @@ const Container = styled.div`
   display: flex;
 `;
 
+// change to Link
 const LogoDiv = styled.div`
   position: absolute;
   top: 0;
   left: 0;
   z-index: 100;
   transform: translate(15%, 50%);
+  cursor: pointer;
 
   h2 {
-    color: #fff;
-    font-size: 2rem;
+    color: ${color.white};
+    font-size: ${fontSize.larger};
   }
 `;

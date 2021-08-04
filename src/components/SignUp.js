@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { AiOutlineCheck } from 'react-icons/ai';
+import { color, fontSize, size } from 'styles/styles';
 
 const SignUp = () => {
   // isError && <label>
@@ -72,17 +73,17 @@ const Container = styled.section`
   justify-content: center;
   align-items: center;
   text-align: center;
-  color: #666;
+  color: ${color.greyDarker};
 
   h3 {
-    font-size: 1.25rem;
+    font-size: ${fontSize.large};
     font-weight: 600;
-    margin-bottom: 20px;
+    margin-bottom: ${size.large};
   }
 
   p {
-    font-size: 1rem;
-    margin-bottom: 30px;
+    font-size: ${fontSize.medium};
+    margin-bottom: ${size.larger};
   }
 
   form {
@@ -92,37 +93,37 @@ const Container = styled.section`
 
 const InputWrapper = styled.div`
   display: inline-block;
-  width: ${(props) => (props.double ? 'calc(50% - 2.5px)' : '100%')};
+  width: ${(props) => (props.double ? 'calc(50% - 3px)' : '100%')};
   text-align: start;
-  margin-right: ${(props) => props.marginR && '5px'};
-  margin-bottom: 15px;
+  margin-right: ${(props) => props.marginR && size.smaller};
+  margin-bottom: ${size.medium};
 
   input {
     width: 100%;
-    padding: 15px 0;
-    padding-left: 15px;
-    border: 1px solid #dedede;
-    border-radius: 3px;
-    font-size: 14px;
+    padding: ${size.medium} 0;
+    padding-left: ${size.medium};
+    border: ${size.micro} solid ${color.greyLighter};
+    border-radius: ${size.smallest};
+    font-size: ${fontSize.small};
     outline: none;
 
     &:focus {
-      border-color: #9fe945;
+      border-color: ${color.primary};
     }
   }
 
   label {
-    font-size: 10px;
+    font-size: ${fontSize.smaller};
     cursor: pointer;
-    color: #ff0000;
+    color: ${color.red};
   }
 `;
 
 const TermWrapper = styled.div`
   display: flex;
   align-items: center;
-  margin-bottom: 30px;
-  font-size: 0.875rem;
+  margin-bottom: ${size.larger};
+  font-size: ${fontSize.small};
 
   input[type='checkbox'] {
     display: none;
@@ -133,38 +134,38 @@ const TermWrapper = styled.div`
   }
 
   a {
-    color: #9fe945;
+    color: ${color.primary};
   }
 
   svg {
-    /* on check, color change to #69d872 */
-    color: #dedede;
-    font-size: 1.25rem;
-    margin-right: 10px;
+    /* on check, color change to primaryDarker */
+    color: ${color.greyLighter};
+    font-size: ${fontSize.large};
+    margin-right: ${size.small};
     cursor: pointer;
   }
 `;
 
 const ButtonSubmit = styled.button`
   width: 100%;
-  background: #9fe945;
-  padding: 15px;
-  border: 1px solid #9fe945;
-  border-radius: 3px;
+  background: ${color.primary};
+  padding: ${size.medium};
+  border: ${size.micro} solid ${color.primary};
+  border-radius: ${size.smallest};
   cursor: pointer;
   transition: all 0.3s;
 
   span {
-    color: #fff;
-    font-size: 0.9375rem;
+    color: ${color.white};
+    font-size: ${fontSize.medium};
     font-weight: 500;
   }
 
   &:hover {
-    background-color: #fff;
-    border: 1px solid #9fe945;
+    background-color: ${color.white};
+    border: ${size.micro} solid ${color.primary};
     span {
-      color: #69d872;
+      color: ${color.primaryDarker};
     }
   }
 `;

@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { color, fontSize, size } from 'styles/styles';
 
 const SignIn = () => {
   return (
@@ -29,8 +30,8 @@ const Container = styled.section`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: #fff;
-  background: linear-gradient(to right bottom, #87bf43, #69d872);
+  color: ${color.white};
+  background: ${color.primaryGradient};
   clip-path: polygon(0 0, 100% 0, 90% 100%, 0 100%);
 `;
 
@@ -39,13 +40,13 @@ const TextContainer = styled.div`
   text-align: center;
 
   h3 {
-    font-size: 1.25rem;
+    font-size: ${fontSize.large};
     font-weight: 600;
     margin-bottom: 30px;
   }
 
   p {
-    font-size: 0.9375rem;
+    font-size: ${fontSize.medium};
     line-height: 1.5;
     margin-bottom: 30px;
   }
@@ -53,23 +54,23 @@ const TextContainer = styled.div`
 
 const ButtonLogin = styled.button`
   background-color: inherit;
-  border: 1px solid #fff;
-  border-radius: 3px;
-  padding: 15px 60px;
+  border: ${size.micro} solid ${color.white};
+  border-radius: ${size.smallest};
+  padding: ${size.medium} ${size.largest};
   cursor: pointer;
   transition: all 0.3s;
 
   span {
-    color: #fff;
-    font-size: 0.9375rem;
+    color: ${color.white};
+    font-size: ${fontSize.medium};
     font-weight: 500;
     transition: all 0.3s;
   }
 
   &:hover {
-    background-color: #fff;
+    background-color: ${color.white};
     span {
-      color: #69d872;
+      color: ${color.primaryDarker};
     }
   }
 `;
