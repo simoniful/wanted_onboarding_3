@@ -8,27 +8,30 @@ export const layouts = {
   `,
 
   Body: styled.body`
-    width: 90%;
+    width: 95%;
     margin: 0 auto;
     display: flex;
     background-color: white;
+    gap: 16px;
   `,
 
   Section: styled.section`
     width: 100%;
-    flex: 6;
+    flex: 8;
   `,
 
   Aside: styled.aside`
     width: 100%;
-    flex: 4;
+    flex: 2;
     text-align: center;
   `,
 
-  AccountContainer: styled.div`
-    width: 78%;
+  AccountButtonBox: styled.div`
+    width: 100%;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 12px;
   `,
 };

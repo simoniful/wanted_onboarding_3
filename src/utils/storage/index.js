@@ -16,14 +16,14 @@ export const clearLocalStorage = () => {
   localStorage.clear();
 };
 
-export const tempGetStoreage = (keyward) => {
+// 임시 스토리지 관련 함수입니다.
+export const tempGetStorage = (keyward) => {
   const storage = JSON.parse(localStorage.getItem(`${keyward}`));
 
   return storage;
 };
 
-// 임시 스토리지 관련 함수입니다.
-export const tempSetStoreage = () => {
+export const tempSetStorage = () => {
   localStorage.setItem(
     'data',
     JSON.stringify([
