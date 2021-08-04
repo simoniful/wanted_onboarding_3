@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { AiOutlineCheck } from 'react-icons/ai';
 import { color, fontSize, size } from 'styles/styles';
 import { InputWrapper } from 'styles/InputWrapper';
-// import CardNumber from 'components/CardNumber';
+import CardNumber from 'components/CardNumber';
 import Address from 'components/Address';
 import useInput from 'hooks/useInput';
 
@@ -51,8 +51,8 @@ const SignUp = () => {
           <Address id='address' {...address} />
         </InputWrapper>
         <InputWrapper>
-          <input type='text' placeholder='카드번호, 예) 1234-1234-1234-1234' />
-          {/* <CardNumber id='cardNumber' {...cardNumber} /> */}
+          {/* <input type='text' placeholder='카드번호, 예) 1234-1234-1234-1234' /> */}
+          <CardNumber id='cardNumber' {...cardNumber} />
         </InputWrapper>
 
         <TermWrapper className='term'>
