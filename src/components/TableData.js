@@ -1,10 +1,10 @@
 import React from 'react';
 
-const TableData = ({ userData }) => {
+const TableData = ({ TableData }) => {
   return (
     <>
-      {userData
-        ? userData.map((data) => (
+      {TableData
+        ? TableData.map((data) => (
             <tr key={data.id}>
               <td>{data.id}</td>
               <td>{data.name}</td>

@@ -3,20 +3,13 @@ import styled from 'styled-components';
 import Pagination from './Pagination';
 import TableData from './TableData';
 import { currentUsers } from '../utils/currentUsers';
-import { DATA_PER_PAGE, GET_USER_STORAGE_KEYWORD } from '../utils/config';
-import { tempGetStorage, tempSetStorage } from '../utils/storage';
+import { DATA_PER_PAGE } from '../utils/config';
 
-const UserTable = () => {
-  const [userData, setUserData] = useState([]);
+const UserTable = ({ userData }) => {
   const [currentUserData, setCurrentUserData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [firstIndex, setFirstIndex] = useState(null);
   const [lastIndex, setLastIndex] = useState(null);
-
-  useEffect(() => {
-    tempSetStorage();
-    setUserData(tempGetStorage(GET_USER_STORAGE_KEYWORD));
-  }, []);
 
   useEffect(() => {
     const nextLastIndex = currentPage * DATA_PER_PAGE;
@@ -48,7 +41,7 @@ const UserTable = () => {
           </tr>
         </thead>
         <tbody>
-          <TableData userData={currentUserData} />
+          <TableData TableData={currentUserData} />
         </tbody>
       </TableContainer>
       <Pagination
