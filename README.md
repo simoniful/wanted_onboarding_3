@@ -11,7 +11,7 @@ Jaranda : 유저 정보를 입력받아 회원가입 페이지 구현 / 로그�
 |이름|GitHub|담당|
 |------|---|---|
 |이제찬|[jeky22](https://github.com/jeky22)|Login/Singup: 주소 API 활용 데이터 상태 저장, 팝업(modal) 구현|
-|김동원|[dongwonnn](https://github.com/dongwonnn)|Admin: 페이지네이션 + util 함수|
+|김동원|[dongwonnn](https://github.com/dongwonnn)|Admin: 테이블 컴포넌트, 페이지네이션 + util 함수|
 |장명진|[thinkJin6](https://github.com/thinkJin6)|Login/Singup: localstorage 관련 Util, Mock 구성, 레이아웃|
 |이제경|[jejelee94](https://github.com/jejelee94)|Admin: 데이터테이블 /검색기능 계정추가|
 |김승원|[lumpenop](https://github.com/lumpenop)|Admin: 스타일링 + 그래프시각화|
