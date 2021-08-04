@@ -13,7 +13,7 @@ const User = () => {
   return (
     <>
       <GlobalStyles />
-      <S.Container>
+      <S.Wrap>
         <Navbar user={user} menuList={menuList} />
         <S.Body>
           <S.Section>
@@ -28,7 +28,7 @@ const User = () => {
             </SideMenu>
           </S.Aside>
         </S.Body>
-      </S.Container>
+      </S.Wrap>
     </>
   );
 };

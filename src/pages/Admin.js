@@ -1,42 +1,42 @@
+import React from 'react';
+import styled from 'styled-components';
 import { layouts as S } from 'styles/layouts';
 import GlobalStyles from 'styles/GlobalStyles';
 import Navbar from 'components/Navbar';
 import Graph from 'components/Graph';
-import Table from 'components/Table';
-
-import React from 'react';
-import styled from 'styled-components';
+import UserTable from 'components/UserTable';
+import AccountButton from 'components/AccountButton';
+import SearchBox from 'components/SearchBox';
 
 const Admin = () => {
+  // 사용자 test data & 버튼클릭 test 이벤트
   const user = '관리자1';
   const menuList = ['menu1', 'menu2', 'menu3', 'menu4'];
-
+  const logout = () => {};
   return (
     <>
       <GlobalStyles />
-      <S.Container>
+      <S.Wrap>
         <Navbar user={user} menuList={menuList} />
         <S.Body>
           <S.Section>
-            <Table />
+            <SearchBox />
+            <UserTable />
           </S.Section>
           <S.Aside>
-            <Button>Button</Button>
+            <S.AccountContainer>
+              <AccountButton onClick={logout} content='계정 생성' />
+              <AccountButton onClick={logout} content='로그아웃' />
+            </S.AccountContainer>
             <Sidebar>
               <Graph />
             </Sidebar>
           </S.Aside>
         </S.Body>
-      </S.Container>
+      </S.Wrap>
     </>
   );
 };
-
-const Button = styled.button`
-  width: 100%;
-  height: 50px;
-  background-color: #aaaaaa;
-`;
 
 const Sidebar = styled.div`
   width: 100%;
