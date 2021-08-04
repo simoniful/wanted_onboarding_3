@@ -11,7 +11,7 @@ const TableContainer = styled.table`
   text-align: center;
   margin: 0 auto;
   min-width: 650px;
-  width: 90%;
+  width: 100%;
 
   & tr,
   th,
