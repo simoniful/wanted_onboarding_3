@@ -1,17 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 
-const AccountButton = ({ onClick, content }) => (
-  <Button onClick={onClick}>
-    <Link to='/login'>{content}</Link>
-  </Button>
-);
+const AccountButton = ({ onClick, content }) => {
+  return <Button onClick={onClick}>{content}</Button>;
+};
 
 const Button = styled.button`
-  width: 110px;
+  width: 100%;
   height: 36px;
-  border-radius: 26px;
+  border-radius: 8px;
   border: none;
   background: #8263cc;
   &:hover {
