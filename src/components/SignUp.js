@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { AiOutlineCheck } from 'react-icons/ai';
 import { color, fontSize, size } from 'styles/styles';
+import { InputWrapper } from 'styles/InputWrapper';
 
 const SignUp = () => {
   // isError && <label>
@@ -14,29 +15,29 @@ const SignUp = () => {
       <form>
         <InputWrapper>
           <input type='text' id='id' name='id' placeholder='아이디를 입력해주세요' />
-          {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
           {/* <label htmlFor='id'>아이디를 다시 입력해주세요.</label> */}
         </InputWrapper>
 
         <InputWrapper double='true' marginR='true'>
-          <input type='text' id='password' name='password' placeholder='비밀번호를 입력해주세요' />
-          {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
+          <input
+            type='password'
+            id='password'
+            name='password'
+            placeholder='비밀번호를 입력해주세요'
+          />
           {/* <label htmlFor='password'>비밀번호를 다시 입력해주세요.</label> */}
         </InputWrapper>
         <InputWrapper double='true'>
-          <input type='text' id='password-re' name='password-re' placeholder='비밀번호 확인' />
-          {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
+          <input type='password' id='password-re' name='password-re' placeholder='비밀번호 확인' />
           {/* <label htmlFor='password-re'>비밀번호가 일치하지 않습니다.</label> */}
         </InputWrapper>
 
         <InputWrapper double='true' marginR='true'>
           <input type='text' id='name' name='name' placeholder='이름을 입력해주세요' />
-          {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
           {/* <label htmlFor='name'>이름을 다시 입력해주세요.</label> */}
         </InputWrapper>
         <InputWrapper double='true'>
           <input type='text' id='age' name='age' placeholder='나이를 입력해주세요' />
-          {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
           {/* <label htmlFor='age'>not displaying</label> */}
         </InputWrapper>
         <InputWrapper>
@@ -88,34 +89,6 @@ const Container = styled.section`
 
   form {
     width: 60%;
-  }
-`;
-
-const InputWrapper = styled.div`
-  display: inline-block;
-  width: ${(props) => (props.double ? 'calc(50% - 3px)' : '100%')};
-  text-align: start;
-  margin-right: ${(props) => props.marginR && size.smaller};
-  margin-bottom: ${size.medium};
-
-  input {
-    width: 100%;
-    padding: ${size.medium} 0;
-    padding-left: ${size.medium};
-    border: ${size.micro} solid ${color.greyLighter};
-    border-radius: ${size.smallest};
-    font-size: ${fontSize.small};
-    outline: none;
-
-    &:focus {
-      border-color: ${color.primary};
-    }
-  }
-
-  label {
-    font-size: ${fontSize.smaller};
-    cursor: pointer;
-    color: ${color.red};
   }
 `;
 
