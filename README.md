@@ -1,9 +1,7 @@
 # Wanted Front-end onBoarding # 3
 
 ## Demo Link
-🔗 Product Page : https://elegant-haibt-8fc815.netlify.app/product
-
-🔗 RecentList Page : https://elegant-haibt-8fc815.netlify.app/recentList
+🔗 Product Page : [https://jaranda-coco.netlify.app/](https://jaranda-coco.netlify.app/)
 
 ## 💬 프로젝트 개요
 Jaranda : 유저 정보를 입력받아 회원가입 페이지 구현 / 로그인 & 로그아웃 기능 구현 / 다양한 메뉴를 가진 Admin 홈페이지 구현  
