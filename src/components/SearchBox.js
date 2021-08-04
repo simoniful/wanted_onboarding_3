@@ -51,7 +51,7 @@ const SearchBox = ({ setUserData, copiedData }) => {
     } else {
       setUserData(copiedData);
     }
-  }, [inputValue, setUserData]);
+  }, [inputValue, setUserData, copiedData]);
   return (
     <SearchBoxContainer>
       <SearchInput
