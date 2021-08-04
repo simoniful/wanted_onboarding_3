@@ -1,16 +1,38 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import styled from 'styled-components';
+import { color, fontSize } from 'styles/styles';
+import { SignIn, SignUp } from 'components';
 
 const Login = () => (
-  <>
-    <div>
-      <Link to='/admin'>admin 페이지로 이동</Link>
-    </div>
-    <h1>
-      <Link to='/user'>user 페이지로 이동</Link>
-    </h1>
-    <h1>Login Page</h1>
-  </>
+  <Container>
+    <Logo href='/user'>
+      <h2>Jaranda</h2>
+    </Logo>
+    <SignIn />
+    <SignUp />
+  </Container>
 );
 
 export default Login;
+
+const Container = styled.div`
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  display: flex;
+`;
+
+// change to Link
+const Logo = styled.a`
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  transform: translate(15%, 50%);
+  cursor: pointer;
+
+  h2 {
+    color: ${color.white};
+    font-size: ${fontSize.larger};
+  }
+`;

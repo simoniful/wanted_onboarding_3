@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Pagination from './Pagination';
 import TableData from './TableData';
 import { currentUsers } from '../utils/currentUsers';
-import { DATA_PER_PAGE } from '../utils/constants';
+import { DATA_PER_PAGE } from '../utils/config';
 
 const TableContainer = styled.table`
   border: 1px solid black;

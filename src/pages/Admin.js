@@ -8,7 +8,7 @@ import UserTable from 'components/UserTable';
 import AccountButton from 'components/AccountButton';
 import SearchBox from 'components/SearchBox';
 import { tempGetStoreage, tempSetStoreage } from 'utils/storage';
-import { GET_USER_STORAGE_KEYWARD } from '../utils/constants';
+import { GET_USER_STORAGE_KEYWARD } from '../utils/config';
 
 const Admin = () => {
   // 사용자 test data & 버튼클릭 test 이벤트

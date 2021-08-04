@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import styled from 'styled-components';
-import { DATA_PER_PAGE, ONE_WAY_MIN_PAGE_NUM } from 'utils/constants';
+import { DATA_PER_PAGE, ONE_WAY_MIN_PAGE_NUM } from 'utils/config';
 import { getTotalPageNum } from 'utils/getTotalPageNum';
 
 const PaginationContainer = styled.div`
