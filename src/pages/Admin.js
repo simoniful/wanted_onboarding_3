@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { layouts as S } from 'styles/layouts';
 import GlobalStyles from 'styles/GlobalStyles';
@@ -7,12 +7,23 @@ import Graph from 'components/Graph';
 import UserTable from 'components/UserTable';
 import AccountButton from 'components/AccountButton';
 import SearchBox from 'components/SearchBox';
+import { tempGetStoreage, tempSetStoreage } from 'utils/storage';
+import { GET_USER_STORAGE_KEYWARD } from '../utils/constants';
 
 const Admin = () => {
   // 사용자 test data & 버튼클릭 test 이벤트
   const user = '관리자1';
   const menuList = ['menu1', 'menu2', 'menu3', 'menu4'];
   const logout = () => {};
+
+  // 데이터 테이블 관련 state 입니다.
+  const [userData, setUserData] = useState([]);
+
+  useEffect(() => {
+    tempSetStoreage();
+    setUserData(tempGetStoreage(GET_USER_STORAGE_KEYWARD));
+  }, []);
+
   return (
     <>
       <GlobalStyles />
@@ -20,8 +31,8 @@ const Admin = () => {
         <Navbar user={user} menuList={menuList} />
         <S.Body>
           <S.Section>
-            <SearchBox />
-            <UserTable />
+            <SearchBox userData={userData} setUserData={setUserData} />
+            <UserTable userData={userData} />
           </S.Section>
           <S.Aside>
             <S.AccountContainer>

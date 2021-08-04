@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Pagination from './Pagination';
-import UserData from './UserData';
+import TableData from './TableData';
 import { currentUsers } from '../utils/currentUsers';
-import { DATA_PER_PAGE, GET_USER_STORAGE_KEYWARD } from '../utils/constants';
-import { tempGetStoreage, tempSetStoreage } from '../utils/storage';
+import { DATA_PER_PAGE } from '../utils/constants';
 
 const TableContainer = styled.table`
   border: 1px solid black;
@@ -21,17 +20,11 @@ const TableContainer = styled.table`
   }
 `;
 
-const UserTable = () => {
-  const [userData, setUserData] = useState([]);
+const UserTable = ({ userData }) => {
   const [currentUserData, setCurrentUserData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [firstIndex, setFirstIndex] = useState(null);
   const [lastIndex, setLastIndex] = useState(null);
-
-  useEffect(() => {
-    tempSetStoreage();
-    setUserData(tempGetStoreage(GET_USER_STORAGE_KEYWARD));
-  }, []);
 
   useEffect(() => {
     const nextLastIndex = currentPage * DATA_PER_PAGE;
@@ -63,7 +56,7 @@ const UserTable = () => {
           </tr>
         </thead>
         <tbody>
-          <UserData userData={currentUserData} />
+          <TableData TableData={currentUserData} />
         </tbody>
       </TableContainer>
       <Pagination
