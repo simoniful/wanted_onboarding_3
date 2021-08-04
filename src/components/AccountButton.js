@@ -18,7 +18,7 @@ const Button = styled.button`
     background: ${color.primary};
     transition: 0.5s;
   }
-  color: #fff;
+  color: ${color.white};
   font-size: ${fontSize.medium};
   cursor: pointer;
 `;
