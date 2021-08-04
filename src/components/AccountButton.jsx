@@ -2,13 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-const AccountButton = ({ onClick, content }) => {
-  return (
-    <Button onClick={onClick}>
-      <Link to='/login'>{content}</Link>
-    </Button>
-  );
-};
+const AccountButton = ({ onClick, content }) => (
+  <Button onClick={onClick}>
+    <Link to='/login'>{content}</Link>
+  </Button>
+);
 
 const Button = styled.button`
   width: 110px;

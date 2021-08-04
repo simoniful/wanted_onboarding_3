@@ -40,21 +40,21 @@
         "destructuring": "all"
       }
     ],
-    "arrow-body-style": [1, "as-needed"],
+    // "arrow-body-style": [1, "as-needed"],
     "no-unused-expressions": [
       2,
       {
         "allowTaggedTemplates": true
       }
     ],
-    "no-param-reassign": [
-      2,
-      {
-        "props": false
-      }
-    ],
+    // "no-param-reassign": [
+    //   2,
+    //   {
+    //     "props": false
+    //   }
+    // ],
     "no-console": 1,
-    "import/prefer-default-export": 1,
+    // "import/prefer-default-export": 1,
     "import": 0,
     "func-names": 0,
     "space-before-function-paren": 0,
@@ -81,6 +81,7 @@
     "arrow-body-style": 0,
     "no-param-reassign": 0,
     "import/prefer-default-export": 0,
+    "react/self-closing-comp": 0,
 
     "react/jsx-filename-extension": [
       1,

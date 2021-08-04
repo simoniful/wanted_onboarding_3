@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { withRouter, useHistory } from 'react-router-dom';
 import useInput from 'hooks/useInput';
 import { REGEXP, validate } from 'utils/regex';
-import { getStore, saveStore } from 'utils/storage';
+import { getStore, saveStore } from 'utils/storage/index';
 
 function Signup() {
   const [idStatus, setIdStatus] = useState('');
