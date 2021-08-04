@@ -18,10 +18,12 @@ const Admin = () => {
 
   // 데이터 테이블 관련 state 입니다.
   const [userData, setUserData] = useState([]);
+  const [copiedData, setCopiedData] = useState([]);
 
   useEffect(() => {
     tempSetStoreage();
     setUserData(tempGetStoreage(GET_USER_STORAGE_KEYWARD));
+    setCopiedData(tempGetStoreage(GET_USER_STORAGE_KEYWARD));
   }, []);
 
   return (
@@ -31,7 +33,7 @@ const Admin = () => {
         <Navbar user={user} menuList={menuList} />
         <S.Body>
           <S.Section>
-            <SearchBox userData={userData} setUserData={setUserData} />
+            <SearchBox userData={userData} setUserData={setUserData} copiedData={copiedData} />
             <UserTable userData={userData} />
           </S.Section>
           <S.Aside>

@@ -34,10 +34,8 @@ const SearchInput = styled.input`
   background-color: #fff;
 `;
 
-const SearchBox = ({ userData, setUserData }) => {
+const SearchBox = ({ setUserData, copiedData }) => {
   const [inputValue, setInputValue] = useState('');
-  const copiedData = [...userData];
-
   const onInputValue = useCallback((e) => {
     const word = e.target.value;
     setInputValue(word);
@@ -46,15 +44,14 @@ const SearchBox = ({ userData, setUserData }) => {
   useEffect(() => {
     if (inputValue !== '') {
       const valueLen = inputValue.length;
-
       const filterdData = copiedData.filter(
         (data) => data.name.substring(0, valueLen) === inputValue,
       );
-
       if (filterdData.length > 0) setUserData(filterdData);
+    } else {
+      setUserData(copiedData);
     }
   }, [inputValue, setUserData]);
-
   return (
     <SearchBoxContainer>
       <SearchInput
