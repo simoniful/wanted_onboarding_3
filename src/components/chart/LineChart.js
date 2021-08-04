@@ -28,7 +28,7 @@ const LineChart = () => {
       },
     ],
   };
-  return <Line data={data} options={options} />;
+  return <Line data={data} options={options} height={200} />;
 };
 
 export default LineChart;

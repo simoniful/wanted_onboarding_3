@@ -1,8 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import { color } from '../styles/styles';
-import BarChart from './graph/BarChart';
-import LineChart from './graph/LineChart';
+import BarChart from './chart/BarChart';
+import LineChart from './chart/LineChart';
+import DoughnutChart from './chart/DoughnutChart';
 
 const Chart = () => {
   return (
@@ -17,6 +18,7 @@ const Chart = () => {
       </ChartBox>
       <ChartBox>
         <ChartTitle>주소 분포</ChartTitle>
+        <DoughnutChart />
       </ChartBox>
     </ChartContainer>
   );
@@ -31,7 +33,7 @@ const ChartBox = styled.div`
   background-color: #ececec;
   margin-bottom: 40px;
   background: ${color.white};
-  color: ${color.greyDarker};
+  color: ${color.white};
   border-bottom: 1px solid ${color.greyLighter};
   border-right: 1px solid ${color.greyLighter};
   border-radius: 3px;
