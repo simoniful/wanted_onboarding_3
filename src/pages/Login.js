@@ -4,7 +4,9 @@ import { SignIn, SignUp } from 'components';
 
 const Login = () => (
   <Container>
-    <h2>Jaranda</h2>
+    <LogoDiv>
+      <h2>Jaranda</h2>
+    </LogoDiv>
     <SignIn />
     <SignUp />
   </Container>
@@ -17,14 +19,17 @@ const Container = styled.div`
   height: 100vh;
   position: relative;
   display: flex;
+`;
+
+const LogoDiv = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  transform: translate(15%, 50%);
 
   h2 {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 100;
-    transform: translate(15%, 50%);
     color: #fff;
-    font-size: 30px;
+    font-size: 2rem;
   }
 `;
