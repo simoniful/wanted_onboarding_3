@@ -8,10 +8,11 @@ function Signup() {
   const [idStatus, setIdStatus] = useState('');
   const [nameStatus, setNameStatus] = useState('');
   const [passwordStatus, setPasswordStatus] = useState('');
+  const [checkingPasswordStatus, setCheckingPasswordStatus] = useState('');
 
   const id = useInput('', (value) => value.length <= 12);
   const password = useInput('', (value) => value.length <= 16);
-  // const checkingPassword = useInput('');
+  const checkingPassword = useInput('');
   const name = useInput('', (value) => value.length <= 4);
   const age = useInput(0);
   const address = useInput('');
@@ -35,12 +36,20 @@ function Signup() {
       setPasswordStatus('적절한 비밀번호입니다.');
     }
 
+    if (checkingPassword.value !== password.value) {
+      setCheckingPasswordStatus('비밀번호가 일치하지 않습니다.');
+    } else if (checkingPassword.value === '') {
+      setCheckingPasswordStatus('');
+    } else {
+      setCheckingPasswordStatus('비밀번호가 일치합니다.');
+    }
+
     if (!validate(name.value, REGEXP.nameRegExp)) {
       setNameStatus('이름은 한글로 2~4자로 입력하여 주세요.');
     } else {
       setNameStatus('적절한 이름입니다.');
     }
-  }, [id, password, name]);
+  }, [id, password, name, checkingPassword]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -92,6 +101,17 @@ function Signup() {
           />
         </label>
         <div>{passwordStatus}</div>
+        <label htmlFor='checkingPassword'>
+          <h3>비밀번호 확인</h3>
+          <input
+            type='password'
+            name='checkingPassword'
+            id='checkingPassword'
+            placeholder='비밀번호 다시 입력'
+            {...checkingPassword}
+          />
+        </label>
+        <div>{checkingPasswordStatus}</div>
         <label htmlFor='name'>
           <h3>성명</h3>
           <input type='text' name='name' id='name' placeholder='이름 입력' {...name} />
