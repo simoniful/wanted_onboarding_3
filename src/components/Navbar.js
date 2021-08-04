@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
 import styled from 'styled-components';
 
@@ -50,6 +49,7 @@ const LogoImg = styled.img.attrs({
 `;
 
 const MenuList = styled.ul`
+  width: 100%;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -69,10 +69,9 @@ const Menu = styled.li`
 const Account = styled.div`
   font-size: 16px;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
   flex: 1;
-  width: 100%;
 `;
 
 export default Navbar;

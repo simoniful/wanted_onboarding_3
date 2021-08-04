@@ -1,6 +1,6 @@
 import React from 'react';
 
-const UserData = ({ userData }) => {
+const TableData = ({ userData }) => {
   return (
     <>
       {userData
@@ -18,4 +18,4 @@ const UserData = ({ userData }) => {
     </>
   );
 };
-export default UserData;
+export default TableData;
