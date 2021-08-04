@@ -9,6 +9,6 @@ ReactDOM.render(
     <GlobalStyles />
     <App />
   </BrowserRouter>,
-  
+
   document.getElementById('root'),
 );

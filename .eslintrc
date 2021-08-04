@@ -40,21 +40,22 @@
         "destructuring": "all"
       }
     ],
-    "arrow-body-style": [1, "as-needed"],
+
+    // "arrow-body-style": [1, "as-needed"],
     "no-unused-expressions": [
       2,
       {
         "allowTaggedTemplates": true
       }
     ],
-    "no-param-reassign": [
-      2,
-      {
-        "props": false
-      }
-    ],
+    // "no-param-reassign": [
+    //   2,
+    //   {
+    //     "props": false
+    //   }
+    // ],
     "no-console": 1,
-    "import/prefer-default-export": 1,
+    // "import/prefer-default-export": 1,
     "import": 0,
     "func-names": 0,
     "space-before-function-paren": 0,
@@ -72,6 +73,7 @@
     "react/no-unescaped-entities": 0,
     "jsx-a11y/accessible-emoji": 0,
     "react/require-default-props": 0,
+    "react/self-closing-comp": 0,
     // 임시 off
     "react/prop-types": 0,
     "no-plusplus": 0,
@@ -119,6 +121,22 @@
       "warn",
       {
         "aspects": ["invalidHref"]
+      }
+    ],
+    "jsx-a11y/label-has-associated-control": [
+      "error",
+      {
+        "required": {
+          "some": ["nesting", "id"]
+        }
+      }
+    ],
+    "jsx-a11y/label-has-for": [
+      "error",
+      {
+        "required": {
+          "some": ["nesting", "id"]
+        }
       }
     ]
   },

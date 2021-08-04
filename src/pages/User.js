@@ -6,8 +6,8 @@ import React from 'react';
 import styled from 'styled-components';
 
 const User = () => {
-  const user = '사용자1';
-  const menuList = ['menu1', 'menu2', 'menu3'];
+  const user = '부모님';
+  const menuList = ['menu1', 'menu2', 'menu3', 'menu4'];
   const sideMenuList = ['side menu1', 'side menu2', 'side menu3', 'side menu4'];
 
   return (

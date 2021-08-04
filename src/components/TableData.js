@@ -1,10 +1,10 @@
 import React from 'react';
 
-const UserData = ({ userData }) => {
+const TableData = ({ TableData }) => {
   return (
     <>
-      {userData
-        ? userData.map((data) => (
+      {TableData
+        ? TableData.map((data) => (
             <tr key={data.id}>
               <td>{data.id}</td>
               <td>{data.name}</td>
@@ -18,4 +18,4 @@ const UserData = ({ userData }) => {
     </>
   );
 };
-export default UserData;
+export default TableData;

@@ -12,22 +12,6 @@ export const layouts = {
     margin: 0 auto;
   `,
 
-  ButtonBox: styled.div`
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    margin: 0 auto;
-    padding: 25px 10px 0 10px;
-  `,
-
-  AccountBox: styled.div`
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 20%;
-    margin-left: 30%;
-  `,
-
   Section: styled.section`
     display: flex;
     flex: 6;
@@ -40,10 +24,26 @@ export const layouts = {
 
   Aside: styled.aside`
     width: 100%;
-    padding: 10px 8px;
+    padding: 10px 10px;
     text-align: center;
   `,
+
   Sidebar: styled.div`
     width: 100%;
-   `,
+  `,
+
+  ButtonBox: styled.div`
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin: 0 auto;
+    padding: 25px 10px 0 10px;
+  `,
+
+  AccountBox: styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 27px auto;
+  `,
 };

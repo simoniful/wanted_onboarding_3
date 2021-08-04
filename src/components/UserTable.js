@@ -1,67 +1,29 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Pagination from './Pagination';
-import UserData from './UserData';
+import TableData from './TableData';
+import { color } from '../styles/styles';
 import { currentUsers } from '../utils/currentUsers';
 import { DATA_PER_PAGE, GET_USER_STORAGE_KEYWARD } from '../utils/constants';
 import { tempGetStoreage, tempSetStoreage } from '../utils/storage';
 
-const TableContainer = styled.table`
-  
-  border-collapse: separate; 
-  border-spacing: 1px; 
-  text-align: center; 
-  border-radius: 6px 6px 6px 6px;
-
-  min-width: 650px;
-  width: 80%;
-  
-  & tr,
-  th,
-  td {
-    padding: 10px;
-  }
-
-  & th {
-    width: 155px; 
-    padding: 10px; 
-    font-weight: bold; 
-    vertical-align: top; 
-    color: #fff; 
-    background: #81c147;
-    border-radius: 3px;
-  }
-
-  & td {
-    width: 155px; 
-    padding: 10px; 
-    vertical-align: top; 
-    border-bottom: 1px solid #ccc; 
-    background: #efefef;
-    border-radius: 3px;
-    color: #555;
-    vertical-align: middle;
-  }
-`;
-
-const UserTable = () => {
-  const [userData, setUserData] = useState([]);
+const UserTable = ({ userData }) => {
+  const [currentUserData, setCurrentUserData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [lastIndex, setLastIndex] = useState(null);
   const [firstIndex, setFirstIndex] = useState(null);
+  const [lastIndex, setLastIndex] = useState(null);
 
   useEffect(() => {
     const nextLastIndex = currentPage * DATA_PER_PAGE;
-    const nextFirstIndex = lastIndex - DATA_PER_PAGE;
+    const nextFirstIndex = nextLastIndex - DATA_PER_PAGE;
 
     setLastIndex(nextLastIndex);
     setFirstIndex(nextFirstIndex);
   }, [currentPage, lastIndex]);
 
   useEffect(() => {
-    tempSetStoreage();
-    setUserData(tempGetStoreage(GET_USER_STORAGE_KEYWARD));
-  }, []);
+    setCurrentUserData(currentUsers(userData, firstIndex, lastIndex));
+  }, [userData, firstIndex, lastIndex]);
 
   if (userData.length === 0) {
     return <p>데이터가 비어 있습니다.</p>;
@@ -81,17 +43,51 @@ const UserTable = () => {
           </tr>
         </thead>
         <tbody>
-          <UserData userData={currentUsers(userData, firstIndex, lastIndex)} />
+          <TableData TableData={currentUserData} />
         </tbody>
       </TableContainer>
       <Pagination
-        userDataPerPage={DATA_PER_PAGE}
-        totalUserData={userData.length}
+        totalDataNum={userData.length}
         currentPage={currentPage}
         paginate={setCurrentPage}
       />
     </>
   );
 };
+
+const TableContainer = styled.table`
+  border-collapse: separate;
+  border-spacing: 1px;
+  text-align: center;
+  border-radius: 6px 6px 6px 6px;
+  min-width: 650px;
+  width: 80%;
+
+  & tr,
+  th,
+  td {
+    padding: 10px;
+  }
+  & th {
+    width: 155px;
+    padding: 10px;
+    font-weight: bold;
+    vertical-align: top;
+    color: #fff;
+    background: ${color.primaryDarker};
+    border-radius: 3px;
+  }
+  & td {
+    width: 155px;
+    padding: 10px;
+    vertical-align: top;
+    vertical-align: middle;
+    background: ${color.white};
+    color: ${color.greyDarker};
+    border-bottom: 1px solid ${color.greyLighter};
+    border-right: 1px solid ${color.greyLighter};
+    border-radius: 3px;
+  }
+`;
 
 export default UserTable;
