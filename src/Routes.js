@@ -1,17 +1,18 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Login from './Login.js';
-import Singup from './Signup.js';
+import Login from './pages/Login';
+import User from './pages/User';
+import Admin from './pages/Admin';
 
-export default class Routes extends Component {
-  render() {
-    return (
-      <Router>
-        <Switch>
-          <Route exact path='/login' component={Login} />
-          <Route exact path='/signup' component={Singup} />
-        </Switch>
-      </Router>
-    );
-  }
-}
+const Routes = () => (
+  <Router>
+    <Switch>
+      <Route exact path='/' component={Login} />
+      <Route exact path='/signup' component={Singup} />
+      <Route exact path='/user' component={User} />
+      <Route exact path='/admin' component={Admin} />
+    </Switch>
+  </Router>
+);
+
+export default Routes;
