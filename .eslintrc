@@ -75,6 +75,7 @@
     "react/require-default-props": 0,
     "react/self-closing-comp": 0,
     // 임시 off
+    "dot-notation": 0,
     "import/named": 0,
     "react/prop-types": 0,
     "no-plusplus": 0,
