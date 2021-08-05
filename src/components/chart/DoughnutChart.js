@@ -2,9 +2,9 @@ import { layouts as S } from 'styles/layouts';
 import { Doughnut } from 'react-chartjs-2';
 import { COLOR_STYLES } from '../../styles/styles';
 
-const DoughnutChart = ({ chartList }) => {
-  const labelList = Object.keys(chartList);
-  const dataList = Object.values(chartList);
+const DoughnutChart = ({ chartData }) => {
+  const labelList = Object.keys(chartData);
+  const dataList = Object.values(chartData);
   const options = {
     maintainAspectRatio: false,
 
@@ -26,11 +26,7 @@ const DoughnutChart = ({ chartList }) => {
     datasets: [
       {
         data: dataList,
-        backgroundColor: [
-          `${COLOR_STYLES.AgreyDarker}`,
-          `${COLOR_STYLES.AgreyLighter}`,
-          `${COLOR_STYLES.AgreyDarker}`,
-        ],
+        backgroundColor: [`${COLOR_STYLES.AgreyDarker}`, `${COLOR_STYLES.AgreyLighter}`],
       },
     ],
     hoverOffset: 4,

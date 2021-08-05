@@ -2,7 +2,9 @@ import { layouts as S } from 'styles/layouts';
 import { Line } from 'react-chartjs-2';
 import { COLOR_STYLES } from '../../styles/styles';
 
-const LineChart = () => {
+const LineChart = ({ chartData }) => {
+  const labelList = Object.keys(chartData);
+  const dataList = Object.values(chartData);
   const options = {
     maintainAspectRatio: false,
     responsive: true,
@@ -14,13 +16,13 @@ const LineChart = () => {
     },
   };
 
-  const a = ['hi', 'hello', 'bye'];
+  const a = labelList;
   const data = {
     labels: a,
     datasets: [
       {
         label: '나이',
-        data: [1, 2, 3],
+        data: dataList,
         lineTension: 0,
         backgroundColor: `${COLOR_STYLES.AgreyLighter}`,
         borderWidth: 1,

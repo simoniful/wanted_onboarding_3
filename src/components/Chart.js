@@ -23,29 +23,29 @@ const Chart = ({ userData }) => {
     return ageRangeCntList;
   };
 
-  const getUserAgeList = () => {
-    const userAgeList = userData.map((user) => user.age);
-    const userAgeRangeList = getUserAgeRange(userAgeList);
-    return userAgeRangeList;
-  };
-  const getUserAddressCnt = (addressList) => {
-    const addressLabel = [];
-    const addressCnt = {};
+  const getCntObj = (addressList) => {
+    const labelList = [];
+    const dataCnt = {};
 
     addressList.forEach((address) => {
-      if (!addressLabel.includes(address)) {
-        addressCnt[address] = 1;
-        addressLabel.push(address);
+      if (!labelList.includes(address)) {
+        dataCnt[address] = 1;
+        labelList.push(address);
       } else {
-        addressCnt[address] += 1;
+        dataCnt[address] += 1;
       }
     });
-    return addressCnt;
+    return dataCnt;
   };
-
+  const getUserAgeList = () => {
+    const userAgeList = userData.map((user) => parseInt(user.age / 10) * 10);
+    const userAgeRangeList = getCntObj(userAgeList);
+    return userAgeRangeList;
+  };
+  getUserAgeList();
   const getUserAddressList = () => {
     const userAddress = userData.map((user) => user.address.split(' ')[0]);
-    return getUserAddressCnt(userAddress);
+    return getCntObj(userAddress);
   };
 
   return (
@@ -56,11 +56,11 @@ const Chart = ({ userData }) => {
       </ChartBox>
       <ChartBox>
         <ChartTitle>나이 분포</ChartTitle>
-        <LineChart />
+        <LineChart chartData={getUserAgeList()} />
       </ChartBox>
       <ChartBox>
         <ChartTitle>주소 분포</ChartTitle>
-        <DoughnutChart chartList={getUserAddressList()} />
+        <DoughnutChart chartData={getUserAddressList()} />
       </ChartBox>
     </ChartContainer>
   );
