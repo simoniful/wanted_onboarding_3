@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import SearchIcon from '../styles/icons/SearchIcon';
-import { color } from '../styles/styles';
+import { COLOR_STYLES } from '../styles/styles';
 
 const SearchBox = ({ setUserData, copiedData }) => {
   const [inputValue, setInputValue] = useState('');
@@ -20,7 +20,7 @@ const SearchBox = ({ setUserData, copiedData }) => {
     } else {
       setUserData(copiedData);
     }
-  }, [inputValue, setUserData]);
+  }, [inputValue, setUserData, copiedData]);
 
   return (
     <SearchBoxContainer>
@@ -54,7 +54,7 @@ const SearchButton = styled.div`
   width: 48px;
   height: 48px;
   padding: 0;
-  background: ${color.primaryDarker};
+  background: ${COLOR_STYLES.primaryDarker};
   border-radius: 0 6px 6px 0;
   cursor: pointer;
 `;
@@ -64,7 +64,7 @@ const SearchInput = styled.input`
   height: 48px;
   padding: 8px 12px;
 
-  border: 1px solid ${color.primaryDarker};
+  border: 1px solid ${COLOR_STYLES.primaryDarker};
   border-radius: 6px 0 0 6px;
   :focus {
     outline: 0;

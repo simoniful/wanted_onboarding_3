@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import { fontSize, size } from 'styles/styles';
+import { FONT_SIZE_STYLES, SIZE_STYLES } from 'styles/styles';
 import { InputWrapper } from 'styles/InputWrapper';
 
-const SignInForm = ({ isSignInFormOpen }) => {
+const SignInForm = ({ isSignInFormOpen, values, errors, handleChange }) => {
   if (!isSignInFormOpen)
     return (
       <TextContainer>
@@ -19,18 +19,39 @@ const SignInForm = ({ isSignInFormOpen }) => {
 
   return (
     <>
-      <InputWrapper>
-        <input type='text' id='id' name='id' placeholder='아이디를 입력해주세요' />
-        {/* <label htmlFor='id'>아이디를 다시 확인해주세요.</label> */}
-      </InputWrapper>
-      <InputWrapper>
+      <InputWrapper error={errors.id}>
         <input
+          autoComplete='off'
+          type='text'
+          id='id'
+          name='id'
+          placeholder='아이디를 입력해주세요'
+          onChange={handleChange}
+          value={values.id || ''}
+          required
+        />
+        {errors.id && (
+          <label htmlFor='id' className='help is-danger'>
+            {errors.id}
+          </label>
+        )}
+      </InputWrapper>
+      <InputWrapper error={errors.password}>
+        <input
+          autoComplete='off'
           type='password'
           id='password'
           name='password'
           placeholder='비밀번호를 입력해주세요'
+          onChange={handleChange}
+          value={values.password || ''}
+          required
         />
-        {/* <label htmlFor='id'>비밀번호가 일치하지 않습니다.</label> */}
+        {errors.password && (
+          <label htmlFor='password' className='help is-danger'>
+            {errors.password}
+          </label>
+        )}
       </InputWrapper>
     </>
   );
@@ -43,13 +64,13 @@ const TextContainer = styled.div`
   text-align: center;
 
   h3 {
-    font-size: ${fontSize.large};
+    font-size: ${FONT_SIZE_STYLES.large};
     font-weight: 600;
-    margin-bottom: ${size.larger};
+    margin-bottom: ${SIZE_STYLES.larger};
   }
 
   p {
-    font-size: ${fontSize.medium};
+    font-size: ${FONT_SIZE_STYLES.medium};
     line-height: 1.5;
   }
 `;

@@ -1,4 +1,4 @@
-export const color = {
+export const COLOR_STYLES = {
   primary: '#9fe945',
   primaryDarker: '#69d872',
   primaryGradient: 'linear-gradient(to right bottom, #87bf43, #69d872)',
@@ -9,7 +9,7 @@ export const color = {
   black: 'fff',
 };
 
-export const fontSize = {
+export const FONT_SIZE_STYLES = {
   smaller: '.625rem', // 10px
   small: '.875rem', // 14px
   medium: '1rem', // 16px
@@ -17,7 +17,7 @@ export const fontSize = {
   larger: '2rem', // 32px
 };
 
-export const size = {
+export const SIZE_STYLES = {
   micro: '1px',
   smallest: '3px',
   smaller: '6px',

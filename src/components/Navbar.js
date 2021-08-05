@@ -1,19 +1,18 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
 import styled from 'styled-components';
-import { color, fontSize } from 'styles/styles';
+import { COLOR_STYLES, FONT_SIZE_STYLES } from 'styles/styles';
 
-const Navbar = ({ menuList, user }) => {
+const Navbar = ({ user }) => {
+  const menuList = ['공통메뉴1', '공통메뉴2', '공통메뉴3'];
+
   return (
     <NavWrap>
       <NavContainer>
         <NavContent>
-          <Logo href='/admin'>
-            <h2>Jaranda</h2>
-          </Logo>
+          
           <MenuList>
-            {menuList.map((menu) => (
-              <Menu>{menu}</Menu>
+            {menuList.map((menu, key) => (
+              <Menu key={key}>{menu}</Menu>
             ))}
           </MenuList>
           <Account>{user}</Account>
@@ -26,8 +25,8 @@ const Logo = styled.a`
   width: 100%;
   cursor: pointer;
   h2 {
-    color: ${color.white};
-    font-size: ${fontSize.larger};
+    color: ${COLOR_STYLES.white};
+    font-size: ${FONT_SIZE_STYLES.larger};
   }
 `;
 
@@ -35,8 +34,8 @@ const NavWrap = styled.nav`
   width: 100%;
   height: 100%;
   padding: 0;
-  color: ${color.white};
-  background: ${color.primaryGradient};
+  color: ${COLOR_STYLES.white};
+  background: ${COLOR_STYLES.primaryGradient};
 `;
 
 const NavContainer = styled.div`
@@ -63,7 +62,7 @@ const Menu = styled.li`
   cursor: pointer;
   padding: 0 5%;
   :hover {
-    text-shadow: 2px 2px 5px ${color.white};
+    text-shadow: 2px 2px 5px ${COLOR_STYLES.white};
     transition: 0.3s;
   }
 `;
@@ -73,7 +72,7 @@ const Account = styled.div`
   justify-content: flex-end;
   align-items: center;
   width: 100%;
-  color: ${color.greyDarker};
+  color: ${COLOR_STYLES.greyDarker};
 `;
 
 export default Navbar;

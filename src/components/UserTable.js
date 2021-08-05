@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Pagination from './Pagination';
 import TableData from './TableData';
-import { color } from '../styles/styles';
+import { COLOR_STYLES } from '../styles/styles';
 import { currentUsers } from '../utils/currentUsers';
 import { DATA_PER_PAGE, GET_USER_STORAGE_KEYWARD } from '../utils/constants';
 import { tempGetStoreage, tempSetStoreage } from '../utils/storage';
@@ -74,7 +74,7 @@ const TableContainer = styled.table`
     font-weight: bold;
     vertical-align: top;
     color: #fff;
-    background: ${color.primaryDarker};
+    background: ${COLOR_STYLES.primaryDarker};
     border-radius: 3px;
   }
   & td {
@@ -82,10 +82,10 @@ const TableContainer = styled.table`
     padding: 10px;
     vertical-align: top;
     vertical-align: middle;
-    background: ${color.white};
-    color: ${color.greyDarker};
-    border-bottom: 1px solid ${color.greyLighter};
-    border-right: 1px solid ${color.greyLighter};
+    background: ${COLOR_STYLES.white};
+    color: ${COLOR_STYLES.greyDarker};
+    border-bottom: 1px solid ${COLOR_STYLES.greyLighter};
+    border-right: 1px solid ${COLOR_STYLES.greyLighter};
     border-radius: 3px;
   }
 `;
