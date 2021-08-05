@@ -3,7 +3,7 @@ import GlobalStyles from 'styles/GlobalStyles';
 import Navbar from 'components/Navbar';
 
 import styled from 'styled-components';
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 
 const User = () => {
