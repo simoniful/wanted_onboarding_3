@@ -10,6 +10,7 @@ import Address from 'components/Address';
 import useInput from 'hooks/useInput';
 import Term from 'components/Term';
 import { STORAGE_DATA } from 'utils/config';
+import { filterObject } from 'utils/filterObject';
 
 const SignUp = () => {
   const [userData, setUserData] = useState(getLocalStorage(STORAGE_DATA.users));
@@ -26,14 +27,16 @@ const SignUp = () => {
 
     if (!isTermChecked) return alert('이용약관에 동의 후 가입 가능합니다.');
 
-    const newUser = { ...values, address: address.value, cardNumber: cardNumber.value };
+    const newValues = filterObject(values, 'checkingPassword');
+    const newUser = { ...newValues, address: address.value, cardNumber: cardNumber.value };
     const updatedUserData = [...userData, newUser];
 
     setUserData(updatedUserData);
     setLocalStorage(STORAGE_DATA.users, updatedUserData);
-    alert('회원가입이 성공적으로 되었습니다. 더 진행하시려면 로그인을 해주십시오.');
+    setIsTermChecked(false);
     address.clearValue();
     cardNumber.clearValue();
+    alert('회원가입이 성공적으로 되었습니다. 더 진행하시려면 로그인을 해주십시오.');
 
     return true;
   };
@@ -72,82 +75,69 @@ const SignUp = () => {
             value={values.id || ''}
             required
           />
-          {errors.id && (
-            <label htmlFor='id' className='help is-danger'>
-              {errors.id}
-            </label>
-          )}
+          {errors.id && <label htmlFor='id'>{errors.id}</label>}
         </InputWrapper>
 
-        <InputWrapper double='true' marginR='true' error={errors.password}>
-          <input
-            autoComplete='off'
-            type='password'
-            id='password'
-            name='password'
-            placeholder='비밀번호를 입력해주세요'
-            onChange={handleChange}
-            value={values.password || ''}
-            required
-          />
-          {errors.password && (
-            <label htmlFor='password' className='help is-danger'>
-              {errors.password}
-            </label>
-          )}
-        </InputWrapper>
-        <InputWrapper double='true' error={errors.checkingPassword}>
-          <input
-            autoComplete='off'
-            type='password'
-            id='checkingPassword'
-            name='checkingPassword'
-            placeholder='비밀번호 확인'
-            onChange={handleChange}
-            value={values.checkingPassword || ''}
-            required
-          />
-          {errors.checkingPassword && (
-            <label htmlFor='checkingPassword' className='help is-danger'>
-              {errors.checkingPassword}
-            </label>
-          )}
-        </InputWrapper>
+        <InputDouble>
+          <InputWrapper double='true' marginR='true' error={errors.password}>
+            <input
+              autoComplete='off'
+              type='password'
+              id='password'
+              name='password'
+              placeholder='비밀번호를 입력해주세요'
+              onChange={handleChange}
+              value={values.password || ''}
+              required
+            />
+            {errors.password && <label htmlFor='password'>{errors.password}</label>}
+          </InputWrapper>
+          <InputWrapper double='true' error={errors.checkingPassword}>
+            <input
+              autoComplete='off'
+              type='password'
+              id='checkingPassword'
+              name='checkingPassword'
+              placeholder='비밀번호 확인'
+              onChange={handleChange}
+              value={values.checkingPassword || ''}
+              required
+            />
+            {errors.checkingPassword && (
+              <label htmlFor='checkingPassword'>{errors.checkingPassword}</label>
+            )}
+          </InputWrapper>
+        </InputDouble>
 
-        <InputWrapper double='true' marginR='true' error={errors.name}>
-          <input
-            autoComplete='off'
-            type='text'
-            id='name'
-            name='name'
-            placeholder='이름을 입력해주세요'
-            onChange={handleChange}
-            value={values.name || ''}
-            required
-          />
-          {errors.name && (
-            <label htmlFor='name' className='help is-danger'>
-              {errors.name}
-            </label>
-          )}
-        </InputWrapper>
-        <InputWrapper double='true' error={errors.age}>
-          <input
-            autoComplete='off'
-            type='text'
-            id='age'
-            name='age'
-            placeholder='나이를 입력해주세요'
-            onChange={handleChange}
-            value={values.age || ''}
-            required
-          />
-          {errors.age && (
-            <label htmlFor='name' className='help is-danger'>
-              {errors.age}
-            </label>
-          )}
-        </InputWrapper>
+        <InputDouble>
+          <InputWrapper double='true' marginR='true' error={errors.name}>
+            <input
+              autoComplete='off'
+              type='text'
+              id='name'
+              name='name'
+              placeholder='이름을 입력해주세요'
+              onChange={handleChange}
+              value={values.name || ''}
+              required
+            />
+            {errors.name && <label htmlFor='name'>{errors.name}</label>}
+          </InputWrapper>
+          <InputWrapper double='true' error={errors.age}>
+            <input
+              autoComplete='off'
+              type='text'
+              id='age'
+              name='age'
+              placeholder='나이를 입력해주세요'
+              onChange={handleChange}
+              value={values.age || ''}
+              required
+            />
+            {errors.age && <label htmlFor='name'>{errors.age}</label>}
+          </InputWrapper>
+        </InputDouble>
+
         <InputWrapper error={address.isError}>
           {/* <input type='text' placeholder='주소를 입력해주세요' /> */}
           <Address id='address' {...address} />
@@ -192,6 +182,12 @@ const Container = styled.section`
   form {
     width: 60%;
   }
+`;
+
+
+const InputDouble = styled.div`
+  display: flex;
+  align-items: flex-start;
 `;
 
 const RadioContainer = styled.div`
