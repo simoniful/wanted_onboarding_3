@@ -16,6 +16,7 @@ export function loginValidate(values) {
   } else if (!regValidate(values.id, REGEXP.id)) {
     errors.id = '아이디는 4~12자의 영문 대소문자와 숫자로만 입력하여 주세요.';
   }
+
   if (!values.password) {
     errors.password = '비밀번호를 입력하세요';
   } else if (!regValidate(values.password, REGEXP.password)) {
