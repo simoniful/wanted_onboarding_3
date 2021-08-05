@@ -18,7 +18,7 @@ const SearchBox = ({ setUserData, copiedData, setCurrentPage }) => {
     if (inputValue !== '') {
       const valueLen = inputValue.length;
       const filterdData = copiedData.filter(
-        (data) => data[dropdownItem].substring(0, valueLen) === inputValue,
+        (data) => String(data[dropdownItem]).substring(0, valueLen) === inputValue,
       );
 
       setUserData(filterdData);
@@ -59,6 +59,7 @@ const SearchBoxContainer = styled.div`
   justify-content: center;
   align-items: center;
   border: 1px solid ${COLOR_STYLES.primaryDarker};
+  border-left: none;
   font-size: ${FONT_SIZE_STYLES.small};
   border-radius: 6px;
 `;
@@ -66,8 +67,7 @@ const SearchBoxContainer = styled.div`
 const SearchInput = styled.input`
   width: calc(100% - 48px);
   min-width: calc(300px - 48px);
-  height: 48px;
-  padding: 8px 12px;
+  padding: 0 12px;
   border-radius: 6px 0 0 6px;
   border: none;
   :focus {
@@ -83,8 +83,7 @@ const SearchButton = styled.div`
   float: right;
   top: unset;
   width: 48px;
-  height: 48px;
-  padding: 0;
+  padding: 15px 0;
   background: ${COLOR_STYLES.primaryDarker};
   border-radius: 0 6px 6px 0;
   cursor: pointer;

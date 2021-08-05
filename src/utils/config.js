@@ -25,4 +25,14 @@ export const SEARCH_DROPDOWN_ITEMS = [
     title: '카드 번호',
     value: 'cardNumber',
   },
+  {
+    id: 5,
+    title: '나이',
+    value: 'age',
+  },
+  {
+    id: 6,
+    title: '권한',
+    value: 'userType',
+  },
 ];

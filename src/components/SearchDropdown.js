@@ -23,22 +23,23 @@ const DropdownMenu = styled.ul`
   display: ${(props) => (props.isActive ? `block` : `none`)};
   position: absolute;
   background-color: white;
-  border: 1px solid black;
   width: 150px;
   background: ${COLOR_STYLES.primaryDarker};
   color: white;
+  border-radius: 0 0 6px 6px;
 `;
 
 const DropdownItem = styled.li`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 36px;
-  border: 1px solid black;
+  padding: 10px 0;
   cursor: pointer;
+  border-top: 1px solid white;
 
   &:hover {
-    border: 1px solid red;
+    border-left: 1px solid white;
+    border-right: 1px solid white;
   }
 `;
 
@@ -61,11 +62,11 @@ const SearchDropdown = ({ dropdownName, setDropdownItem, setDropdownName, setInp
 
   return (
     <DropdownContainer onClick={onDropdownToggle} onMouseLeave={() => setDropdownToggle(false)}>
-      <DropdownBody>검색 필터 : {dropdownName}</DropdownBody>
+      <DropdownBody>{dropdownName}</DropdownBody>
       <DropdownMenu isActive={dropdownToggle}>
         {SEARCH_DROPDOWN_ITEMS.map((data) => (
           <DropdownItem key={data.id} onClick={() => onSelectDropdownItem(data)}>
-            <p>검색 필터 : {data.title}</p>
+            <p>{data.title}</p>
           </DropdownItem>
         ))}
       </DropdownMenu>
