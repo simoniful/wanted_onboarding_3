@@ -12,7 +12,8 @@ export const InputWrapper = styled.div`
     width: 100%;
     padding: ${SIZE_STYLES.medium} 0;
     padding-left: ${SIZE_STYLES.medium};
-    border: ${SIZE_STYLES.micro} solid ${COLOR_STYLES.greyLighter};
+    border: ${SIZE_STYLES.micro} solid
+      ${(props) => (props.error ? COLOR_STYLES.red : COLOR_STYLES.greyLighter)};
     border-radius: ${SIZE_STYLES.smallest};
     font-size: ${FONT_SIZE_STYLES.small};
     color: ${COLOR_STYLES.greyDarker};
