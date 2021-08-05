@@ -60,6 +60,5 @@ export function signupValidate(values) {
     errors.age = '나이는 숫자로 입력해주세요.';
   }
 
-  console.log(errors);
   return errors;
 }
