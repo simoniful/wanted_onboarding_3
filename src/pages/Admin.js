@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { layouts as S } from 'styles/layouts';
 import GlobalStyles from 'styles/GlobalStyles';
 import Navbar from 'components/Navbar';
-import Graph from 'components/Graph';
+import Chart from 'components/Chart';
 import UserTable from 'components/UserTable';
 import AccountButton from 'components/AccountButton';
 import SearchBox from 'components/SearchBox';
@@ -15,10 +15,10 @@ import { GET_USER_STORAGE_KEYWORD } from '../utils/config';
 const Admin = () => {
   // 페이지 관련 state (수정예정)
   const [user, setUser] = useState('관리자A');
-  const [menu, setMenu] = useState([]);
+  const [menu, setMenu] = useState(['menu1', 'menu2', 'menu3', 'menu4']);
   const history = useHistory();
 
-  // 테이블 관련 state
+  // 데이터 테이블 관련 state 입니다.
   const [userData, setUserData] = useState([]);
   const [copiedData, setCopiedData] = useState([]);
 
@@ -28,7 +28,6 @@ const Admin = () => {
   useEffect(() => {
     // TODO 2. 비정상적인 url 접근 막기 & 메인화면으로 redirect
     // TODO 3. history에서 state : {user, menu} 받아서 setState
-
     tempSetStorage();
     setUserData(tempGetStorage(GET_USER_STORAGE_KEYWORD));
     setCopiedData(tempGetStorage(GET_USER_STORAGE_KEYWORD));
@@ -38,30 +37,56 @@ const Admin = () => {
     <>
       <GlobalStyles />
       <S.Wrap>
-        <Navbar user={user} />
-        <S.Body>
-          <S.Section>
-            <SearchBox userData={userData} setUserData={setUserData} copiedData={copiedData} />
-            <UserTable userData={userData} />
-          </S.Section>
-          <S.Aside>
-            <S.AccountButtonBox>
-              <SignUpModal />
-              <AccountButton onClick={onLogout} content='로그아웃' />
-            </S.AccountButtonBox>
-            <Sidebar>
-              <Graph />
-            </Sidebar>
-          </S.Aside>
-        </S.Body>
+        <Navbar user={user} menuList={menu} userMenu={[]} />
+        <AdminContainer>
+          <AdminSection>
+            <TableBox>
+              <SearchBox userData={userData} setUserData={setUserData} copiedData={copiedData} />
+              <UserTable userData={userData} />
+            </TableBox>
+            <ChartAside>
+              <S.Sidebar>
+                <S.AccountBox>
+                  <SignUpModal />
+                  <AccountButton onClick={onLogout} content='로그아웃' />
+                </S.AccountBox>
+                <Chart />
+              </S.Sidebar>
+            </ChartAside>
+          </AdminSection>
+        </AdminContainer>
       </S.Wrap>
     </>
   );
 };
 
-const Sidebar = styled.div`
-  width: 100%;
-  background-color: #bbbbbb;
+const TableBox = styled(S.Content)`
+  width: 60%;
+  min-width: 600px;
+`;
+
+const ChartAside = styled(S.Aside)`
+  width: 40%;
+  min-width: 300px;
+`;
+
+const AdminContainer = styled(S.Container)`
+  @media only screen and (max-width: 1287px) {
+    margin: 0 calc((${window.innerWidth}px - 600px) / 2) !important;
+  }
+`;
+const AdminSection = styled(S.Section)`
+@media only screen and (max-width: 973px){
+  display: block;
+
+  & ${TableBox}{
+    width: 100%
+    margin: 0 auto;
+  }
+  & ${ChartAside}{
+    width: 60%
+  }
+}
 `;
 
 export default Admin;
