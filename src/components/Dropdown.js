@@ -28,7 +28,7 @@ const DropdownItem = styled.li`
   height: 36px;
 `;
 
-const Dropdown = ({ dropdownItem, setDropdownItem }) => {
+const Dropdown = ({ setDropdownItem, dropdownName, setDropdownName }) => {
   const [dropdownToggle, setDropdownToggle] = useState(false);
 
   const onDropdownToggle = useCallback(() => {
@@ -36,19 +36,20 @@ const Dropdown = ({ dropdownItem, setDropdownItem }) => {
   }, []);
 
   const onSelectDropdownItem = useCallback(
-    (item) => {
-      setDropdownItem(item);
+    (data) => {
+      setDropdownItem(data.value);
+      setDropdownName(data.title);
     },
-    [setDropdownItem],
+    [setDropdownItem, setDropdownName],
   );
 
   return (
     <DropdownContainer onClick={onDropdownToggle}>
-      <DropdownBody>검색 필터 : {dropdownItem}</DropdownBody>
+      <DropdownBody>검색 필터 : {dropdownName}</DropdownBody>
       <DropdownMenu isActive={dropdownToggle}>
         {SEARCH_DROPDOWN_ITEMS.map((data) => (
-          <DropdownItem key={data.id} onClick={() => onSelectDropdownItem(data.value)}>
-            {data.title}
+          <DropdownItem key={data.id} onClick={() => onSelectDropdownItem(data)}>
+            <p>검색 필터 : {data.title}</p>
           </DropdownItem>
         ))}
       </DropdownMenu>

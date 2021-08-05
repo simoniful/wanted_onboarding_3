@@ -5,6 +5,7 @@ import SearchIcon from '../styles/icons/SearchIcon';
 
 const SearchBox = ({ setUserData, copiedData }) => {
   const [dropdownItem, setDropdownItem] = useState('id');
+  const [dropdownName, setDropdownName] = useState('이름');
   const [inputValue, setInputValue] = useState('');
 
   const onInputValue = useCallback((e) => {
@@ -15,12 +16,11 @@ const SearchBox = ({ setUserData, copiedData }) => {
   useEffect(() => {
     if (inputValue !== '') {
       const valueLen = inputValue.length;
-
       const filterdData = copiedData.filter(
-        (data) => data.name.substring(0, valueLen) === inputValue,
+        (data) => data[dropdownItem].substring(0, valueLen) === inputValue,
       );
 
-      if (filterdData.length > 0) setUserData(filterdData);
+      setUserData(filterdData);
     } else {
       setUserData(copiedData);
     }
@@ -28,9 +28,13 @@ const SearchBox = ({ setUserData, copiedData }) => {
 
   return (
     <SearchBoxContainer>
-      <DropDown dropdownItem={dropdownItem} setDropdownItem={setDropdownItem} />
+      <DropDown
+        dropdownName={dropdownName}
+        setDropdownItem={setDropdownItem}
+        setDropdownName={setDropdownName}
+      />
       <SearchInput
-        placeholder={`${dropdownItem}을 입력해주세요.`}
+        placeholder={`${dropdownName}을 입력해주세요.`}
         onChange={onInputValue}
         type='text'
         value={inputValue}
