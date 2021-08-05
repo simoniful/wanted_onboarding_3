@@ -5,7 +5,49 @@ import BarChart from './chart/BarChart';
 import LineChart from './chart/LineChart';
 import DoughnutChart from './chart/DoughnutChart';
 
-const Chart = () => {
+const Chart = ({ userData }) => {
+  const getUserTypeList = () => {
+    return userData.map((user) => user.userType);
+  };
+
+  const getUserAgeRange = (ageList) => {
+    const ageRangeCntList = [0, 0, 0, 0, 0];
+    ageList.forEach((age) => {
+      const ages = age % 10;
+      if (ages < 1) ageRangeCntList[0] += 1;
+      if (ages < 2) ageRangeCntList[1] += 1;
+      if (ages < 3) ageRangeCntList[2] += 1;
+      if (ages < 4) ageRangeCntList[3] += 1;
+      else ageRangeCntList[4] += 1;
+    });
+    return ageRangeCntList;
+  };
+
+  const getUserAgeList = () => {
+    const userAgeList = userData.map((user) => user.age);
+    const userAgeRangeList = getUserAgeRange(userAgeList);
+    return userAgeRangeList;
+  };
+  const getUserAddressCnt = (addressList) => {
+    const addressLabel = [];
+    const addressCnt = {};
+
+    addressList.forEach((address) => {
+      if (!addressLabel.includes(address)) {
+        addressCnt[address] = 1;
+        addressLabel.push(address);
+      } else {
+        addressCnt[address] += 1;
+      }
+    });
+    return addressCnt;
+  };
+
+  const getUserAddressList = () => {
+    const userAddress = userData.map((user) => user.address.split(' ')[0]);
+    return getUserAddressCnt(userAddress);
+  };
+
   return (
     <ChartContainer>
       <ChartBox>
@@ -18,7 +60,7 @@ const Chart = () => {
       </ChartBox>
       <ChartBox>
         <ChartTitle>주소 분포</ChartTitle>
-        <DoughnutChart />
+        <DoughnutChart chartList={getUserAddressList()} />
       </ChartBox>
     </ChartContainer>
   );

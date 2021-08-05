@@ -2,7 +2,9 @@ import { layouts as S } from 'styles/layouts';
 import { Doughnut } from 'react-chartjs-2';
 import { COLOR_STYLES } from '../../styles/styles';
 
-const DoughnutChart = () => {
+const DoughnutChart = ({ chartList }) => {
+  const labelList = Object.keys(chartList);
+  const dataList = Object.values(chartList);
   const options = {
     maintainAspectRatio: false,
 
@@ -20,10 +22,10 @@ const DoughnutChart = () => {
   };
 
   const data = {
-    labels: ['뉴욕시', '부산시', '서울시'],
+    labels: labelList,
     datasets: [
       {
-        data: [100, 300, 200],
+        data: dataList,
         backgroundColor: [
           `${COLOR_STYLES.AgreyDarker}`,
           `${COLOR_STYLES.AgreyLighter}`,
