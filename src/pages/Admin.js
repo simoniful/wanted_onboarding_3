@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { layouts as S } from 'styles/layouts';
 import GlobalStyles from 'styles/GlobalStyles';
 import Navbar from 'components/Navbar';
-import Graph from 'components/Graph';
+import Chart from 'components/Chart';
 import UserTable from 'components/UserTable';
 import AccountButton from 'components/AccountButton';
 import SearchBox from 'components/SearchBox';
@@ -42,7 +42,7 @@ const Admin = () => {
                   <AccountButton onClick={logout} content='계정 생성' />
                   <AccountButton onClick={logout} content='로그아웃' />
                 </S.AccountBox>
-                <Graph />
+                <Chart />
               </S.Sidebar>
             </S.Aside>
           </S.Section>
