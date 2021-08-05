@@ -1,24 +1,51 @@
-import React from 'react';
+import React, { useCallback, useState } from 'react';
 import styled from 'styled-components';
-import { AiOutlineCheck } from 'react-icons/ai';
 import { COLOR_STYLES, FONT_SIZE_STYLES, SIZE_STYLES } from 'styles/styles';
 import { InputWrapper } from 'styles/InputWrapper';
 import useForm from 'hooks/useForm';
 import { validate } from 'utils/regex';
+import { getLocalStorage, setLocalStorage } from 'utils/storage';
 import CardNumber from 'components/CardNumber';
 import Address from 'components/Address';
 import useInput from 'hooks/useInput';
+import Term from 'components/Term';
+import { STORAGE_DATA } from 'utils/config';
 
 const SignUp = () => {
-  function login() {
-    console.log('No errors, submit callback called!');
-  }
-
-  const { values, errors, handleChange, handleSubmit } = useForm(login, validate);
-  // isChecked svg color change
-
+  const [userData, setUserData] = useState(getLocalStorage(STORAGE_DATA.users));
+  const [isTermChecked, setIsTermChecked] = useState(false);
   const address = useInput('');
   const cardNumber = useInput('');
+
+  const signUp = (values) => {
+    if (!address.value || !cardNumber.value) {
+      address.checkIsError();
+      cardNumber.checkIsError();
+      return;
+    }
+
+    if (!isTermChecked) return alert('이용약관에 동의 후 가입 가능합니다.');
+
+    const newUser = { ...values, address: address.value, cardNumber: cardNumber.value };
+    const updatedUserData = [...userData, newUser];
+
+    setUserData(updatedUserData);
+    setLocalStorage(STORAGE_DATA.users, updatedUserData);
+    alert('회원가입이 성공적으로 되었습니다. 더 진행하시려면 로그인을 해주십시오.');
+    address.clearValue();
+    cardNumber.clearValue();
+
+    return true;
+  };
+
+  const { values, errors, handleChange, handleSubmit } = useForm(signUp, validate);
+
+  const handleClickTerm = (e) => {
+    if (e.target.id === 'term') return;
+
+    setIsTermChecked((isChecked) => !isChecked);
+  };
+
   return (
     <Container>
       <h3>자란다 회원가입</h3>
@@ -111,23 +138,16 @@ const SignUp = () => {
             </label>
           )}
         </InputWrapper>
-        <InputWrapper>
+        <InputWrapper error={address.isError}>
           {/* <input type='text' placeholder='주소를 입력해주세요' /> */}
           <Address id='address' {...address} />
         </InputWrapper>
-        <InputWrapper>
+        <InputWrapper error={cardNumber.isError}>
           {/* <input type='text' placeholder='카드번호, 예) 1234-1234-1234-1234' /> */}
           <CardNumber id='cardNumber' {...cardNumber} />
         </InputWrapper>
 
-        <TermWrapper className='term'>
-          <input type='checkbox' id='term' />
-          <AiOutlineCheck />
-          <a href='https://media.tenor.com/images/78ecca5aa42d67bb4eced2eb2ea57bd3/tenor.gif'>
-            이용약관
-          </a>
-          <label htmlFor='term'>을 모두 읽었으며 이에 동의합니다.</label>
-        </TermWrapper>
+        <Term isChecked={isTermChecked} handleClick={handleClickTerm} />
 
         <ButtonSubmit type='submit'>
           <span>가입하기</span>
@@ -161,33 +181,6 @@ const Container = styled.section`
 
   form {
     width: 60%;
-  }
-`;
-
-const TermWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  margin-bottom: ${SIZE_STYLES.larger};
-  font-size: ${FONT_SIZE_STYLES.small};
-
-  input[type='checkbox'] {
-    display: none;
-  }
-
-  label {
-    cursor: pointer;
-  }
-
-  a {
-    color: ${COLOR_STYLES.primary};
-  }
-
-  svg {
-    /* on check, color change to primaryDarker */
-    color: ${COLOR_STYLES.greyLighter};
-    font-size: ${FONT_SIZE_STYLES.large};
-    margin-right: ${SIZE_STYLES.small};
-    cursor: pointer;
   }
 `;
 
