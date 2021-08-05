@@ -7,7 +7,7 @@ export const layouts = {
     flex-direction: column;
   `,
 
-  Body: styled.body`
+  Container: styled.div`
     width: 95%;
     margin: 0 auto;
     display: flex;
