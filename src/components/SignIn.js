@@ -2,36 +2,60 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { COLOR_STYLES, FONT_SIZE_STYLES, SIZE_STYLES } from 'styles/styles';
 import useForm from 'hooks/useForm';
-import { validate } from 'utils/regex';
+import { loginValidate } from 'utils/regex';
+import { getLocalStorage, setLocalStorage } from 'utils/storage';
+import { useHistory } from 'react-router-dom';
 import SignInForm from './SignInForm';
 
 const SignIn = () => {
+  const [isSignInFormOpen, setIsSignInFormOpen] = useState(false);
+  const history = useHistory();
   function login() {
-    console.log('No errors, submit callback called!');
+    const userList = getLocalStorage();
+    const user = userList.find(
+      (user) => user.id === values.id && user.password === values.password,
+    );
+
+    if (user === undefined) {
+      alert('아이디와 비밀번호를 확인해주세요');
+      return null;
+    }
+
+    if (user.userType === 'admin') {
+      setLocalStorage('loginUser', { id: user.id, name: user.name, userType: user.userType });
+      history.push('/admin');
+    } else if (user.userType === 'teacher' || user.userType === 'parent') {
+      setLocalStorage('loginUser', { id: user.id, name: user.name, userType: user.userType });
+      history.push('/user');
+    }
   }
 
-  const { values, errors, handleChange, handleSubmit } = useForm(login, validate);
+  const { values, errors, handleChange, handleSubmit } = useForm(login, loginValidate);
 
-  const [isSignInFormOpen, setIsSignInFormOpen] = useState(false);
   const handleSubmitLogin = (e) => {
     e.preventDefault();
     if (!isSignInFormOpen) return setIsSignInFormOpen(true);
-    handleSubmit();
     // if form is open, validate login form and move to userPage, isSignInFormOpen to false
   };
 
   return (
     <Container isSignInFormOpen={isSignInFormOpen}>
-      <form noValidate>
+      <form onSubmit={handleSubmit} noValidate>
         <SignInForm
           isSignInFormOpen={isSignInFormOpen}
           values={values}
           errors={errors}
           handleChange={handleChange}
         />
-        <ButtonLogin type='submit' onClick={handleSubmitLogin}>
-          <span>LOG IN</span>
-        </ButtonLogin>
+        {!isSignInFormOpen ? (
+          <ButtonLogin type='button' onClick={handleSubmitLogin}>
+            <span>LOG IN</span>
+          </ButtonLogin>
+        ) : (
+          <ButtonLogin type='submit'>
+            <span>LOG IN</span>
+          </ButtonLogin>
+        )}
       </form>
     </Container>
   );

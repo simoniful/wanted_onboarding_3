@@ -10,8 +10,8 @@ const AccountButton = ({ onClick, content, width, height }) => (
 );
 
 const Button = styled.button`
-  width: ${props => props.width ? props.width : '45%'};
-  height: ${props => props.height ? props.height : '36px;'};
+  width: ${(props) => (props.width ? props.width : '45%')};
+  height: ${(props) => (props.height ? props.height : '36px;')};
   border: none;
   background: ${COLOR_STYLES.primaryDarker};
   &:hover {

@@ -14,7 +14,7 @@ import { GET_USER_STORAGE_KEYWORD } from '../utils/config';
 const Admin = () => {
   // 페이지 관련 state (수정예정)
   const [user, setUser] = useState('관리자A');
-  const [menu, setMenu] = useState([]);
+  const [menu, setMenu] = useState(['menu1', 'menu2', 'menu3', 'menu4']);
   const history = useHistory();
 
   // 데이터 테이블 관련 state 입니다.
@@ -22,16 +22,12 @@ const Admin = () => {
   const [copiedData, setCopiedData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
 
-  const user1 = '관리자1';
-  const menuList = ['menu1', 'menu2', 'menu3', 'menu4'];
-
   const onLogout = () => history.push('/');
   const onCreateAccount = () => {}; // TODO 1. 회원가입 모달창 띄우기
 
   useEffect(() => {
     // TODO 2. 비정상적인 url 접근 막기 & 메인화면으로 redirect
     // TODO 3. history에서 state : {user, menu} 받아서 setState
-
     tempSetStorage();
     setUserData(tempGetStorage(GET_USER_STORAGE_KEYWORD));
     setCopiedData(tempGetStorage(GET_USER_STORAGE_KEYWORD));
@@ -41,7 +37,7 @@ const Admin = () => {
     <>
       <GlobalStyles />
       <S.Wrap>
-        <Navbar user={user1} menuList={menuList} userMenu={[]} />
+        <Navbar user={user} menuList={menu} userMenu={[]} />
         <AdminContainer>
           <AdminSection>
             <TableBox>
@@ -88,10 +84,10 @@ const AdminContainer = styled(S.Container)`
     margin: 0 calc((${window.innerWidth}px - 600px) / 2) !important;
   }
 `;
+
 const AdminSection = styled(S.Section)`
   @media only screen and (max-width: 973px) {
     display: block;
-
     & ${TableBox} {
       width: 100%;
       margin: 0 auto;
@@ -101,5 +97,4 @@ const AdminSection = styled(S.Section)`
     }
   }
 `;
-
 export default Admin;

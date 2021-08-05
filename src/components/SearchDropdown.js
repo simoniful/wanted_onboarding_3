@@ -12,11 +12,12 @@ const DropdownContainer = styled.div`
 
 const DropdownBody = styled.p`
   width: 150px;
-
   height: 36px;
   display: flex;
   justify-content: center;
   align-items: center;
+
+  cursor: pointer;
 `;
 
 const DropdownMenu = styled.ul`

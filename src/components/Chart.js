@@ -24,10 +24,7 @@ const Chart = () => {
   );
 };
 
-
-
 const ChartContainer = styled.div``;
-
 
 const ChartBox = styled.div`
   width: 100%;
@@ -39,7 +36,6 @@ const ChartBox = styled.div`
   border-bottom: 1px solid ${COLOR_STYLES.greyLighter};
   border-right: 1px solid ${COLOR_STYLES.greyLighter};
   border-radius: 3px;
-  
 `;
 
 const ChartTitle = styled.div`

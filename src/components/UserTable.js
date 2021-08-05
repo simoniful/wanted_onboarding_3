@@ -5,7 +5,7 @@ import TableData from './TableData';
 import { CenterText } from '../styles/CenterText';
 import { COLOR_STYLES } from '../styles/styles';
 import { currentUsers } from '../utils/currentUsers';
-import { DATA_PER_PAGE } from '../utils/constants';
+import { DATA_PER_PAGE } from '../utils/config';
 
 const UserTable = ({ userData, currentPage, setCurrentPage }) => {
   const [currentUserData, setCurrentUserData] = useState([]);

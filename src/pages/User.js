@@ -1,24 +1,24 @@
 import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { layouts as S } from 'styles/layouts';
 import GlobalStyles from 'styles/GlobalStyles';
 import Navbar from 'components/Navbar';
 import Graph from 'components/Chart';
 import UserTable from 'components/UserTable';
-import AccountButton from 'components/AccountButton';
 import SearchBox from 'components/SearchBox';
 import { tempGetStorage, tempSetStorage } from 'utils/storage/index';
 import { GET_USER_STORAGE_KEYWORD } from '../utils/config';
 
-const Admin = () => {
-  // 사용자 test data & 버튼클릭 test 이벤트
-  const user = 'user1';
-  const userMenu = ['마이페이지', '이용안내'];
-  const menuList = ['선생님보기', '신청서작성', '신청내역', '방문일정', '방문일지'];
-  const logout = () => {};
+const User = () => {
+  // 페이지 관련 state (수정예정)
+  const [user, setUser] = useState('사용자');
+  const [menu, setMenu] = useState(['menu1', 'menu2', 'menu3', 'menu4']);
+  const history = useHistory();
 
   // 데이터 테이블 관련 state 입니다.
   const [userData, setUserData] = useState([]);
   const [copiedData, setCopiedData] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
     tempSetStorage();
@@ -30,12 +30,21 @@ const Admin = () => {
     <>
       <GlobalStyles />
       <S.Wrap>
-        <Navbar user={user} menuList={menuList} userMenu={userMenu} />
+        <Navbar user={user} menuList={menu} userMenu={[]} />
         <S.Container>
           <S.Section>
             <S.Content>
-              <SearchBox userData={userData} setUserData={setUserData} copiedData={copiedData} />
-              <UserTable userData={userData} />
+              <SearchBox
+                userData={userData}
+                copiedData={copiedData}
+                setUserData={setUserData}
+                setCurrentPage={setCurrentPage}
+              />
+              <UserTable
+                userData={userData}
+                currentPage={currentPage}
+                setCurrentPage={setCurrentPage}
+              />
             </S.Content>
             <S.Aside>
               <S.Sidebar>
@@ -49,4 +58,4 @@ const Admin = () => {
   );
 };
 
-export default Admin;
+export default User;
