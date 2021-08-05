@@ -1,26 +1,51 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
 import styled from 'styled-components';
 
-const Navbar = ({ menuList, user }) => {
+const Navbar = ({ user }) => {
+  const menuList = ['공통메뉴1', '공통메뉴2', '공통메뉴3'];
+
   return (
-    <Container>
-      <MenuList>
-        {menuList.map((menu) => (
-          <Menu>{menu}</Menu>
-        ))}
-      </MenuList>
-      <MyPage>{user}</MyPage>
-    </Container>
+    <NavWrap>
+      <NavContainer>
+        <NavContent>
+          <LogoImg />
+          <MenuList>
+            {menuList.map((menu, key) => (
+              <Menu key={key}>{menu}</Menu>
+            ))}
+          </MenuList>
+          <Account>{user}</Account>
+        </NavContent>
+      </NavContainer>
+    </NavWrap>
   );
 };
 
-const Container = styled.nav`
+const NavWrap = styled.nav`
   width: 100%;
-  height: 10vh;
-  background-color: gray;
-  margin-bottom: 20px;
+  height: 100%;
+  padding: 0;
+  color: #4a4a4a;
+  box-shadow: 1px 1px 1px #bababa;
+  margin-bottom: 12px;
+`;
+
+const NavContainer = styled.div`
+  width: 95%;
+  margin: 0 auto;
+`;
+
+const NavContent = styled.div`
   display: flex;
+  align-items: center;
+  height: 8vh;
+  padding: 0 15px;
+`;
+
+const LogoImg = styled.img.attrs({
+  src: 'images/jaranda-logo.png',
+})`
+  width: 80px;
 `;
 
 const MenuList = styled.ul`
@@ -28,15 +53,21 @@ const MenuList = styled.ul`
   display: flex;
   justify-content: space-around;
   align-items: center;
-  flex: 3;
+  width: 100%;
+  flex: 5;
 `;
 
 const Menu = styled.li`
-  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  :hover {
+    color: #aac14f;
+    transition: 0.2s;
+  }
 `;
 
-const MyPage = styled.div`
-  width: 100%;
+const Account = styled.div`
+  font-size: 16px;
   display: flex;
   justify-content: center;
   align-items: center;

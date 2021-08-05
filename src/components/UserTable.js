@@ -5,21 +5,6 @@ import TableData from './TableData';
 import { currentUsers } from '../utils/currentUsers';
 import { DATA_PER_PAGE } from '../utils/config';
 
-const TableContainer = styled.table`
-  border: 1px solid black;
-  text-align: center;
-  margin: 0 auto;
-  min-width: 650px;
-  width: 90%;
-
-  & tr,
-  th,
-  td {
-    border: 1px solid black;
-    padding: 10px;
-  }
-`;
-
 const UserTable = ({ userData }) => {
   const [currentUserData, setCurrentUserData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -67,5 +52,20 @@ const UserTable = ({ userData }) => {
     </>
   );
 };
+
+const TableContainer = styled.table`
+  border: 1px solid black;
+  text-align: center;
+  margin: 0 auto;
+  min-width: 650px;
+  width: 100%;
+
+  & tr,
+  th,
+  td {
+    border: 1px solid black;
+    padding: 10px;
+  }
+`;
 
 export default UserTable;
