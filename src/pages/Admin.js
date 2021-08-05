@@ -9,8 +9,8 @@ import UserTable from 'components/UserTable';
 import AccountButton from 'components/AccountButton';
 import SearchBox from 'components/SearchBox';
 import SignUpModal from 'components/SignUpModal';
-import { tempGetStorage, tempSetStorage, getLocalStorage } from 'utils/storage';
-import { GET_USER_STORAGE_KEYWORD, LOGIN_USER } from '../utils/config';
+import { getLocalStorage } from 'utils/storage';
+import { LOGIN_USER, STORAGE_DATA } from '../utils/config';
 import { logout } from '../utils/auth';
 
 const Admin = () => {
@@ -26,9 +26,8 @@ const Admin = () => {
   const onCreateAccount = () => {};
 
   useEffect(() => {
-    tempSetStorage();
-    setUserData(tempGetStorage(GET_USER_STORAGE_KEYWORD));
-    setCopiedData(tempGetStorage(GET_USER_STORAGE_KEYWORD));
+    setUserData(getLocalStorage(STORAGE_DATA.users));
+    setCopiedData(getLocalStorage(STORAGE_DATA.users));
   }, []);
 
   return (

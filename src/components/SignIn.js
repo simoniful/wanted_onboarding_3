@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { COLOR_STYLES, FONT_SIZE_STYLES, SIZE_STYLES } from 'styles/styles';
 import useForm from 'hooks/useForm';
-import { LOGIN_USER } from 'utils/config';
+import { LOGIN_USER, STORAGE_DATA } from 'utils/config';
 import { loginValidate } from 'utils/regex';
 import { getLocalStorage, setLocalStorage } from 'utils/storage';
 import { useHistory } from 'react-router-dom';
@@ -12,7 +12,7 @@ const SignIn = () => {
   const [isSignInFormOpen, setIsSignInFormOpen] = useState(false);
   const history = useHistory();
   function login() {
-    const userList = getLocalStorage();
+    const userList = getLocalStorage(STORAGE_DATA.users);
     const user = userList.find(
       (user) => user.id === values.id && user.password === values.password,
     );
