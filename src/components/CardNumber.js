@@ -1,15 +1,17 @@
 import React, { useState, useRef } from 'react';
 import styled from 'styled-components';
-import { color, fontSize, size } from 'styles/styles';
+import { COLOR_STYLES, FONT_SIZE_STYLES, SIZE_STYLES } from 'styles/styles';
 
 function CardNumber(props) {
   const { value, onChange } = props;
   const cardNumberRef = useRef();
   const [modalVisible, setModalVisible] = useState(false);
+
   const openModal = () => {
     setModalVisible(true);
     onChange({ target: { value: '' } });
   };
+
   const closeModal = (e) => {
     // 저장버튼을 눌렀을때
     if (e.target !== e.currentTarget) {
@@ -24,14 +26,15 @@ function CardNumber(props) {
       closeModal(e);
     }
   };
-  function handleKeyUp(e) {
+
+  const handleKeyUp = (e) => {
     const num = e.target;
     const max = num.getAttribute('maxlength');
 
     if (num.value.length >= max) {
       num.nextElementSibling.focus();
     }
-  }
+  };
 
   return (
     <>
@@ -39,7 +42,7 @@ function CardNumber(props) {
         type='password'
         onClick={openModal}
         value={value}
-        placeholder='카드번호, 예) 1234-1234-1234-1234'
+        placeholder='카드번호 16자리를 입력해주세요'
         readOnly
       />
       <ModalOverlay visible={modalVisible} />
@@ -109,13 +112,13 @@ const ModalInputWrapper = styled.div`
   }
 `;
 const ModalSubmit = styled.button`
-  padding: ${size.medium};
-  border-radius: ${size.smallest};
-  background-color: ${color.primary};
+  padding: ${SIZE_STYLES.medium};
+  border-radius: ${SIZE_STYLES.smallest};
+  background-color: ${COLOR_STYLES.primary};
   cursor: pointer;
   span {
-    color: ${color.white};
-    font-size: ${fontSize.medium};
+    color: ${COLOR_STYLES.white};
+    font-size: ${FONT_SIZE_STYLES.medium};
     font-weight: 500;
   }
 `;

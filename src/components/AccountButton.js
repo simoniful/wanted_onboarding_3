@@ -1,20 +1,25 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import { COLOR_STYLES, FONT_SIZE_STYLES } from '../styles/styles';
 
-const AccountButton = ({ onClick, content }) => {
-  return <Button onClick={onClick}>{content}</Button>;
-};
+const AccountButton = ({ onClick, content, width, height }) => (
+  <Button width={width} height={height} onClick={onClick}>
+    <Link to='/login'>{content}</Link>
+  </Button>
+);
 
 const Button = styled.button`
-  width: 100%;
-  height: 36px;
-  border-radius: 8px;
+  width: ${props => props.width ? props.width : '45%'};
+  height: ${props => props.height ? props.height : '36px;'};
   border: none;
-  background: #8263cc;
+  background: ${COLOR_STYLES.primaryDarker};
   &:hover {
-    background-color: #6243aa;
+    background: ${COLOR_STYLES.primary};
+    transition: 0.5s;
   }
-  color: #fff;
+  color: ${COLOR_STYLES.white};
+  font-size: ${FONT_SIZE_STYLES.medium};
   cursor: pointer;
 `;
 

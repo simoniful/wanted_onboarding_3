@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import SearchDropdown from './SearchDropdown';
 import SearchIcon from '../styles/icons/SearchIcon';
+import { COLOR_STYLES, FONT_SIZE_STYLES } from '../styles/styles';
 
 const SearchBox = ({ setUserData, copiedData, setCurrentPage }) => {
   const [dropdownItem, setDropdownItem] = useState('name');
@@ -49,27 +50,26 @@ const SearchBox = ({ setUserData, copiedData, setCurrentPage }) => {
   );
 };
 
-const SearchBoxContainer = styled.div`
-  width: 100%;
-  height: 36px;
-  margin-bottom: 12px;
-  font-size: 14px;
-  font-weight: 300;
-  color: #333;
+export default SearchBox;
 
+const SearchBoxContainer = styled.div`
+  margin: 20px auto;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-
-  border: 1px solid #aac14f;
-  border-radius: 6px 0 0 6px;
+  border: 1px solid ${COLOR_STYLES.primaryDarker};
+  font-size: ${FONT_SIZE_STYLES.small};
+  border-radius: 6px;
 `;
 
 const SearchInput = styled.input`
-  width: calc(100% - 36px);
+  width: calc(100% - 48px);
+  min-width: calc(300px - 48px);
+  height: 48px;
   padding: 8px 12px;
+  border-radius: 6px 0 0 6px;
   border: none;
-
   :focus {
     outline: 0;
   }
@@ -82,11 +82,10 @@ const SearchButton = styled.div`
   align-items: center;
   float: right;
   top: unset;
-  width: 36px;
-  height: 36px;
+  width: 48px;
+  height: 48px;
   padding: 0;
-
+  background: ${COLOR_STYLES.primaryDarker};
+  border-radius: 0 6px 6px 0;
   cursor: pointer;
 `;
-
-export default SearchBox;

@@ -1,8 +1,14 @@
 import React, { useCallback, useState } from 'react';
 import styled from 'styled-components';
+import { COLOR_STYLES } from 'styles/styles';
 import { SEARCH_DROPDOWN_ITEMS } from 'utils/config';
 
-const DropdownContainer = styled.div``;
+const DropdownContainer = styled.div`
+  background: ${COLOR_STYLES.primaryDarker};
+  color: white;
+  padding: 6px 0;
+  border-radius: 6px 0 0 6px;
+`;
 
 const DropdownBody = styled.p`
   width: 150px;
@@ -19,6 +25,8 @@ const DropdownMenu = styled.ul`
   background-color: white;
   border: 1px solid black;
   width: 150px;
+  background: ${COLOR_STYLES.primaryDarker};
+  color: white;
 `;
 
 const DropdownItem = styled.li`

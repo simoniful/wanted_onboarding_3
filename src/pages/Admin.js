@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { layouts as S } from 'styles/layouts';
 import GlobalStyles from 'styles/GlobalStyles';
 import Navbar from 'components/Navbar';
-import Graph from 'components/Graph';
+import Chart from 'components/Chart';
 import UserTable from 'components/UserTable';
 import AccountButton from 'components/AccountButton';
 import SearchBox from 'components/SearchBox';
@@ -17,10 +17,13 @@ const Admin = () => {
   const [menu, setMenu] = useState([]);
   const history = useHistory();
 
-  // 테이블 관련 state
+  // 데이터 테이블 관련 state 입니다.
   const [userData, setUserData] = useState([]);
   const [copiedData, setCopiedData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
+
+  const user1 = '관리자1';
+  const menuList = ['menu1', 'menu2', 'menu3', 'menu4'];
 
   const onLogout = () => history.push('/');
   const onCreateAccount = () => {}; // TODO 1. 회원가입 모달창 띄우기
@@ -38,39 +41,65 @@ const Admin = () => {
     <>
       <GlobalStyles />
       <S.Wrap>
-        <Navbar user={user} />
-        <S.Body>
-          <S.Section>
-            <SearchBox
-              userData={userData}
-              copiedData={copiedData}
-              setUserData={setUserData}
-              setCurrentPage={setCurrentPage}
-            />
-            <UserTable
-              userData={userData}
-              currentPage={currentPage}
-              setCurrentPage={setCurrentPage}
-            />
-          </S.Section>
-          <S.Aside>
-            <S.AccountButtonBox>
-              <AccountButton onClick={onCreateAccount} content='계정 생성' />
-              <AccountButton onClick={onLogout} content='로그아웃' />
-            </S.AccountButtonBox>
-            <Sidebar>
-              <Graph />
-            </Sidebar>
-          </S.Aside>
-        </S.Body>
+        <Navbar user={user1} menuList={menuList} userMenu={[]} />
+        <AdminContainer>
+          <AdminSection>
+            <TableBox>
+              <SearchBox
+                userData={userData}
+                copiedData={copiedData}
+                setUserData={setUserData}
+                setCurrentPage={setCurrentPage}
+              />
+              <UserTable
+                userData={userData}
+                currentPage={currentPage}
+                setCurrentPage={setCurrentPage}
+              />
+            </TableBox>
+            <ChartAside>
+              <S.Sidebar>
+                <S.AccountBox>
+                  <AccountButton onClick={onCreateAccount} content='계정 생성' />
+                  <AccountButton onClick={onLogout} content='로그아웃' />
+                </S.AccountBox>
+                <Chart />
+              </S.Sidebar>
+            </ChartAside>
+          </AdminSection>
+        </AdminContainer>
       </S.Wrap>
     </>
   );
 };
 
-const Sidebar = styled.div`
-  width: 100%;
-  background-color: #bbbbbb;
+const TableBox = styled(S.Content)`
+  width: 60%;
+  min-width: 600px;
+`;
+
+const ChartAside = styled(S.Aside)`
+  width: 40%;
+  min-width: 300px;
+`;
+
+const AdminContainer = styled(S.Container)`
+  @media only screen and (max-width: 1287px) {
+    margin: 0 calc((${window.innerWidth}px - 600px) / 2) !important;
+  }
+`;
+const AdminSection = styled(S.Section)`
+  @media only screen and (max-width: 973px) {
+    display: block;
+
+    & ${TableBox} {
+      width: 100%;
+      margin: 0 auto;
+    }
+    & ${ChartAside} {
+      width: 60%;
+    }
+  }
 `;
 
 export default Admin;

@@ -1,57 +1,52 @@
+import React, { useEffect, useState } from 'react';
 import { layouts as S } from 'styles/layouts';
 import GlobalStyles from 'styles/GlobalStyles';
 import Navbar from 'components/Navbar';
+import Graph from 'components/Chart';
+import UserTable from 'components/UserTable';
+import AccountButton from 'components/AccountButton';
+import SearchBox from 'components/SearchBox';
+import { tempGetStorage, tempSetStorage } from 'utils/storage/index';
+import { GET_USER_STORAGE_KEYWORD } from '../utils/config';
 
-import styled from 'styled-components';
-import { useState, useEffect, useCallback } from 'react';
-import { useHistory } from 'react-router-dom';
+const Admin = () => {
+  // 사용자 test data & 버튼클릭 test 이벤트
+  const user = 'user1';
+  const userMenu = ['마이페이지', '이용안내'];
+  const menuList = ['선생님보기', '신청서작성', '신청내역', '방문일정', '방문일지'];
+  const logout = () => {};
 
-const User = () => {
-  const [user, setUser] = useState('사용자1'); // user mock data
-  const [menuList, setMenuList] = useState(['menu1', 'menu2', 'menu3', 'menu4']); // menu mock data
+  // 데이터 테이블 관련 state 입니다.
+  const [userData, setUserData] = useState([]);
+  const [copiedData, setCopiedData] = useState([]);
 
   useEffect(() => {
-    // 1. 비정상적인 url 접근 막기 & 메인화면으로 redirect
-    // 2. history에서 state : {user, menu} 받아서 setState
+    tempSetStorage();
+    setUserData(tempGetStorage(GET_USER_STORAGE_KEYWORD));
+    setCopiedData(tempGetStorage(GET_USER_STORAGE_KEYWORD));
   }, []);
 
   return (
     <>
       <GlobalStyles />
       <S.Wrap>
-        <Navbar user={user} />
-        <S.Body>
+        <Navbar user={user} menuList={menuList} userMenu={userMenu} />
+        <S.Container>
           <S.Section>
-            <h1>어서오세요 사용자 페이지입니다</h1>
+            <S.Content>
+              <SearchBox userData={userData} setUserData={setUserData} copiedData={copiedData} />
+              <UserTable userData={userData} />
+            </S.Content>
+            <S.Aside>
+              <S.Sidebar>
+                <Graph />
+              </S.Sidebar>
+            </S.Aside>
           </S.Section>
-          <S.Aside>
-            <Button>Button</Button>
-            <MenuList>
-              {menuList.map((sideMenu, key) => (
-                <Menu key={key}>{sideMenu}</Menu>
-              ))}
-            </MenuList>
-          </S.Aside>
-        </S.Body>
+        </S.Container>
       </S.Wrap>
     </>
   );
 };
 
-const Button = styled.button`
-  width: 100%;
-  height: 50px;
-  background-color: #aaaaaa;
-`;
-
-const MenuList = styled.li`
-  width: 100%;
-  background-color: #bbbbbb;
-`;
-
-const Menu = styled.ul`
-  width: 100%;
-  padding: 16px 0;
-`;
-
-export default User;
+export default Admin;
