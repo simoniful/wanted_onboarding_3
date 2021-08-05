@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { fontSize, size } from 'styles/styles';
+import { FONT_SIZE_STYLES, SIZE_STYLES } from 'styles/styles';
 import { InputWrapper } from 'styles/InputWrapper';
 
 const SignInForm = ({ isSignInFormOpen }) => {
@@ -43,13 +43,13 @@ const TextContainer = styled.div`
   text-align: center;
 
   h3 {
-    font-size: ${fontSize.large};
+    font-size: ${FONT_SIZE_STYLES.large};
     font-weight: 600;
-    margin-bottom: ${size.larger};
+    margin-bottom: ${SIZE_STYLES.larger};
   }
 
   p {
-    font-size: ${fontSize.medium};
+    font-size: ${FONT_SIZE_STYLES.medium};
     line-height: 1.5;
   }
 `;

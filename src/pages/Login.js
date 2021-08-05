@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { color, fontSize } from 'styles/styles';
+import { COLOR_STYLES, FONT_SIZE_STYLES } from 'styles/styles';
 import { SignIn, SignUp } from 'components';
 
 const Login = () => (
@@ -32,7 +32,7 @@ const Logo = styled.a`
   cursor: pointer;
 
   h2 {
-    color: ${color.white};
-    font-size: ${fontSize.larger};
+    color: ${COLOR_STYLES.white};
+    font-size: ${FONT_SIZE_STYLES.larger};
   }
 `;

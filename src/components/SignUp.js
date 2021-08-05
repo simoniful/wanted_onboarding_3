@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { AiOutlineCheck } from 'react-icons/ai';
-import { color, fontSize, size } from 'styles/styles';
+import { COLOR_STYLES, FONT_SIZE_STYLES, SIZE_STYLES } from 'styles/styles';
 import { InputWrapper } from 'styles/InputWrapper';
 import CardNumber from 'components/CardNumber';
 import Address from 'components/Address';
@@ -61,7 +61,6 @@ const SignUp = () => {
           <a href='https://media.tenor.com/images/78ecca5aa42d67bb4eced2eb2ea57bd3/tenor.gif'>
             이용약관
           </a>
-          {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
           <label htmlFor='term'>을 모두 읽었으며 이에 동의합니다.</label>
         </TermWrapper>
 
@@ -82,17 +81,17 @@ const Container = styled.section`
   justify-content: center;
   align-items: center;
   text-align: center;
-  color: ${color.greyDarker};
+  color: ${COLOR_STYLES.greyDarker};
 
   h3 {
-    font-size: ${fontSize.large};
+    font-size: ${FONT_SIZE_STYLES.large};
     font-weight: 600;
-    margin-bottom: ${size.large};
+    margin-bottom: ${SIZE_STYLES.large};
   }
 
   p {
-    font-size: ${fontSize.medium};
-    margin-bottom: ${size.larger};
+    font-size: ${FONT_SIZE_STYLES.medium};
+    margin-bottom: ${SIZE_STYLES.larger};
   }
 
   form {
@@ -103,8 +102,8 @@ const Container = styled.section`
 const TermWrapper = styled.div`
   display: flex;
   align-items: center;
-  margin-bottom: ${size.larger};
-  font-size: ${fontSize.small};
+  margin-bottom: ${SIZE_STYLES.larger};
+  font-size: ${FONT_SIZE_STYLES.small};
 
   input[type='checkbox'] {
     display: none;
@@ -115,38 +114,38 @@ const TermWrapper = styled.div`
   }
 
   a {
-    color: ${color.primary};
+    color: ${COLOR_STYLES.primary};
   }
 
   svg {
     /* on check, color change to primaryDarker */
-    color: ${color.greyLighter};
-    font-size: ${fontSize.large};
-    margin-right: ${size.small};
+    color: ${COLOR_STYLES.greyLighter};
+    font-size: ${FONT_SIZE_STYLES.large};
+    margin-right: ${SIZE_STYLES.small};
     cursor: pointer;
   }
 `;
 
 const ButtonSubmit = styled.button`
   width: 100%;
-  background: ${color.primary};
-  padding: ${size.medium};
-  border: ${size.micro} solid ${color.primary};
-  border-radius: ${size.smallest};
+  background: ${COLOR_STYLES.primary};
+  padding: ${SIZE_STYLES.medium};
+  border: ${SIZE_STYLES.micro} solid ${COLOR_STYLES.primary};
+  border-radius: ${SIZE_STYLES.smallest};
   cursor: pointer;
   transition: all 0.3s;
 
   span {
-    color: ${color.white};
-    font-size: ${fontSize.medium};
+    color: ${COLOR_STYLES.white};
+    font-size: ${FONT_SIZE_STYLES.medium};
     font-weight: 500;
   }
 
   &:hover {
-    background-color: ${color.white};
-    border: ${size.micro} solid ${color.primary};
+    background-color: ${COLOR_STYLES.white};
+    border: ${SIZE_STYLES.micro} solid ${COLOR_STYLES.primary};
     span {
-      color: ${color.primaryDarker};
+      color: ${COLOR_STYLES.primaryDarker};
     }
   }
 `;

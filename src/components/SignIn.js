@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { color, fontSize, size } from 'styles/styles';
+import { COLOR_STYLES, FONT_SIZE_STYLES, SIZE_STYLES } from 'styles/styles';
 import SignInForm from './SignInForm';
 
 const SignIn = () => {
@@ -30,8 +30,8 @@ const Container = styled.section`
   display: flex;
   justify-content: center;
   align-items: center;
-  color: ${color.white};
-  background: ${color.primaryGradient};
+  color: ${COLOR_STYLES.white};
+  background: ${COLOR_STYLES.primaryGradient};
   clip-path: polygon(0 0, 100% 0, 90% 100%, 0 100%);
 
   form {
@@ -45,24 +45,24 @@ const Container = styled.section`
 
 const ButtonLogin = styled.button`
   background-color: inherit;
-  border: ${size.micro} solid ${color.white};
-  border-radius: ${size.smallest};
-  padding: ${size.medium} ${size.largest};
-  margin-top: ${size.larger};
+  border: ${SIZE_STYLES.micro} solid ${COLOR_STYLES.white};
+  border-radius: ${SIZE_STYLES.smallest};
+  padding: ${SIZE_STYLES.medium} ${SIZE_STYLES.largest};
+  margin-top: ${SIZE_STYLES.larger};
   cursor: pointer;
   transition: all 0.3s;
 
   span {
-    color: ${color.white};
-    font-size: ${fontSize.medium};
+    color: ${COLOR_STYLES.white};
+    font-size: ${FONT_SIZE_STYLES.medium};
     font-weight: 500;
     transition: all 0.3s;
   }
 
   &:hover {
-    background-color: ${color.white};
+    background-color: ${COLOR_STYLES.white};
     span {
-      color: ${color.primaryDarker};
+      color: ${COLOR_STYLES.primaryDarker};
     }
   }
 `;
