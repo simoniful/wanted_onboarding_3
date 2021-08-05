@@ -2,7 +2,9 @@ import { layouts as S } from 'styles/layouts';
 import { Bar } from 'react-chartjs-2';
 import { COLOR_STYLES } from '../../styles/styles';
 
-const BarChart = () => {
+const BarChart = ({ chartData }) => {
+  const labelList = Object.keys(chartData);
+  const dataList = Object.values(chartData);
   const options = {
     maintainAspectRatio: false,
 
@@ -13,16 +15,12 @@ const BarChart = () => {
     },
   };
   const data = {
-    labels: ['1번 막대', '2번 막대', '3번 막대'],
+    labels: labelList,
     datasets: [
       {
         borderWidth: 1,
-        data: [1, 2, 3],
-        backgroundColor: [
-          `${COLOR_STYLES.AgreyDarker}`,
-          `${COLOR_STYLES.AgreyLighter}`,
-          `${COLOR_STYLES.AgreyDarker}`,
-        ],
+        data: dataList,
+        backgroundColor: [`${COLOR_STYLES.AgreyDarker}`, `${COLOR_STYLES.AgreyLighter}`],
       },
     ],
   };
