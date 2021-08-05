@@ -11,7 +11,8 @@ import { GET_USER_STORAGE_KEYWORD } from '../utils/config';
 
 const Admin = () => {
   // 사용자 test data & 버튼클릭 test 이벤트
-  const user = 'user1';
+  const [user, setUser] = useState('사용자1');
+  // const [menuList, setMenuList] = useState(['menu1', 'menu2', 'menu3', 'menu4']); // menu mock data
   const userMenu = ['마이페이지', '이용안내'];
   const menuList = ['선생님보기', '신청서작성', '신청내역', '방문일정', '방문일지'];
   const logout = () => {};
