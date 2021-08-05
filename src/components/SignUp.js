@@ -184,7 +184,6 @@ const Container = styled.section`
   }
 `;
 
-
 const InputDouble = styled.div`
   display: flex;
   align-items: flex-start;

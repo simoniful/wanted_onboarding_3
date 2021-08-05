@@ -2,14 +2,13 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Pagination from './Pagination';
 import TableData from './TableData';
+import { CenterText } from '../styles/CenterText';
 import { COLOR_STYLES } from '../styles/styles';
 import { currentUsers } from '../utils/currentUsers';
-import { DATA_PER_PAGE, GET_USER_STORAGE_KEYWARD } from '../utils/config';
-import { tempGetStoreage, tempSetStoreage } from '../utils/storage';
+import { DATA_PER_PAGE } from '../utils/config';
 
-const UserTable = ({ userData }) => {
+const UserTable = ({ userData, currentPage, setCurrentPage }) => {
   const [currentUserData, setCurrentUserData] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
   const [firstIndex, setFirstIndex] = useState(null);
   const [lastIndex, setLastIndex] = useState(null);
 
@@ -26,7 +25,7 @@ const UserTable = ({ userData }) => {
   }, [userData, firstIndex, lastIndex]);
 
   if (userData.length === 0) {
-    return <p>데이터가 비어 있습니다.</p>;
+    return <CenterText>데이터가 없습니다</CenterText>;
   }
 
   return (

@@ -21,6 +21,7 @@ const Admin = () => {
   // 데이터 테이블 관련 state 입니다.
   const [userData, setUserData] = useState([]);
   const [copiedData, setCopiedData] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
 
   const onLogout = () => history.push('/');
   const onCreateAccount = () => {}; // TODO 1. 회원가입 모달창 띄우기
@@ -41,8 +42,17 @@ const Admin = () => {
         <AdminContainer>
           <AdminSection>
             <TableBox>
-              <SearchBox userData={userData} setUserData={setUserData} copiedData={copiedData} />
-              <UserTable userData={userData} />
+              <SearchBox
+                userData={userData}
+                copiedData={copiedData}
+                setUserData={setUserData}
+                setCurrentPage={setCurrentPage}
+              />
+              <UserTable
+                userData={userData}
+                currentPage={currentPage}
+                setCurrentPage={setCurrentPage}
+              />
             </TableBox>
             <ChartAside>
               <S.Sidebar>
@@ -75,18 +85,17 @@ const AdminContainer = styled(S.Container)`
     margin: 0 calc((${window.innerWidth}px - 600px) / 2) !important;
   }
 `;
+
 const AdminSection = styled(S.Section)`
-@media only screen and (max-width: 973px){
-  display: block;
-
-  & ${TableBox}{
-    width: 100%
-    margin: 0 auto;
+  @media only screen and (max-width: 973px) {
+    display: block;
+    & ${TableBox} {
+      width: 100%;
+      margin: 0 auto;
+    }
+    & ${ChartAside} {
+      width: 60%;
+    }
   }
-  & ${ChartAside}{
-    width: 60%
-  }
-}
 `;
-
 export default Admin;
