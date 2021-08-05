@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import styled from 'styled-components';
-import DropDown from './Dropdown';
+import SearchDropdown from './SearchDropdown';
 import SearchIcon from '../styles/icons/SearchIcon';
 
 const SearchBox = ({ setUserData, copiedData }) => {
@@ -28,10 +28,11 @@ const SearchBox = ({ setUserData, copiedData }) => {
 
   return (
     <SearchBoxContainer>
-      <DropDown
+      <SearchDropdown
         dropdownName={dropdownName}
         setDropdownItem={setDropdownItem}
         setDropdownName={setDropdownName}
+        setInputValue={setInputValue}
       />
       <SearchInput
         placeholder={`${dropdownName}을 입력해주세요.`}

@@ -26,9 +26,15 @@ const DropdownItem = styled.li`
   justify-content: center;
   align-items: center;
   height: 36px;
+  border: 1px solid black;
+  cursor: pointer;
+
+  &:hover {
+    border: 1px solid red;
+  }
 `;
 
-const Dropdown = ({ setDropdownItem, dropdownName, setDropdownName }) => {
+const SearchDropdown = ({ dropdownName, setDropdownItem, setDropdownName, setInputValue }) => {
   const [dropdownToggle, setDropdownToggle] = useState(false);
 
   const onDropdownToggle = useCallback(() => {
@@ -37,14 +43,16 @@ const Dropdown = ({ setDropdownItem, dropdownName, setDropdownName }) => {
 
   const onSelectDropdownItem = useCallback(
     (data) => {
-      setDropdownItem(data.value);
-      setDropdownName(data.title);
+      const { value, title } = data;
+      setDropdownItem(value);
+      setDropdownName(title);
+      setInputValue('');
     },
-    [setDropdownItem, setDropdownName],
+    [setDropdownItem, setDropdownName, setInputValue],
   );
 
   return (
-    <DropdownContainer onClick={onDropdownToggle}>
+    <DropdownContainer onClick={onDropdownToggle} onMouseLeave={() => setDropdownToggle(false)}>
       <DropdownBody>검색 필터 : {dropdownName}</DropdownBody>
       <DropdownMenu isActive={dropdownToggle}>
         {SEARCH_DROPDOWN_ITEMS.map((data) => (
@@ -57,4 +65,4 @@ const Dropdown = ({ setDropdownItem, dropdownName, setDropdownName }) => {
   );
 };
 
-export default Dropdown;
+export default SearchDropdown;
