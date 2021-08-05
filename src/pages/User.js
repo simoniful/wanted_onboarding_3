@@ -1,55 +1,49 @@
-import React, { useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
 import { layouts as S } from 'styles/layouts';
 import GlobalStyles from 'styles/GlobalStyles';
 import Navbar from 'components/Navbar';
-import Graph from 'components/Chart';
-import UserTable from 'components/UserTable';
-import SearchBox from 'components/SearchBox';
-import { tempGetStorage, tempSetStorage } from 'utils/storage/index';
-import { GET_USER_STORAGE_KEYWORD } from '../utils/config';
+import { AccountButton } from 'components';
+
+import styled from 'styled-components';
+import { useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import { getLocalStorage } from 'utils/storage';
+import { LOGIN_USER } from '../utils/config';
+import { logout } from '../utils/auth';
+// import Graph from 'components/Chart';
+// import UserTable from 'components/UserTable';
+// import SearchBox from 'components/SearchBox';
 
 const User = () => {
-  // 페이지 관련 state (수정예정)
-  const [user, setUser] = useState('사용자');
-  const [menu, setMenu] = useState(['menu1', 'menu2', 'menu3', 'menu4']);
   const history = useHistory();
 
-  // 데이터 테이블 관련 state 입니다.
-  const [userData, setUserData] = useState([]);
-  const [copiedData, setCopiedData] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
+  const [loginUser, _] = useState(getLocalStorage(LOGIN_USER));
+  const [menuList, __] = useState(
+    loginUser.userType === 'parent'
+      ? ['학부모 메뉴1', '학부모 메뉴2', '학부모 메뉴3']
+      : ['선생님 메뉴1', '선생님 메뉴2', '선생님 메뉴3'],
+  );
 
-  useEffect(() => {
-    tempSetStorage();
-    setUserData(tempGetStorage(GET_USER_STORAGE_KEYWORD));
-    setCopiedData(tempGetStorage(GET_USER_STORAGE_KEYWORD));
-  }, []);
+  const onLogout = () => (logout(), history.push('/'));
 
   return (
     <>
       <GlobalStyles />
       <S.Wrap>
-        <Navbar user={user} menuList={menu} userMenu={[]} />
+        <Navbar name={loginUser.name} />
         <S.Container>
           <S.Section>
             <S.Content>
-              <SearchBox
-                userData={userData}
-                copiedData={copiedData}
-                setUserData={setUserData}
-                setCurrentPage={setCurrentPage}
-              />
-              <UserTable
-                userData={userData}
-                currentPage={currentPage}
-                setCurrentPage={setCurrentPage}
-              />
+              <h1>{`어서오세요 ${
+                loginUser.userType === `teacher` ? `선생님` : `부모님`
+              } 페이지입니다`}</h1>
             </S.Content>
             <S.Aside>
-              <S.Sidebar>
-                <Graph />
-              </S.Sidebar>
+              <AccountButton onClick={onLogout} content='로그아웃' />
+              <MenuList>
+                {menuList.map((sideMenu, key) => (
+                  <Menu key={key}>{sideMenu}</Menu>
+                ))}
+              </MenuList>
             </S.Aside>
           </S.Section>
         </S.Container>
@@ -57,5 +51,15 @@ const User = () => {
     </>
   );
 };
+
+const MenuList = styled.li`
+  width: 100%;
+  background-color: #bbbbbb;
+`;
+
+const Menu = styled.ul`
+  width: 100%;
+  padding: 16px 0;
+`;
 
 export default User;

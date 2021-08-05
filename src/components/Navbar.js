@@ -4,7 +4,10 @@ import { layouts as S } from 'styles/layouts';
 import { COLOR_STYLES, FONT_SIZE_STYLES } from 'styles/styles';
 import AccountButton from 'components/AccountButton';
 
-const Navbar = ({ menuList, user, userMenu }) => {
+const Navbar = ({ name }) => {
+  const menuList = ['공통메뉴1', '공통메뉴2', '공통메뉴3'];
+  const userMenu = ['1', '2'];
+
   return (
     <NavWrap>
       <NavContainer>
@@ -19,6 +22,7 @@ const Navbar = ({ menuList, user, userMenu }) => {
           </MenuList>
           <Account>
             <AccountImg></AccountImg>
+            <h1>{name}</h1>
             <PopupMenu>
               <SmallMenuList>
                 {menuList.map((menu) => (

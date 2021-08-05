@@ -40,15 +40,15 @@ const Chart = ({ userData }) => {
   return (
     <ChartContainer>
       <ChartBox>
-        <ChartTitle>권한 분포</ChartTitle>
+        <ChartTitle>권한</ChartTitle>
         <BarChart chartData={getUserTypeList()} />
       </ChartBox>
       <ChartBox>
-        <ChartTitle>나이 분포</ChartTitle>
+        <ChartTitle>나이</ChartTitle>
         <LineChart chartData={getUserAgeList()} />
       </ChartBox>
       <ChartBox>
-        <ChartTitle>주소 분포</ChartTitle>
+        <ChartTitle>주소</ChartTitle>
         <DoughnutChart chartData={getUserAddressList()} />
       </ChartBox>
     </ChartContainer>

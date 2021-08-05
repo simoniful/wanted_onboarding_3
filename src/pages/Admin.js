@@ -9,36 +9,32 @@ import UserTable from 'components/UserTable';
 import AccountButton from 'components/AccountButton';
 import SearchBox from 'components/SearchBox';
 import SignUpModal from 'components/SignUpModal';
-import { tempGetStorage, tempSetStorage } from 'utils/storage';
-import { GET_USER_STORAGE_KEYWORD } from '../utils/config';
+import { getLocalStorage } from 'utils/storage';
+import { LOGIN_USER, STORAGE_DATA } from '../utils/config';
+import { logout } from '../utils/auth';
 
 const Admin = () => {
-  // 페이지 관련 state (수정예정)
-  const [user, setUser] = useState('관리자A');
-  const [menu, setMenu] = useState(['menu1', 'menu2', 'menu3', 'menu4']);
   const history = useHistory();
+  const [loginUser, _] = useState(getLocalStorage(LOGIN_USER));
 
   // 데이터 테이블 관련 state 입니다.
   const [userData, setUserData] = useState([]);
   const [copiedData, setCopiedData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
 
-  const onLogout = () => history.push('/');
-  const onCreateAccount = () => {}; // TODO 1. 회원가입 모달창 띄우기
+  const onLogout = () => (logout(), history.push('/'));
+  const onCreateAccount = () => {};
 
   useEffect(() => {
-    // TODO 2. 비정상적인 url 접근 막기 & 메인화면으로 redirect
-    // TODO 3. history에서 state : {user, menu} 받아서 setState
-    tempSetStorage();
-    setUserData(tempGetStorage(GET_USER_STORAGE_KEYWORD));
-    setCopiedData(tempGetStorage(GET_USER_STORAGE_KEYWORD));
+    setUserData(getLocalStorage(STORAGE_DATA.users));
+    setCopiedData(getLocalStorage(STORAGE_DATA.users));
   }, []);
 
   return (
     <>
       <GlobalStyles />
       <S.Wrap>
-        <Navbar user={user} menuList={menu} userMenu={[]} />
+        <Navbar name={loginUser.name} />
         <AdminContainer>
           <AdminSection>
             <TableBox>
