@@ -24,19 +24,22 @@ const Chart = () => {
   );
 };
 
+
+
 const ChartContainer = styled.div``;
+
 
 const ChartBox = styled.div`
   width: 100%;
   height: 200px;
   border-radius: 6px;
   background-color: #ececec;
-  margin-bottom: 40px;
   background: ${color.white};
   color: ${color.white};
   border-bottom: 1px solid ${color.greyLighter};
   border-right: 1px solid ${color.greyLighter};
   border-radius: 3px;
+  
 `;
 
 const ChartTitle = styled.div`

@@ -1,3 +1,4 @@
+import { layouts as S } from 'styles/layouts';
 import { Line } from 'react-chartjs-2';
 import { color } from '../../styles/styles';
 
@@ -28,7 +29,11 @@ const LineChart = () => {
       },
     ],
   };
-  return <Line data={data} options={options} height={200} />;
+  return (
+    <S.ChartWrap>
+      <Line data={data} options={options} height={200} />
+    </S.ChartWrap>
+  )
 };
 
 export default LineChart;

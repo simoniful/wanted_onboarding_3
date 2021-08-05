@@ -1,3 +1,4 @@
+import { layouts as S } from 'styles/layouts';
 import { Doughnut } from 'react-chartjs-2';
 import { color } from '../../styles/styles';
 
@@ -28,7 +29,11 @@ const DoughnutChart = () => {
     ],
     hoverOffset: 4,
   };
-  return <Doughnut data={data} options={options} height={200} />;
+  return( 
+    <S.ChartWrap>
+      <Doughnut data={data} options={options} height={200} />
+    </S.ChartWrap>
+  )
 };
 
 export default DoughnutChart;

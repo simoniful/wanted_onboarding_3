@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { layouts as S } from 'styles/layouts';
 import GlobalStyles from 'styles/GlobalStyles';
 import Navbar from 'components/Navbar';
-import Graph from 'components/Graph';
+import Graph from 'components/Chart';
 import UserTable from 'components/UserTable';
 import AccountButton from 'components/AccountButton';
 import SearchBox from 'components/SearchBox';

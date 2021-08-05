@@ -1,5 +1,7 @@
+import { layouts as S } from 'styles/layouts';
 import { Bar } from 'react-chartjs-2';
 import { color } from '../../styles/styles';
+
 
 const BarChart = () => {
   const options = {
@@ -21,7 +23,11 @@ const BarChart = () => {
       },
     ],
   };
-  return <Bar data={data} options={options} height={200} />;
+  return(
+    <S.ChartWrap>
+      <Bar data={data} options={options} height={200} />
+    </S.ChartWrap> 
+  ) 
 };
 
 export default BarChart;

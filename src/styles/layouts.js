@@ -1,14 +1,14 @@
 import styled from 'styled-components';
 
 export const layouts = {
-  Wrap: styled.body`
+  Wrap: styled.div`
     width: 100%;
     display: flex;
     flex-direction: column;
   `,
 
   Container: styled.div`
-    width: 90%;
+    width: 70vw;
     margin: 0 auto;
   `,
 
@@ -46,4 +46,8 @@ export const layouts = {
     align-items: center;
     margin: 27px auto;
   `,
+
+  ChartWrap: styled.div`
+    height: 160px;
+  `
 };
