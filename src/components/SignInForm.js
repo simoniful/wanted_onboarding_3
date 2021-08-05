@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { fontSize, size } from 'styles/styles';
 import { InputWrapper } from 'styles/InputWrapper';
 
-const SignInForm = ({ isSignInFormOpen }) => {
+const SignInForm = ({ isSignInFormOpen, values, errors, handleChange }) => {
   if (!isSignInFormOpen)
     return (
       <TextContainer>
@@ -20,17 +20,40 @@ const SignInForm = ({ isSignInFormOpen }) => {
   return (
     <>
       <InputWrapper>
-        <input type='text' id='id' name='id' placeholder='아이디를 입력해주세요' />
-        {/* <label htmlFor='id'>아이디를 다시 확인해주세요.</label> */}
+        <input
+          autoComplete='off'
+          className={`input ${errors.id && 'is-danger'}`}
+          type='text'
+          id='id'
+          name='id'
+          placeholder='아이디를 입력해주세요'
+          onChange={handleChange}
+          value={values.id || ''}
+          required
+        />
+        {errors.id && (
+          <label htmlFor='id' className='help is-danger'>
+            {errors.id}
+          </label>
+        )}
       </InputWrapper>
       <InputWrapper>
         <input
+          autoComplete='off'
+          className={`input ${errors.password && 'is-danger'}`}
           type='password'
           id='password'
           name='password'
           placeholder='비밀번호를 입력해주세요'
+          onChange={handleChange}
+          value={values.password || ''}
+          required
         />
-        {/* <label htmlFor='id'>비밀번호가 일치하지 않습니다.</label> */}
+        {errors.password && (
+          <label htmlFor='password' className='help is-danger'>
+            {errors.password}
+          </label>
+        )}
       </InputWrapper>
     </>
   );
