@@ -2,12 +2,13 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Pagination from './Pagination';
 import TableData from './TableData';
+import { CenterText } from '../styles/CenterText';
+import { COLOR_STYLES } from '../styles/styles';
 import { currentUsers } from '../utils/currentUsers';
 import { DATA_PER_PAGE } from '../utils/config';
 
-const UserTable = ({ userData }) => {
+const UserTable = ({ userData, currentPage, setCurrentPage }) => {
   const [currentUserData, setCurrentUserData] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
   const [firstIndex, setFirstIndex] = useState(null);
   const [lastIndex, setLastIndex] = useState(null);
 
@@ -24,7 +25,7 @@ const UserTable = ({ userData }) => {
   }, [userData, firstIndex, lastIndex]);
 
   if (userData.length === 0) {
-    return <p>데이터가 비어 있습니다.</p>;
+    return <CenterText>데이터가 없습니다</CenterText>;
   }
 
   return (
@@ -54,17 +55,34 @@ const UserTable = ({ userData }) => {
 };
 
 const TableContainer = styled.table`
-  border: 1px solid black;
+  border-collapse: separate;
+  border-spacing: 1px;
   text-align: center;
-  margin: 0 auto;
-  min-width: 650px;
+  border-radius: 6px 6px 6px 6px;
   width: 100%;
 
   & tr,
   th,
   td {
-    border: 1px solid black;
     padding: 10px;
+  }
+  & th {
+    padding: 10px;
+    font-weight: bold;
+    vertical-align: top;
+    color: #fff;
+    background: ${COLOR_STYLES.primaryDarker};
+    border-radius: 3px;
+  }
+  & td {
+    padding: 10px;
+    vertical-align: top;
+    vertical-align: middle;
+    background: ${COLOR_STYLES.white};
+    color: ${COLOR_STYLES.greyDarker};
+    border-bottom: 1px solid ${COLOR_STYLES.greyLighter};
+    border-right: 1px solid ${COLOR_STYLES.greyLighter};
+    border-radius: 3px;
   }
 `;
 

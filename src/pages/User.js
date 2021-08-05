@@ -1,48 +1,56 @@
 import { layouts as S } from 'styles/layouts';
 import GlobalStyles from 'styles/GlobalStyles';
 import Navbar from 'components/Navbar';
+import { AccountButton } from 'components';
 
 import styled from 'styled-components';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { getLocalStorage } from 'utils/storage';
+import { LOGIN_USER } from '../utils/config';
+import { logout } from '../utils/auth';
+// import Graph from 'components/Chart';
+// import UserTable from 'components/UserTable';
+// import SearchBox from 'components/SearchBox';
 
 const User = () => {
-  const [user, setUser] = useState('사용자1'); // user mock data
-  const [menuList, setMenuList] = useState(['menu1', 'menu2', 'menu3', 'menu4']); // menu mock data
+  const history = useHistory();
 
-  useEffect(() => {
-    // 1. 비정상적인 url 접근 막기 & 메인화면으로 redirect
-    // 2. history에서 state : {user, menu} 받아서 setState
-  }, []);
+  const [loginUser, _] = useState(getLocalStorage(LOGIN_USER));
+  const [menuList, __] = useState(
+    loginUser.userType === 'parent'
+      ? ['학부모 메뉴1', '학부모 메뉴2', '학부모 메뉴3']
+      : ['선생님 메뉴1', '선생님 메뉴2', '선생님 메뉴3'],
+  );
+
+  const onLogout = () => (logout(), history.push('/'));
 
   return (
     <>
       <GlobalStyles />
       <S.Wrap>
-        <Navbar user={user} />
-        <S.Body>
+        <Navbar name={loginUser.name} />
+        <S.Container>
           <S.Section>
-            <h1>어서오세요 사용자 페이지입니다</h1>
+            <S.Content>
+              <h1>{`어서오세요 ${
+                loginUser.userType === `teacher` ? `선생님` : `부모님`
+              } 페이지입니다`}</h1>
+            </S.Content>
+            <S.Aside>
+              <AccountButton onClick={onLogout} content='로그아웃' />
+              <MenuList>
+                {menuList.map((sideMenu, key) => (
+                  <Menu key={key}>{sideMenu}</Menu>
+                ))}
+              </MenuList>
+            </S.Aside>
           </S.Section>
-          <S.Aside>
-            <Button>Button</Button>
-            <MenuList>
-              {menuList.map((sideMenu, key) => (
-                <Menu key={key}>{sideMenu}</Menu>
-              ))}
-            </MenuList>
-          </S.Aside>
-        </S.Body>
+        </S.Container>
       </S.Wrap>
     </>
   );
 };
-
-const Button = styled.button`
-  width: 100%;
-  height: 50px;
-  background-color: #aaaaaa;
-`;
 
 const MenuList = styled.li`
   width: 100%;

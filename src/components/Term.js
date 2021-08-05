@@ -8,9 +8,7 @@ const Term = ({ isChecked, handleClick }) => {
     <TermWrapper isChecked={isChecked} onClick={handleClick}>
       <input type='checkbox' id='term' />
       <AiOutlineCheck />
-      <a href='https://media.tenor.com/images/78ecca5aa42d67bb4eced2eb2ea57bd3/tenor.gif'>
-        이용약관
-      </a>
+      <a href='#'>이용약관</a>
       <label htmlFor='term'>을 모두 읽었으며 이에 동의합니다.</label>
     </TermWrapper>
   );

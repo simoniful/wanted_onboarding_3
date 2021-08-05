@@ -8,30 +8,46 @@ export const layouts = {
   `,
 
   Container: styled.div`
-    width: 95%;
+    width: 70vw;
     margin: 0 auto;
-    display: flex;
-    background-color: white;
-    gap: 16px;
   `,
 
   Section: styled.section`
+    display: flex;
+    flex: 6;
     width: 100%;
-    flex: 8;
+  `,
+
+  Content: styled.div`
+    padding: 10px;
   `,
 
   Aside: styled.aside`
     width: 100%;
-    flex: 2;
+    padding: 10px 10px;
     text-align: center;
   `,
 
-  AccountButtonBox: styled.div`
+  Sidebar: styled.div`
     width: 100%;
-    margin: 0 auto;
+  `,
+
+  ButtonBox: styled.div`
     display: flex;
     justify-content: space-between;
-    gap: 12px;
-    margin-bottom: 12px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 25px 10px 0 10px;
+  `,
+
+  AccountBox: styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 27px auto;
+  `,
+
+  ChartWrap: styled.div`
+    height: 160px;
   `,
 };
