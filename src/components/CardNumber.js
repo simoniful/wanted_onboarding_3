@@ -16,6 +16,9 @@ function CardNumber(props) {
     // 저장버튼을 눌렀을때
     if (e.target !== e.currentTarget) {
       const a = [...cardNumberRef.current.childNodes].map((node) => node.value);
+      // 돔 접근 이거 처리 해야하는뎅
+      cardNumberRef.current.childNodes.value = '';
+
       onChange({ target: { value: a.join('-') } });
     }
     setModalVisible(false);
