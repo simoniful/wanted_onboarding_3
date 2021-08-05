@@ -5,9 +5,8 @@ import TableData from './TableData';
 import { currentUsers } from '../utils/currentUsers';
 import { DATA_PER_PAGE } from '../utils/config';
 
-const UserTable = ({ userData }) => {
+const UserTable = ({ userData, currentPage, setCurrentPage }) => {
   const [currentUserData, setCurrentUserData] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
   const [firstIndex, setFirstIndex] = useState(null);
   const [lastIndex, setLastIndex] = useState(null);
 

@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import SearchDropdown from './SearchDropdown';
 import SearchIcon from '../styles/icons/SearchIcon';
 
-const SearchBox = ({ setUserData, copiedData }) => {
-  const [dropdownItem, setDropdownItem] = useState('id');
+const SearchBox = ({ setUserData, copiedData, setCurrentPage }) => {
+  const [dropdownItem, setDropdownItem] = useState('name');
   const [dropdownName, setDropdownName] = useState('이름');
   const [inputValue, setInputValue] = useState('');
 
@@ -21,10 +21,12 @@ const SearchBox = ({ setUserData, copiedData }) => {
       );
 
       setUserData(filterdData);
+      setCurrentPage(1);
     } else {
       setUserData(copiedData);
+      setCurrentPage(1);
     }
-  }, [inputValue, setUserData, copiedData, dropdownItem]);
+  }, [inputValue, setUserData, copiedData, dropdownItem, setCurrentPage]);
 
   return (
     <SearchBoxContainer>

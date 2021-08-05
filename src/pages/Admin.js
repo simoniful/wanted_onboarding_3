@@ -20,6 +20,7 @@ const Admin = () => {
   // 테이블 관련 state
   const [userData, setUserData] = useState([]);
   const [copiedData, setCopiedData] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
 
   const onLogout = () => history.push('/');
   const onCreateAccount = () => {}; // TODO 1. 회원가입 모달창 띄우기
@@ -40,8 +41,17 @@ const Admin = () => {
         <Navbar user={user} />
         <S.Body>
           <S.Section>
-            <SearchBox userData={userData} setUserData={setUserData} copiedData={copiedData} />
-            <UserTable userData={userData} />
+            <SearchBox
+              userData={userData}
+              copiedData={copiedData}
+              setUserData={setUserData}
+              setCurrentPage={setCurrentPage}
+            />
+            <UserTable
+              userData={userData}
+              currentPage={currentPage}
+              setCurrentPage={setCurrentPage}
+            />
           </S.Section>
           <S.Aside>
             <S.AccountButtonBox>
