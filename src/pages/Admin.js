@@ -56,7 +56,7 @@ const Admin = () => {
                   <SignUpModal />
                   <AccountButton onClick={onLogout} content='로그아웃' />
                 </S.AccountBox>
-                <Chart />
+                <Chart userData={userData} />
               </S.Sidebar>
             </ChartAside>
           </AdminSection>
