@@ -8,6 +8,7 @@ import Chart from 'components/Chart';
 import UserTable from 'components/UserTable';
 import AccountButton from 'components/AccountButton';
 import SearchBox from 'components/SearchBox';
+import SignUpModal from 'components/SignUpModal';
 import { tempGetStorage, tempSetStorage } from 'utils/storage';
 import { GET_USER_STORAGE_KEYWORD } from '../utils/config';
 
@@ -56,7 +57,7 @@ const Admin = () => {
             <ChartAside>
               <S.Sidebar>
                 <S.AccountBox>
-                  <AccountButton onClick={onCreateAccount} content='계정 생성' />
+                  <SignUpModal />
                   <AccountButton onClick={onLogout} content='로그아웃' />
                 </S.AccountBox>
                 <Chart />
