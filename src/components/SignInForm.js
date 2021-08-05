@@ -4,20 +4,17 @@ import { FONT_SIZE_STYLES, SIZE_STYLES } from 'styles/styles';
 import { InputWrapper } from 'styles/InputWrapper';
 
 const SignInForm = ({ isSignInFormOpen, values, errors, handleChange }) => {
-  if (!isSignInFormOpen)
-    return (
-      <TextContainer>
-        <h3>이미 회원이신가요?</h3>
-        <p>
-          자란다는 현재 대한민국 4세~13세 450만명 아이들의 1/3의 시간을 책임지는 교육,돌봄 매칭
-          플랫폼입니다.
-          <br />
-          지금 자란다에 합류하세요.
-        </p>
-      </TextContainer>
-    );
-
-  return (
+  return !isSignInFormOpen ? (
+    <TextContainer>
+      <h3>이미 회원이신가요?</h3>
+      <p>
+        자란다는 현재 대한민국 4세~13세 450만명 아이들의 1/3의 시간을 책임지는 교육,돌봄 매칭
+        플랫폼입니다.
+        <br />
+        지금 자란다에 합류하세요.
+      </p>
+    </TextContainer>
+  ) : (
     <>
       <InputWrapper error={errors.id}>
         <input
