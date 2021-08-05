@@ -85,6 +85,9 @@
     "no-param-reassign": 0,
     "import/prefer-default-export": 0,
     "import/no-unresolved": "off",
+    "no-unneeded-ternary": "off",
+    "no-sequences": "off",
+
     "react/jsx-filename-extension": [
       1,
       {
