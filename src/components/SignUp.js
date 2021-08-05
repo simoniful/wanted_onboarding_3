@@ -3,14 +3,11 @@ import styled from 'styled-components';
 import { AiOutlineCheck } from 'react-icons/ai';
 import { color, fontSize, size } from 'styles/styles';
 import { InputWrapper } from 'styles/InputWrapper';
-<<<<<<< HEAD
 import useForm from 'hooks/useForm';
 import { validate } from 'utils/regex';
-=======
 import CardNumber from 'components/CardNumber';
 import Address from 'components/Address';
 import useInput from 'hooks/useInput';
->>>>>>> main
 
 const SignUp = () => {
   function login() {
@@ -20,11 +17,8 @@ const SignUp = () => {
   const { values, errors, handleChange, handleSubmit } = useForm(login, validate);
   // isChecked svg color change
 
-<<<<<<< HEAD
-=======
   const address = useInput('');
   const cardNumber = useInput('');
->>>>>>> main
   return (
     <Container>
       <h3>자란다 회원가입</h3>
