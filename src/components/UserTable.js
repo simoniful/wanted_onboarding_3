@@ -60,8 +60,7 @@ const TableContainer = styled.table`
   border-spacing: 1px;
   text-align: center;
   border-radius: 6px 6px 6px 6px;
-  min-width: 650px;
-  width: 80%;
+  width: 100%;
 
   & tr,
   th,
@@ -69,7 +68,6 @@ const TableContainer = styled.table`
     padding: 10px;
   }
   & th {
-    width: 155px;
     padding: 10px;
     font-weight: bold;
     vertical-align: top;
@@ -78,7 +76,6 @@ const TableContainer = styled.table`
     border-radius: 3px;
   }
   & td {
-    width: 155px;
     padding: 10px;
     vertical-align: top;
     vertical-align: middle;

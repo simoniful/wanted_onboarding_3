@@ -41,8 +41,7 @@ export default SearchBox;
 
 export const SearchBoxContainer = styled.div`
   margin: 20px auto;
-  min-width: 650px;
-  width: 80%;
+  width: 100%;
 `;
 
 const SearchButton = styled.div`
@@ -61,6 +60,7 @@ const SearchButton = styled.div`
 
 const SearchInput = styled.input`
   width: calc(100% - 48px);
+  min-width: calc(572px - 48px);
   height: 48px;
   padding: 8px 12px;
 
