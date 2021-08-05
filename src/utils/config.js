@@ -4,3 +4,4 @@ export const ONE_WAY_MIN_PAGE_NUM = 3;
 export const STORAGE_DATA = {
   users: 'users',
 };
+export const LOGIN_USER = 'loginUser';
