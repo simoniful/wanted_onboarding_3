@@ -17,13 +17,16 @@ import { GET_USER_STORAGE_KEYWORD } from '../utils/config';
 const Admin = () => {
   // 페이지 관련 state (수정예정)
   const [user, setUser] = useState('관리자A');
-  const [menuList, setMenu] = useState([]);
+  const [menu, setMenu] = useState([]);
   const history = useHistory();
 
 
   // 데이터 테이블 관련 state 입니다.
   const [userData, setUserData] = useState([]);
   const [copiedData, setCopiedData] = useState([]);
+
+  const user1 = '관리자1';
+  const menuList = ['menu1', 'menu2', 'menu3', 'menu4'];
 
   const onLogout = () => history.push('/');
   const onCreateAccount = () => {}; // TODO 1. 회원가입 모달창 띄우기
@@ -41,7 +44,7 @@ const Admin = () => {
     <>
       <GlobalStyles />
       <S.Wrap>
-        <Navbar user={user} menuList={menuList} userMenu={[]} />
+        <Navbar user={user1} menuList={menuList} userMenu={[]} />
         <AdminContainer >
           <AdminSection>
             <TableBox>

@@ -10,7 +10,9 @@ const Navbar = ({ menuList, user, userMenu }) => {
     <NavWrap>
       <NavContainer>
         <NavContent>
-          
+          <Logo href='/admin'>
+            <h2>Jaranda</h2>
+          </Logo>
           <MenuList>
             {menuList.map((menu, key) => (
               <Menu key={key}>{menu}</Menu>
