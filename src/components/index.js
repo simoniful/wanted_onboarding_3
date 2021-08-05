@@ -6,11 +6,11 @@ import Pagination from './Pagination';
 import SearchBox from './SearchBox';
 import TableData from './TableData';
 import UserTable from './UserTable';
-import Graph from './Graph';
+import Chart from './Chart';
 import Navbar from './Navbar';
 
 export {
-  Graph,
+  Chart,
   Navbar,
   SignIn,
   SignUp,
