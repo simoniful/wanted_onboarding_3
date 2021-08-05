@@ -24,16 +24,20 @@ const DoughnutChart = () => {
     datasets: [
       {
         data: [100, 300, 200],
-        backgroundColor: [`${COLOR_STYLES.AgreyDarker}`, `${COLOR_STYLES.AgreyLighter}`, `${COLOR_STYLES.AgreyDarker}`],
+        backgroundColor: [
+          `${COLOR_STYLES.AgreyDarker}`,
+          `${COLOR_STYLES.AgreyLighter}`,
+          `${COLOR_STYLES.AgreyDarker}`,
+        ],
       },
     ],
     hoverOffset: 4,
   };
-  return( 
+  return (
     <S.ChartWrap>
       <Doughnut data={data} options={options} height={200} />
     </S.ChartWrap>
-  )
+  );
 };
 
 export default DoughnutChart;

@@ -4,7 +4,7 @@ import Pagination from './Pagination';
 import TableData from './TableData';
 import { COLOR_STYLES } from '../styles/styles';
 import { currentUsers } from '../utils/currentUsers';
-import { DATA_PER_PAGE, GET_USER_STORAGE_KEYWARD } from '../utils/constants';
+import { DATA_PER_PAGE, GET_USER_STORAGE_KEYWARD } from '../utils/config';
 import { tempGetStoreage, tempSetStoreage } from '../utils/storage';
 
 const UserTable = ({ userData }) => {

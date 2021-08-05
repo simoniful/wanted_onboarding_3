@@ -5,7 +5,6 @@ import { COLOR_STYLES, FONT_SIZE_STYLES } from 'styles/styles';
 import AccountButton from 'components/AccountButton';
 
 const Navbar = ({ menuList, user, userMenu }) => {
-
   return (
     <NavWrap>
       <NavContainer>
@@ -19,21 +18,20 @@ const Navbar = ({ menuList, user, userMenu }) => {
             ))}
           </MenuList>
           <Account>
-            <AccountImg>
-            </AccountImg>
+            <AccountImg></AccountImg>
             <PopupMenu>
               <SmallMenuList>
-                  {menuList.map((menu) => (
+                {menuList.map((menu) => (
                   <Menu>{menu}</Menu>
-                  ))}
+                ))}
               </SmallMenuList>
               <UserMenuList>
                 {userMenu.map((menu) => (
-                <Menu>{menu}</Menu>
+                  <Menu>{menu}</Menu>
                 ))}
-              </UserMenuList>  
+              </UserMenuList>
               <AccountContainer>
-                <AccountButton width="70%;" height="34px;" content="로그아웃"></AccountButton>
+                <AccountButton width='70%;' height='34px;' content='로그아웃'></AccountButton>
               </AccountContainer>
             </PopupMenu>
           </Account>
@@ -45,7 +43,7 @@ const Navbar = ({ menuList, user, userMenu }) => {
 
 const theme = {
   threshold: '800px',
-}
+};
 
 const AccountContainer = styled(S.Container)`
   margin: 4px auto !important;
@@ -63,12 +61,12 @@ const PopupMenu = styled.div`
   box-shadow: 0 6px 12px rgb(0 0 0 / 18%);
   display: none;
 
-  @media only screen and ${`(min-width: ${theme.threshold})`}{
+  @media only screen and ${`(min-width: ${theme.threshold})`} {
     display: none;
     & ul {
       display: none;
     }
-  } 
+  }
   & li {
     color: #777;
     padding: 12px;
@@ -96,15 +94,14 @@ const NavWrap = styled.nav`
   background: ${COLOR_STYLES.primaryGradient};
 
   & h2 {
-    @media only screen and ${`(max-width: ${theme.threshold})`}{
+    @media only screen and ${`(max-width: ${theme.threshold})`} {
       font-size: ${FONT_SIZE_STYLES.large};
     }
   }
-
 `;
 
-  const NavContainer = styled(S.Container)`
-  @media only screen and ${`(max-width: ${theme.threshold})`}{
+const NavContainer = styled(S.Container)`
+  @media only screen and ${`(max-width: ${theme.threshold})`} {
     width: 95%;
   }
 `;
@@ -123,7 +120,7 @@ const MenuList = styled.ul`
   align-items: center;
   width: 540%;
   margin-left: 8%;
-  @media only screen and ${`(max-width: ${theme.threshold})`}{
+  @media only screen and ${`(max-width: ${theme.threshold})`} {
     display: none;
     margin: 0 auto;
   }
@@ -132,17 +129,16 @@ const MenuList = styled.ul`
 const UserMenuList = styled.ol`
   border-top: solid 2px #ececec;
 
-  @media only screen and ${`(min-width: ${theme.threshold})`}{
+  @media only screen and ${`(min-width: ${theme.threshold})`} {
     border: none;
-  } 
-
+  }
 `;
 
 const Menu = styled.li`
   min-width: 80px;
   display: block;
   cursor: pointer;
-  white-space:nowrap;
+  white-space: nowrap;
   text-align: center;
   padding: 0 5%;
   :hover {
@@ -153,11 +149,11 @@ const Menu = styled.li`
 
 const SmallMenuList = styled(MenuList)`
   width: 160px;
-  @media only screen and ${`(max-width: ${theme.threshold})`}{
+  @media only screen and ${`(max-width: ${theme.threshold})`} {
     opacity: 1 !important;
     display: block;
   }
-`
+`;
 
 const Account = styled.div`
   display: flex;
@@ -167,7 +163,7 @@ const Account = styled.div`
   height: 52px;
   color: ${COLOR_STYLES.greyDarker};
 
-  :hover ${PopupMenu}{
+  :hover ${PopupMenu} {
     display: block;
   }
 `;
@@ -183,6 +179,5 @@ const AccountImg = styled.div`
     position: relative;
   }
 `;
-
 
 export default Navbar;

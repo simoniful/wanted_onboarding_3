@@ -33,7 +33,7 @@ const LineChart = () => {
     <S.ChartWrap>
       <Line data={data} options={options} height={200} />
     </S.ChartWrap>
-  )
+  );
 };
 
 export default LineChart;

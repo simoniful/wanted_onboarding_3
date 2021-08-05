@@ -1,9 +1,9 @@
-import React, { useCallback, useState } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { COLOR_STYLES, FONT_SIZE_STYLES, SIZE_STYLES } from 'styles/styles';
 import { InputWrapper } from 'styles/InputWrapper';
 import useForm from 'hooks/useForm';
-import { validate } from 'utils/regex';
+import { signupValidate } from 'utils/regex';
 import { getLocalStorage, setLocalStorage } from 'utils/storage';
 import CardNumber from 'components/CardNumber';
 import Address from 'components/Address';
@@ -38,7 +38,7 @@ const SignUp = () => {
     return true;
   };
 
-  const { values, errors, handleChange, handleSubmit } = useForm(signUp, validate);
+  const { values, errors, handleChange, handleSubmit } = useForm(signUp, signupValidate);
 
   const handleClickTerm = (e) => {
     if (e.target.id === 'term') return;
