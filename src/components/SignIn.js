@@ -2,36 +2,42 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { color, fontSize, size } from 'styles/styles';
 import useForm from 'hooks/useForm';
-import { validate } from 'utils/regex';
+import { loginValidate } from 'utils/regex';
 import SignInForm from './SignInForm';
 
 const SignIn = () => {
+  const [isSignInFormOpen, setIsSignInFormOpen] = useState(false);
+
   function login() {
     console.log('No errors, submit callback called!');
   }
 
-  const { values, errors, handleChange, handleSubmit } = useForm(login, validate);
+  const { values, errors, handleChange, handleSubmit } = useForm(login, loginValidate);
 
-  const [isSignInFormOpen, setIsSignInFormOpen] = useState(false);
   const handleSubmitLogin = (e) => {
     e.preventDefault();
     if (!isSignInFormOpen) return setIsSignInFormOpen(true);
-    handleSubmit();
     // if form is open, validate login form and move to userPage, isSignInFormOpen to false
   };
 
   return (
     <Container isSignInFormOpen={isSignInFormOpen}>
-      <form noValidate>
+      <form onSubmit={handleSubmit} noValidate>
         <SignInForm
           isSignInFormOpen={isSignInFormOpen}
           values={values}
           errors={errors}
           handleChange={handleChange}
         />
-        <ButtonLogin type='submit' onClick={handleSubmitLogin}>
-          <span>LOG IN</span>
-        </ButtonLogin>
+        {!isSignInFormOpen ? (
+          <ButtonLogin type='button' onClick={handleSubmitLogin}>
+            <span>LOG IN</span>
+          </ButtonLogin>
+        ) : (
+          <ButtonLogin type='submit'>
+            <span>LOG IN</span>
+          </ButtonLogin>
+        )}
       </form>
     </Container>
   );

@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Address = (props) => {
-  const { value } = props;
+  const { value, name } = props;
   function fetchAddressApi() {
     new window.daum.Postcode({
       oncomplete(data) {
@@ -13,6 +13,7 @@ const Address = (props) => {
   return (
     <input
       type='text'
+      name={name}
       value={value}
       onClick={fetchAddressApi}
       placeholder='주소를 입력해주세요'

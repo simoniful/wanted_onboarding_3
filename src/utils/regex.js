@@ -9,7 +9,25 @@ export const regValidate = (value, regExp) => {
   return reg.test(value);
 };
 
-export function validate(values) {
+export function loginValidate(values) {
+  const errors = {};
+  if (!values.id) {
+    errors.id = '아이디를 입력하세요.';
+  } else if (!regValidate(values.id, REGEXP.id)) {
+    errors.id = '아이디는 4~12자의 영문 대소문자와 숫자로만 입력하여 주세요.';
+  }
+  if (!values.password) {
+    errors.password = '비밀번호를 입력하세요';
+  } else if (!regValidate(values.password, REGEXP.password)) {
+    errors.password = '비밀번호는 4~16자의 영문 대소문자와 숫자로만 입력하여 주세요.';
+  } else if (values.password === values.id) {
+    errors.password = '비밀번호는 아이디와 동일할 수 없습니다.';
+  }
+
+  return errors;
+}
+
+export function signupValidate(values) {
   const errors = {};
   if (!values.id) {
     errors.id = '아이디를 입력하세요.';
@@ -42,5 +60,6 @@ export function validate(values) {
     errors.age = '나이는 숫자로 입력해주세요.';
   }
 
+  console.log(errors);
   return errors;
 }

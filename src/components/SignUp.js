@@ -4,21 +4,21 @@ import { AiOutlineCheck } from 'react-icons/ai';
 import { color, fontSize, size } from 'styles/styles';
 import { InputWrapper } from 'styles/InputWrapper';
 import useForm from 'hooks/useForm';
-import { validate } from 'utils/regex';
+import { signupValidate } from 'utils/regex';
 import CardNumber from 'components/CardNumber';
 import Address from 'components/Address';
 import useInput from 'hooks/useInput';
 
 const SignUp = () => {
-  function login() {
+  function enroll() {
     console.log('No errors, submit callback called!');
   }
 
-  const { values, errors, handleChange, handleSubmit } = useForm(login, validate);
+  const { values, errors, handleChange, handleSubmit } = useForm(enroll, signupValidate);
   // isChecked svg color change
-
   const address = useInput('');
   const cardNumber = useInput('');
+
   return (
     <Container>
       <h3>자란다 회원가입</h3>
