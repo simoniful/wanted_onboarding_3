@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { COLOR_STYLES, FONT_SIZE_STYLES, SIZE_STYLES } from 'styles/styles';
 import useForm from 'hooks/useForm';
+import { LOGIN_USER } from 'utils/config';
 import { loginValidate } from 'utils/regex';
 import { getLocalStorage, setLocalStorage } from 'utils/storage';
 import { useHistory } from 'react-router-dom';
@@ -22,10 +23,10 @@ const SignIn = () => {
     }
 
     if (user.userType === 'admin') {
-      setLocalStorage('loginUser', { id: user.id, name: user.name, userType: user.userType });
+      setLocalStorage(LOGIN_USER, { id: user.id, name: user.name, userType: user.userType });
       history.push('/admin');
     } else if (user.userType === 'teacher' || user.userType === 'parent') {
-      setLocalStorage('loginUser', { id: user.id, name: user.name, userType: user.userType });
+      setLocalStorage(LOGIN_USER, { id: user.id, name: user.name, userType: user.userType });
       history.push('/user');
     }
   }
