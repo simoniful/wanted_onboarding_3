@@ -10,6 +10,7 @@ import Address from 'components/Address';
 import useInput from 'hooks/useInput';
 import Term from 'components/Term';
 import { STORAGE_DATA } from 'utils/config';
+import { filterObject } from 'utils/filterObject';
 
 const SignUp = () => {
   const [userData, setUserData] = useState(getLocalStorage(STORAGE_DATA.users));
@@ -26,14 +27,16 @@ const SignUp = () => {
 
     if (!isTermChecked) return alert('이용약관에 동의 후 가입 가능합니다.');
 
-    const newUser = { ...values, address: address.value, cardNumber: cardNumber.value };
+    const newValues = filterObject(values, 'checkingPassword');
+    const newUser = { ...newValues, address: address.value, cardNumber: cardNumber.value };
     const updatedUserData = [...userData, newUser];
 
     setUserData(updatedUserData);
     setLocalStorage(STORAGE_DATA.users, updatedUserData);
-    alert('회원가입이 성공적으로 되었습니다. 더 진행하시려면 로그인을 해주십시오.');
+    setIsTermChecked(false);
     address.clearValue();
     cardNumber.clearValue();
+    alert('회원가입이 성공적으로 되었습니다. 더 진행하시려면 로그인을 해주십시오.');
 
     return true;
   };
