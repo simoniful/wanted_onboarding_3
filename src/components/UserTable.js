@@ -2,10 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Pagination from './Pagination';
 import TableData from './TableData';
-<<<<<<< HEAD
-=======
 import { CenterText } from '../styles/CenterText';
->>>>>>> 918724f3958f1af82b701c71db8eda98c9bc9161
 import { COLOR_STYLES } from '../styles/styles';
 import { currentUsers } from '../utils/currentUsers';
 import { DATA_PER_PAGE, GET_USER_STORAGE_KEYWARD } from '../utils/config';
