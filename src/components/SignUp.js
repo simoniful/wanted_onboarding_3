@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { COLOR_STYLES, FONT_SIZE_STYLES, SIZE_STYLES } from 'styles/styles';
 import { InputWrapper } from 'styles/InputWrapper';
