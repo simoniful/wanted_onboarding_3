@@ -42,6 +42,10 @@ const Admin = () => {
         <AdminContainer>
           <AdminSection>
             <TableBox>
+<<<<<<< HEAD
+              <SearchBox userData={userData} setUserData={setUserData} copiedData={copiedData} />
+              <UserTable userData={userData} />
+=======
               <SearchBox
                 userData={userData}
                 copiedData={copiedData}
@@ -53,11 +57,16 @@ const Admin = () => {
                 currentPage={currentPage}
                 setCurrentPage={setCurrentPage}
               />
+>>>>>>> 918724f3958f1af82b701c71db8eda98c9bc9161
             </TableBox>
             <ChartAside>
               <S.Sidebar>
                 <S.AccountBox>
+<<<<<<< HEAD
+                  <AccountButton onClick={onCreateAccount} content='계정 생성' />
+=======
                   <SignUpModal />
+>>>>>>> 918724f3958f1af82b701c71db8eda98c9bc9161
                   <AccountButton onClick={onLogout} content='로그아웃' />
                 </S.AccountBox>
                 <Chart />
@@ -78,6 +87,28 @@ const TableBox = styled(S.Content)`
 const ChartAside = styled(S.Aside)`
   width: 40%;
   min-width: 300px;
+<<<<<<< HEAD
+`;
+
+const AdminContainer = styled(S.Container)`
+  @media only screen and (max-width: 1287px) {
+    margin: 0 calc((${window.innerWidth}px - 600px) / 2) !important;
+  }
+`;
+const AdminSection = styled(S.Section)`
+@media only screen and (max-width: 973px){
+  display: block;
+
+  & ${TableBox}{
+    width: 100%
+    margin: 0 auto;
+  }
+  & ${ChartAside}{
+    width: 60%
+  }
+}
+=======
+>>>>>>> 918724f3958f1af82b701c71db8eda98c9bc9161
 `;
 
 const AdminContainer = styled(S.Container)`

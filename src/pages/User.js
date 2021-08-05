@@ -18,7 +18,10 @@ const User = () => {
   // 데이터 테이블 관련 state 입니다.
   const [userData, setUserData] = useState([]);
   const [copiedData, setCopiedData] = useState([]);
+<<<<<<< HEAD
+=======
   const [currentPage, setCurrentPage] = useState(1);
+>>>>>>> 918724f3958f1af82b701c71db8eda98c9bc9161
 
   useEffect(() => {
     tempSetStorage();
@@ -34,6 +37,10 @@ const User = () => {
         <S.Container>
           <S.Section>
             <S.Content>
+<<<<<<< HEAD
+              <SearchBox userData={userData} setUserData={setUserData} copiedData={copiedData} />
+              <UserTable userData={userData} />
+=======
               <SearchBox
                 userData={userData}
                 copiedData={copiedData}
@@ -45,6 +52,7 @@ const User = () => {
                 currentPage={currentPage}
                 setCurrentPage={setCurrentPage}
               />
+>>>>>>> 918724f3958f1af82b701c71db8eda98c9bc9161
             </S.Content>
             <S.Aside>
               <S.Sidebar>
