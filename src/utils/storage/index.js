@@ -118,7 +118,7 @@ export const tempSetStorage = () => {
         userType: 'parent',
       },
       {
-        id: 1,
+        id: '1',
         password: '1234',
         name: '김동원',
         age: 25,
@@ -127,7 +127,7 @@ export const tempSetStorage = () => {
         userType: 'teacher',
       },
       {
-        id: 2,
+        id: '2',
         password: '1234',
         name: '김참치',
         age: 26,
@@ -136,7 +136,7 @@ export const tempSetStorage = () => {
         userType: 'parent',
       },
       {
-        id: 3,
+        id: '3',
         password: '1234',
         name: '김마요',
         age: 27,
@@ -145,7 +145,7 @@ export const tempSetStorage = () => {
         userType: 'teacher',
       },
       {
-        id: 4,
+        id: '4',
         password: '1234',
         name: '원티드',
         age: 29,
@@ -154,7 +154,7 @@ export const tempSetStorage = () => {
         userType: 'parent',
       },
       {
-        id: 5,
+        id: '5',
         password: '1234',
         name: '위코드',
         age: 28,
@@ -163,7 +163,7 @@ export const tempSetStorage = () => {
         userType: 'parent',
       },
       {
-        id: 6,
+        id: '6',
         password: '1234',
         name: '임팩트',
         age: 24,
@@ -172,7 +172,7 @@ export const tempSetStorage = () => {
         userType: 'parent',
       },
       {
-        id: 7,
+        id: '7',
         password: '1234',
         name: '김동원',
         age: 25,
@@ -181,7 +181,7 @@ export const tempSetStorage = () => {
         userType: 'teacher',
       },
       {
-        id: 8,
+        id: '8',
         password: '1234',
         name: '김참치',
         age: 26,
@@ -190,7 +190,7 @@ export const tempSetStorage = () => {
         userType: 'parent',
       },
       {
-        id: 9,
+        id: '9',
         password: '1234',
         name: '김마요',
         age: 27,
@@ -199,7 +199,7 @@ export const tempSetStorage = () => {
         userType: 'teacher',
       },
       {
-        id: 10,
+        id: '10',
         password: '1234',
         name: '원티드',
         age: 29,
@@ -208,7 +208,7 @@ export const tempSetStorage = () => {
         userType: 'parent',
       },
       {
-        id: 11,
+        id: '11',
         password: '1234',
         name: '위코드',
         age: 28,
@@ -217,7 +217,7 @@ export const tempSetStorage = () => {
         userType: 'teacher',
       },
       {
-        id: 12,
+        id: '12',
         password: '1234',
         name: '임팩트',
         age: 24,
@@ -226,7 +226,7 @@ export const tempSetStorage = () => {
         userType: 'parent',
       },
       {
-        id: 13,
+        id: '13',
         password: '1234',
         name: '김동원',
         age: 25,
@@ -235,7 +235,7 @@ export const tempSetStorage = () => {
         userType: 'parent',
       },
       {
-        id: 14,
+        id: '14',
         password: '1234',
         name: '김참치',
         age: 26,
@@ -244,7 +244,7 @@ export const tempSetStorage = () => {
         userType: 'teacher',
       },
       {
-        id: 15,
+        id: '15',
         password: '1234',
         name: '김마요',
         age: 27,
@@ -253,7 +253,7 @@ export const tempSetStorage = () => {
         userType: 'parent',
       },
       {
-        id: 16,
+        id: '16',
         password: '1234',
         name: '원티드',
         age: 29,
@@ -262,7 +262,7 @@ export const tempSetStorage = () => {
         userType: 'teacher',
       },
       {
-        id: 17,
+        id: '17',
         password: '1234',
         name: '위코드',
         age: 28,
@@ -271,7 +271,7 @@ export const tempSetStorage = () => {
         userType: 'parent',
       },
       {
-        id: 18,
+        id: '18',
         password: '1234',
         name: '임팩트',
         age: 24,
@@ -280,7 +280,7 @@ export const tempSetStorage = () => {
         userType: 'teacher',
       },
       {
-        id: 19,
+        id: '19',
         password: '1234',
         name: '김동원',
         age: 25,
@@ -289,7 +289,7 @@ export const tempSetStorage = () => {
         userType: 'parent',
       },
       {
-        id: 20,
+        id: '20',
         password: '1234',
         name: '김참치',
         age: 26,
@@ -298,7 +298,7 @@ export const tempSetStorage = () => {
         userType: 'teacher',
       },
       {
-        id: 21,
+        id: '21',
         password: '1234',
         name: '김마요',
         age: 27,
@@ -307,7 +307,7 @@ export const tempSetStorage = () => {
         userType: 'teacher',
       },
       {
-        id: 22,
+        id: '22',
         password: '1234',
         name: '원티드',
         age: 29,
@@ -316,7 +316,7 @@ export const tempSetStorage = () => {
         userType: 'teacher',
       },
       {
-        id: 23,
+        id: '23',
         password: '1234',
         name: '위코드',
         age: 28,
@@ -325,7 +325,7 @@ export const tempSetStorage = () => {
         userType: 'teacher',
       },
       {
-        id: 24,
+        id: '24',
         password: '1234',
         name: '임팩트',
         age: 24,
@@ -334,7 +334,7 @@ export const tempSetStorage = () => {
         userType: 'parent',
       },
       {
-        id: 25,
+        id: '25',
         password: '1234',
         name: '김동원',
         age: 25,
@@ -343,7 +343,7 @@ export const tempSetStorage = () => {
         userType: 'parent',
       },
       {
-        id: 26,
+        id: '26',
         password: '1234',
         name: '김참치',
         age: 26,
@@ -352,7 +352,7 @@ export const tempSetStorage = () => {
         userType: 'teacher',
       },
       {
-        id: 27,
+        id: '27',
         password: '1234',
         name: '김마요',
         age: 27,
@@ -361,7 +361,7 @@ export const tempSetStorage = () => {
         userType: 'teacher',
       },
       {
-        id: 28,
+        id: '28',
         password: '1234',
         name: '원티드',
         age: 29,
@@ -370,7 +370,7 @@ export const tempSetStorage = () => {
         userType: 'teacher',
       },
       {
-        id: 29,
+        id: '29',
         password: '1234',
         name: '위코드',
         age: 28,
@@ -379,7 +379,7 @@ export const tempSetStorage = () => {
         userType: 'parent',
       },
       {
-        id: 30,
+        id: '30',
         password: '1234',
         name: '임팩트',
         age: 24,

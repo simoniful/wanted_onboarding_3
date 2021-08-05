@@ -195,6 +195,18 @@ const InputDouble = styled.div`
   align-items: flex-start;
 `;
 
+const RadioContainer = styled.div`
+  display: flex;
+  justify-content: space-around;
+  align-content: center;
+`;
+
+const RadioBox = styled.div`
+  font-size: 14px;
+  line-height: 18px;
+  align-content: center;
+`;
+
 const ButtonSubmit = styled.button`
   width: 100%;
   background: ${COLOR_STYLES.primary};
