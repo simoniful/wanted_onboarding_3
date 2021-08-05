@@ -51,6 +51,16 @@ const SignUp = () => {
       <h3>자란다 회원가입</h3>
       <p>10초만에 가입하고 아이와 함께 할 선생님 정보를 받아보세요</p>
       <form onSubmit={handleSubmit} noValidate>
+        <InputWrapper>
+          <RadioContainer>
+            <RadioBox>
+              <input type='radio' name='userType' value='teacher' onChange={handleChange} /> 선생님
+            </RadioBox>
+            <RadioBox>
+              <input type='radio' name='userType' value='parent' onChange={handleChange} /> 학부모
+            </RadioBox>
+          </RadioContainer>
+        </InputWrapper>
         <InputWrapper error={errors.id}>
           <input
             autoComplete='off'
@@ -182,6 +192,18 @@ const Container = styled.section`
   form {
     width: 60%;
   }
+`;
+
+const RadioContainer = styled.div`
+  display: flex;
+  justify-content: space-around;
+  align-content: center;
+`;
+
+const RadioBox = styled.div`
+  font-size: 14px;
+  line-height: 18px;
+  align-content: center;
 `;
 
 const ButtonSubmit = styled.button`
