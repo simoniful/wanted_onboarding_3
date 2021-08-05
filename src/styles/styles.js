@@ -6,6 +6,9 @@ export const COLOR_STYLES = {
   red: '#ff0000',
   greyLighter: '#dedede',
   greyDarker: '#666',
+  black: 'fff',
+  AgreyDarker: 'rgba(1,1,1,0.4)',
+  AgreyLighter: 'rgba(1,1,1,0.1)',
 };
 
 export const FONT_SIZE_STYLES = {

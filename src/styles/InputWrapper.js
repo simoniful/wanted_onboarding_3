@@ -8,7 +8,15 @@ export const InputWrapper = styled.div`
   margin-right: ${(props) => props.marginR && SIZE_STYLES.smaller};
   margin-bottom: ${SIZE_STYLES.medium};
 
-  input {
+  input[type='radio'] {
+    width: 14px;
+    line-height: 14px;
+    margin-top: -1px;
+    vertical-align: middle;
+  }
+
+  input[type='text'],
+  input[type='password'] {
     width: 100%;
     padding: ${SIZE_STYLES.medium} 0;
     padding-left: ${SIZE_STYLES.medium};
