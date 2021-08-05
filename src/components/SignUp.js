@@ -7,14 +7,16 @@ import { signupValidate } from 'utils/regex';
 import { getLocalStorage, setLocalStorage } from 'utils/storage';
 import CardNumber from 'components/CardNumber';
 import Address from 'components/Address';
-import useInput from 'hooks/useInput';
 import Term from 'components/Term';
+import UserTypeSelect from 'components/UserTypeSelect';
+import useInput from 'hooks/useInput';
 import { STORAGE_DATA } from 'utils/config';
 import { filterObject } from 'utils/filterObject';
 
 const SignUp = () => {
   const [userData, setUserData] = useState(getLocalStorage(STORAGE_DATA.users));
   const [isTermChecked, setIsTermChecked] = useState(false);
+  const [isParentChecked, setIsParentChecked] = useState(true);
   const address = useInput('');
   const cardNumber = useInput('');
 
@@ -27,8 +29,14 @@ const SignUp = () => {
 
     if (!isTermChecked) return alert('이용약관에 동의 후 가입 가능합니다.');
 
+    const userType = isParentChecked ? 'parent' : 'teacher';
     const newValues = filterObject(values, 'checkingPassword');
-    const newUser = { ...newValues, address: address.value, cardNumber: cardNumber.value };
+    const newUser = {
+      ...newValues,
+      address: address.value,
+      cardNumber: cardNumber.value,
+      userType,
+    };
     const updatedUserData = [...userData, newUser];
 
     setUserData(updatedUserData);
@@ -49,11 +57,21 @@ const SignUp = () => {
     setIsTermChecked((isChecked) => !isChecked);
   };
 
+  const handleClickType = (e) => {
+    if (e.target.closest('#parent')) {
+      setIsParentChecked(true);
+    }
+    if (e.target.closest('#teacher')) {
+      setIsParentChecked(false);
+    }
+  };
+
   return (
     <Container>
       <h3>자란다 회원가입</h3>
       <p>10초만에 가입하고 아이와 함께 할 선생님 정보를 받아보세요</p>
       <form onSubmit={handleSubmit} noValidate>
+        <UserTypeSelect handleClick={handleClickType} isChecked={isParentChecked} />
         <InputWrapper error={errors.id}>
           <input
             autoComplete='off'
@@ -129,11 +147,9 @@ const SignUp = () => {
         </InputDouble>
 
         <InputWrapper error={address.isError}>
-          {/* <input type='text' placeholder='주소를 입력해주세요' /> */}
           <Address id='address' {...address} />
         </InputWrapper>
         <InputWrapper error={cardNumber.isError}>
-          {/* <input type='text' placeholder='카드번호, 예) 1234-1234-1234-1234' /> */}
           <CardNumber id='cardNumber' {...cardNumber} />
         </InputWrapper>
 
@@ -166,7 +182,7 @@ const Container = styled.section`
 
   p {
     font-size: ${FONT_SIZE_STYLES.medium};
-    margin-bottom: ${SIZE_STYLES.larger};
+    margin-bottom: ${SIZE_STYLES.large};
   }
 
   form {
