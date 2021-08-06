@@ -14,11 +14,10 @@ function CardNumber(props) {
 
   const closeModal = (e) => {
     // 저장버튼을 눌렀을때
-    if (e.target !== e.currentTarget) {
+    if (e.currentTarget.id === 'save-btn') {
       const a = [...cardNumberRef.current.childNodes].map((node) => node.value);
       // 돔 접근 이거 처리 해야하는뎅
       cardNumberRef.current.childNodes.value = '';
-
       onChange({ target: { value: a.join('-') } });
     }
     setModalVisible(false);
@@ -52,12 +51,12 @@ function CardNumber(props) {
       <ModalWrapper onClick={onMaskClick} tabIndex='-1' visible={modalVisible}>
         <ModalInner tabIndex='0' className='modal-inner'>
           <ModalInputWrapper ref={cardNumberRef}>
-            <input type='text' onKeyUp={handleKeyUp} maxLength='4' />
-            <input type='password' onKeyUp={handleKeyUp} maxLength='4' />
-            <input type='password' onKeyUp={handleKeyUp} maxLength='4' />
-            <input type='text' maxLength='4' />
+            <input className='card-number' type='text' onKeyUp={handleKeyUp} maxLength='4' />
+            <input className='card-number' type='password' onKeyUp={handleKeyUp} maxLength='4' />
+            <input className='card-number' type='password' onKeyUp={handleKeyUp} maxLength='4' />
+            <input className='card-number' type='text' maxLength='4' />
           </ModalInputWrapper>
-          <ModalSubmit type='button' onClick={closeModal}>
+          <ModalSubmit type='button' id='save-btn' onClick={closeModal}>
             <span>저장</span>
           </ModalSubmit>
         </ModalInner>
@@ -107,7 +106,7 @@ const ModalInputWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  input {
+  input.card-number {
     width: 4rem;
     margin: 0 10px;
     text-align: center;
@@ -119,6 +118,7 @@ const ModalSubmit = styled.button`
   border-radius: ${SIZE_STYLES.smallest};
   background-color: ${COLOR_STYLES.primary};
   cursor: pointer;
+  white-space: nowrap;
   span {
     color: ${COLOR_STYLES.white};
     font-size: ${FONT_SIZE_STYLES.medium};
