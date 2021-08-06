@@ -1,15 +1,14 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import styled from 'styled-components';
 import { layouts as S } from 'styles/layouts';
 import GlobalStyles from 'styles/GlobalStyles';
+import styled from 'styled-components';
+import { getLocalStorage, getTeacherList } from 'utils/storage';
+import { LOGIN_USER } from 'utils/config';
+import { logout } from 'utils/auth';
 import Navbar from 'components/Navbar';
 import { AccountButton } from 'components';
 import UserCard from 'components/UserCard';
-import { getLocalStorage, getTeacherList } from 'utils/storage';
-import { LOGIN_USER } from '../utils/config';
-import { logout } from '../utils/auth';
-import { COLOR_STYLES } from '../styles/styles';
 
 const User = () => {
   const history = useHistory();

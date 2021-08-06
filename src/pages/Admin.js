@@ -10,8 +10,8 @@ import AccountButton from 'components/AccountButton';
 import SearchBox from 'components/SearchBox';
 import SignUpModal from 'components/SignUpModal';
 import { getLocalStorage } from 'utils/storage';
-import { LOGIN_USER, STORAGE_DATA } from '../utils/config';
-import { logout } from '../utils/auth';
+import { LOGIN_USER, STORAGE_DATA } from 'utils/config';
+import { logout } from 'utils/auth';
 
 const Admin = () => {
   const history = useHistory();

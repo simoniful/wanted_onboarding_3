@@ -1,6 +1,6 @@
 import { layouts as S } from 'styles/layouts';
 import { Bar } from 'react-chartjs-2';
-import { COLOR_STYLES } from '../../styles/styles';
+import { COLOR_STYLES } from 'styles/styles';
 
 const BarChart = ({ chartData }) => {
   const labelList = Object.keys(chartData);

@@ -1,8 +1,8 @@
 import React from 'react';
-import styled from 'styled-components';
+import AccountButton from 'components/AccountButton';
 import { layouts as S } from 'styles/layouts';
 import { COLOR_STYLES, FONT_SIZE_STYLES } from 'styles/styles';
-import AccountButton from 'components/AccountButton';
+import styled from 'styled-components';
 
 const Navbar = ({ name }) => {
   const menuList = ['공통메뉴1', '공통메뉴2', '공통메뉴3'];
@@ -12,9 +12,7 @@ const Navbar = ({ name }) => {
     <NavWrap>
       <NavContainer>
         <NavContent>
-          <Logo href='/admin'>
-            <h2>Jaranda</h2>
-          </Logo>
+          <Logo>Jaranda</Logo>
           <MenuList>
             {menuList.map((menu, key) => (
               <Menu key={key}>{menu}</Menu>
@@ -81,13 +79,11 @@ const PopupMenu = styled.div`
   }
 `;
 
-const Logo = styled.a`
+const Logo = styled.h2`
   width: 100%;
   cursor: pointer;
-  h2 {
-    color: ${COLOR_STYLES.white};
-    font-size: ${FONT_SIZE_STYLES.larger};
-  }
+  color: ${COLOR_STYLES.white};
+  font-size: ${FONT_SIZE_STYLES.larger};
 `;
 
 const NavWrap = styled.nav`

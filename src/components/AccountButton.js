@@ -1,6 +1,6 @@
 import React from 'react';
+import { COLOR_STYLES, FONT_SIZE_STYLES } from 'styles/styles';
 import styled from 'styled-components';
-import { COLOR_STYLES, FONT_SIZE_STYLES } from '../styles/styles';
 
 const AccountButton = ({ onClick, content, width, height }) => (
   <Button width={width} height={height} onClick={onClick}>
