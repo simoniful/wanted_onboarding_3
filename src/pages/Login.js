@@ -20,7 +20,6 @@ const Container = styled.div`
   display: flex;
 `;
 
-// change to Link
 const Logo = styled.h2`
   position: absolute;
   top: 0;
