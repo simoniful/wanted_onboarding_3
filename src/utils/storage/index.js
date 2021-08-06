@@ -1,10 +1,12 @@
+import mockData from 'utils/usersData';
+
 export const setLocalStorage = (keyword, data) => {
   localStorage.removeItem(keyword);
   localStorage.setItem(keyword, JSON.stringify(data));
 };
 
 export const getLocalStorage = (keyword) => {
-  const storageData = JSON.parse(localStorage.getItem(keyword));
+  const storageData = JSON.parse(localStorage.getItem(keyword)) || mockData;
 
   return storageData;
 };
@@ -13,7 +15,6 @@ export const clearLocalStorage = () => {
   localStorage.clear();
 };
 
-// 스토리지 관련 임시 함수
 export function CheckPropDoup(storeArray, propVal) {
   for (let i = 0, k = storeArray.length; i < k; i += 1) {
     if (storeArray[i] === propVal) return true;
