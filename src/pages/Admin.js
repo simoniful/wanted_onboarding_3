@@ -15,7 +15,7 @@ import { logout } from '../utils/auth';
 
 const Admin = () => {
   const history = useHistory();
-  const [loginUser, _] = useState(getLocalStorage(LOGIN_USER));
+  const [loginUser] = useState(getLocalStorage(LOGIN_USER));
   const [userData, setUserData] = useState([]);
   const [copiedData, setCopiedData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -74,20 +74,21 @@ const ChartAside = styled(S.Aside)`
 `;
 
 const AdminContainer = styled(S.Container)`
-  @media only screen and (max-width: 1287px) {
-    margin: 0 calc((${window.innerWidth}px - 600px) / 2) !important;
+  @media only screen and (max-width: 1055px) {
+    margin: 0 auto;
   }
 `;
 
 const AdminSection = styled(S.Section)`
-  @media only screen and (max-width: 973px) {
+  @media only screen and (max-width: 1055px) {
     display: block;
     & ${TableBox} {
+      min-width: 528px;
       width: 100%;
-      margin: 0 auto;
     }
     & ${ChartAside} {
-      width: 60%;
+      min-width: 528px;
+      width: 100%;
     }
   }
 `;
