@@ -47,11 +47,6 @@ Jaranda : 유저 정보를 입력받아 회원가입 페이지 구현 / 로그�
 
 - Slack, Git-Hub
 
-## 🎬 기능구현 데모
-
-![Coming soon]()
-![Coming soon]()
-
 ## 👍🏻 구현 기능 상세
 
 사용자는 회원가입 및 로그인을 통해 userType별 다른 메뉴를 가진 페이지를 볼 수 있다.
