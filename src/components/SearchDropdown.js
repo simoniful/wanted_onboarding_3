@@ -11,7 +11,8 @@ const DropdownContainer = styled.div`
 `;
 
 const DropdownBody = styled.p`
-  width: 150px;
+  width: 100px;
+  min-width: 70px;
   height: 36px;
   display: flex;
   justify-content: center;

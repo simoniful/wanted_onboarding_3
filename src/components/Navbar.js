@@ -64,7 +64,7 @@ const Navbar = ({ name }) => {
 };
 
 const theme = {
-  threshold: '800px',
+  threshold: '1015px',
 };
 
 const Name = styled.h1`

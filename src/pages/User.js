@@ -67,18 +67,6 @@ const User = () => {
         </SwipeZone>
         <UserContainer>
           <UserSection>
-            <TableBox>
-              <h1>{`어서오세요 ${
-                loginUser.userType === `teacher` ? `선생님` : `부모님`
-              } 페이지입니다`}</h1>
-              <UserSearchBox>
-                <SearchBox  userData={teacherList}
-                  copiedData={copiedData}
-                  setUserData={setUserData}
-                  setCurrentPage={setCurrentPage} />
-              </UserSearchBox>
-              <UserPageTable userData={teacherList} pageType={pageType} />
-            </TableBox>
             <ChartAside>
               <S.Sidebar>
                 {teacherList.map((teacher, key)=>(
@@ -86,6 +74,20 @@ const User = () => {
                 ))}
               </S.Sidebar>
             </ChartAside>
+            <TableBox>
+              <Welcome>
+                {`어서오세요 ${
+                  loginUser.userType === `teacher` ? `선생님` : `부모님`
+                } 페이지입니다`}
+              </Welcome>
+              <UserSearchBox>
+                <SearchBox  userData={teacherList}
+                  copiedData={copiedData}
+                  setUserData={setUserData}
+                  setCurrentPage={setCurrentPage} />
+              </UserSearchBox>
+            
+            </TableBox>
           </UserSection>
         </UserContainer>
       </UserWrap>
@@ -93,16 +95,28 @@ const User = () => {
   );
 };
 
+const Welcome = styled.h1`
+  @media only screen and (max-width: 1015px){
+    position: fixed;
+    top: 0;
+  }
+`;
+
 const UserNavbar = styled(Navbar)`
 
     position: fixed !important;
     top: 0;
 
 `
+const MainImg = styled.div`
+  
+  height: 580px;
+  width: 600px;
+`
 
 const UserSearchBox = styled.div`
   width: 100%;
-  @media only screen and (max-width: 800px){
+  @media only screen and (max-width: 1015px){
     position: fixed;
     left: 50%;
     top: -14px;
@@ -120,8 +134,8 @@ const SwipeZone = styled.div`
 
 const UserWrap = styled(S.Wrap)`
   background-color: #f9f9f9;
-
-  @media only screen and (max-width: 800px){
+  margin: 0 auto;
+  @media only screen and (max-width: 1015px){
     background-color: #ececec;
   }
 `;
@@ -134,7 +148,8 @@ const UserPageTable = styled(UserTable)`
 
 const TableBox = styled(S.Content)`
   width: 70%;
-  min-width: 600px;
+  background: url(./images/user-img.png)no-repeat;
+
 `;
 
 const ChartAside = styled(S.Aside)`
@@ -146,14 +161,15 @@ const ChartAside = styled(S.Aside)`
 `;
 
 const UserContainer = styled(S.Container)`
-  @media only screen and (max-width: 1055px){
+  width: 80%;
+  @media only screen and (max-width: 1015px){
     margin: 0 auto;
   }
 `;
 
 const UserSection = styled(S.Section)`
-  
-  @media only screen and (max-width: 1055px){
+
+  @media only screen and (max-width: 1015px){
     display: block;
 
     & ${TableBox}{
