@@ -9,9 +9,10 @@ import UserTable from 'components/UserTable';
 import AccountButton from 'components/AccountButton';
 import SearchBox from 'components/SearchBox';
 import SignUpModal from 'components/SignUpModal';
-import { getLocalStorage } from 'utils/storage';
+import { getLocalStorage, setLocalStorage } from 'utils/storage';
 import { LOGIN_USER, STORAGE_DATA } from '../utils/config';
 import { logout } from '../utils/auth';
+import mockData from '../utils/usersData';
 
 const Admin = () => {
   const history = useHistory();
@@ -21,9 +22,9 @@ const Admin = () => {
   const [currentPage, setCurrentPage] = useState(1);
 
   const onLogout = () => (logout(), history.push('/'));
-  const onCreateAccount = () => {};
 
   useEffect(() => {
+    setLocalStorage(STORAGE_DATA.users, mockData);
     setUserData(getLocalStorage(STORAGE_DATA.users).reverse());
     setCopiedData(getLocalStorage(STORAGE_DATA.users).reverse());
   }, []);
@@ -66,7 +67,7 @@ const Admin = () => {
 
 const TableBox = styled(S.Content)`
   width: 60%;
-  min-width: 600px;
+  min-width: 700px;
 `;
 
 const ChartAside = styled(S.Aside)`
