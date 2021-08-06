@@ -2,20 +2,18 @@ import { layouts as S } from 'styles/layouts';
 import GlobalStyles from 'styles/GlobalStyles';
 import Navbar from 'components/Navbar';
 import { AccountButton } from 'components';
+import UserCard from 'components/UserCard';
 
 import styled from 'styled-components';
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { getLocalStorage } from 'utils/storage';
+import { getLocalStorage, getTeacherList } from 'utils/storage';
 import { LOGIN_USER } from '../utils/config';
 import { logout } from '../utils/auth';
-// import Graph from 'components/Chart';
-// import UserTable from 'components/UserTable';
-// import SearchBox from 'components/SearchBox';
 
 const User = () => {
   const history = useHistory();
-
+  const [teacherList] = useState(getTeacherList());
   const [loginUser] = useState(getLocalStorage(LOGIN_USER));
   const [menuList] = useState(
     loginUser.userType === 'parent'
@@ -33,9 +31,14 @@ const User = () => {
         <S.Container>
           <S.Section>
             <S.Content>
-              <h1>{`어서오세요 ${
-                loginUser.userType === `teacher` ? `선생님` : `부모님`
-              } 페이지입니다`}</h1>
+              <Title>
+                {`어서오세요 ${
+                  loginUser.userType === `teacher` ? `선생님` : `부모님`
+                } 페이지입니다`}
+              </Title>
+              {teacherList.map(({ name }, key) => (
+                <UserCard teacherName={name} key={key} />
+              ))}
             </S.Content>
             <S.Aside>
               <AccountButton onClick={onLogout} content='로그아웃' />
@@ -51,6 +54,10 @@ const User = () => {
     </>
   );
 };
+
+const Title = styled.h1`
+  width: 100%;
+`;
 
 const MenuList = styled.li`
   width: 100%;
