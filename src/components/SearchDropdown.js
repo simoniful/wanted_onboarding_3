@@ -2,6 +2,7 @@ import React, { useCallback, useState } from 'react';
 import styled from 'styled-components';
 import { COLOR_STYLES } from 'styles/styles';
 import { SEARCH_DROPDOWN_ITEMS } from 'utils/config';
+import { BsArrowDownShort, BsArrowUpShort } from 'react-icons/bs';
 
 const DropdownContainer = styled.div`
   background: ${COLOR_STYLES.primaryDarker};
@@ -14,8 +15,16 @@ const DropdownBody = styled.p`
   width: 150px;
   height: 36px;
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
+
+  & svg {
+    font-size: 1.8rem;
+  }
+
+  & svg:nth-child(1) {
+    color: ${COLOR_STYLES.primaryDarker};
+  }
 
   cursor: pointer;
 `;
@@ -63,7 +72,11 @@ const SearchDropdown = ({ dropdownName, setDropdownItem, setDropdownName, setInp
 
   return (
     <DropdownContainer onClick={onDropdownToggle} onMouseLeave={() => setDropdownToggle(false)}>
-      <DropdownBody>{dropdownName}</DropdownBody>
+      <DropdownBody>
+        <BsArrowDownShort />
+        {dropdownName}
+        {dropdownToggle ? <BsArrowUpShort /> : <BsArrowDownShort />}
+      </DropdownBody>
       <DropdownMenu isActive={dropdownToggle}>
         {SEARCH_DROPDOWN_ITEMS.map((data) => (
           <DropdownItem key={data.id} onClick={() => onSelectDropdownItem(data)}>
