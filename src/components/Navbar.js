@@ -23,13 +23,13 @@ const Navbar = ({ menuList, user, userMenu }) => {
             </AccountImg>
             <PopupMenu>
               <SmallMenuList>
-                  {menuList.map((menu) => (
-                  <Menu>{menu}</Menu>
+                  {menuList.map((menu, key) => (
+                  <Menu key={key}>{menu}</Menu>
                   ))}
               </SmallMenuList>
               <UserMenuList>
-                {userMenu.map((menu) => (
-                <Menu>{menu}</Menu>
+                {userMenu.map((menu, key) => (
+                <Menu key={key}>{menu}</Menu>
                 ))}
               </UserMenuList>  
               <AccountContainer>
@@ -48,6 +48,7 @@ const theme = {
 }
 
 const AccountContainer = styled(S.Container)`
+  width: 100px;
   margin: 4px auto !important;
   text-align: center;
 `;
@@ -55,8 +56,8 @@ const AccountContainer = styled(S.Container)`
 const PopupMenu = styled.div`
   width: 160px;
   position: absolute;
-  top: 50px;
-  right: 20px;
+  top: 56px;
+  right: 3%;
   background: white;
   border: 1px solid #ececec;
   border-radius: 3px;
@@ -65,6 +66,7 @@ const PopupMenu = styled.div`
 
   @media only screen and ${`(min-width: ${theme.threshold})`}{
     display: none;
+    right: 11%;
     & ul {
       display: none;
     }
@@ -90,14 +92,19 @@ const Logo = styled.a`
 
 const NavWrap = styled.nav`
   width: 100%;
-  height: 100%;
+  height: 62px;
   padding: 0;
   color: ${COLOR_STYLES.white};
   background: ${COLOR_STYLES.primaryGradient};
 
+  @media only screen and ${`(max-width: ${theme.threshold})`}{
+    color: linear-gradient(to right bottom,#a7cf53,#69d872);
+  }
+
   & h2 {
     @media only screen and ${`(max-width: ${theme.threshold})`}{
       font-size: ${FONT_SIZE_STYLES.large};
+      color: black;
     }
   }
 
@@ -106,6 +113,8 @@ const NavWrap = styled.nav`
   const NavContainer = styled(S.Container)`
   @media only screen and ${`(max-width: ${theme.threshold})`}{
     width: 95%;
+    position: fixed;
+
   }
 `;
 
@@ -114,7 +123,7 @@ const NavContent = styled.div`
   align-items: center;
   justify-content: space-between;
   display: flex;
-  height: 10vh;
+  height: 62px;
   padding: 0 15px;
 `;
 
@@ -124,7 +133,7 @@ const MenuList = styled.ul`
   width: 540%;
   margin-left: 8%;
   @media only screen and ${`(max-width: ${theme.threshold})`}{
-    display: none;
+    opacity: 0;
     margin: 0 auto;
   }
 `;
@@ -161,10 +170,11 @@ const SmallMenuList = styled(MenuList)`
 
 const Account = styled.div`
   display: flex;
+  position: relaive;
   justify-content: flex-end;
   align-items: center;
   width: 100%;
-  height: 52px;
+  height: 60px;
   color: ${COLOR_STYLES.greyDarker};
 
   :hover ${PopupMenu}{
@@ -174,8 +184,8 @@ const Account = styled.div`
 
 const AccountImg = styled.div`
   background-image: url(https://jaranda.kr/assets/image/mypage.svg);
-  width: 24px;
-  height: 24px;
+  width: 22px;
+  height: 22px;
   padding: 5px 0;
   filter: opacity(0.5) drop-shadow(0 0 0 black);
   :hover {

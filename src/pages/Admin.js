@@ -13,7 +13,7 @@ import { GET_USER_STORAGE_KEYWORD } from '../utils/config';
 
 
 
-
+const pageType = 'admin';
 const Admin = () => {
   // 페이지 관련 state (수정예정)
   const [user, setUser] = useState('관리자A');
@@ -49,7 +49,7 @@ const Admin = () => {
           <AdminSection>
             <TableBox>
               <SearchBox userData={userData} setUserData={setUserData} copiedData={copiedData} />
-              <UserTable userData={userData} />
+              <UserTable userData={userData} pageType={pageType} />
             </TableBox>
             <ChartAside>
               <S.Sidebar>
@@ -78,22 +78,26 @@ const ChartAside = styled(S.Aside)`
 `;
 
 const AdminContainer = styled(S.Container)`
-  @media only screen and (max-width: 1287px){
-    margin: 0 calc( (${window.innerWidth}px - 600px) / 2 ) !important;
-  }
-`
-const AdminSection = styled(S.Section)`
-@media only screen and (max-width: 973px){
-  display: block;
-
-  & ${TableBox}{
-    width: 100%
+  @media only screen and (max-width: 1055px){
     margin: 0 auto;
   }
-  & ${ChartAside}{
-    width: 60%
+`;
+
+const AdminSection = styled(S.Section)`
+  
+  @media only screen and (max-width: 1055px){
+    display: block;
+
+    & ${TableBox}{
+      min-width: 528px;
+      width: 100%;
+    }
+    & ${ChartAside}{
+      min-width: 528px;
+      width: 100%;
+    }
   }
-}
-`
+`;
+
 
 export default Admin;

@@ -7,7 +7,9 @@ import { currentUsers } from '../utils/currentUsers';
 import { DATA_PER_PAGE, GET_USER_STORAGE_KEYWARD } from '../utils/constants';
 import { tempGetStoreage, tempSetStoreage } from '../utils/storage';
 
-const UserTable = ({ userData }) => {
+let userInfo;
+let tableHead;
+const UserTable = ({ userData, pageType }) => {
   const [currentUserData, setCurrentUserData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [firstIndex, setFirstIndex] = useState(null);
@@ -21,10 +23,21 @@ const UserTable = ({ userData }) => {
     setFirstIndex(nextFirstIndex);
   }, [currentPage, lastIndex]);
 
+  
+  userInfo = userData;
+  tableHead = ['아이디', '이름', '나이','주소','카드 번호','권한'];
+  if(pageType === 'user'){
+    userInfo = userData.filter((user)=> delete user.cardNumber);
+    tableHead = tableHead.filter((head)=> head !== '카드 번호');
+  }
+
+
   useEffect(() => {
     setCurrentUserData(currentUsers(userData, firstIndex, lastIndex));
   }, [userData, firstIndex, lastIndex]);
+  
 
+  
   if (userData.length === 0) {
     return <p>데이터가 비어 있습니다.</p>;
   }
@@ -34,16 +47,14 @@ const UserTable = ({ userData }) => {
       <TableContainer>
         <thead>
           <tr>
-            <th>아이디</th>
-            <th>이름</th>
-            <th>나이</th>
-            <th>주소</th>
-            <th>카드 번호</th>
-            <th>권한</th>
+            {tableHead.map((menu, key)=>(
+              <th key={key}>{menu}</th>
+              )
+            )}
           </tr>
         </thead>
         <tbody>
-          <TableData TableData={currentUserData} />
+          <TableData TableData={currentUserData} pageType={pageType} />
         </tbody>
       </TableContainer>
       <Pagination

@@ -60,7 +60,7 @@ const SearchButton = styled.div`
 
 const SearchInput = styled.input`
   width: calc(100% - 48px);
-  min-width: calc(572px - 48px);
+  min-width: calc(528px - 48px);
   height: 48px;
   padding: 8px 12px;
 
