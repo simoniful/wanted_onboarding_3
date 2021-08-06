@@ -24,8 +24,8 @@ const Admin = () => {
   const onCreateAccount = () => {};
 
   useEffect(() => {
-    setUserData(getLocalStorage(STORAGE_DATA.users));
-    setCopiedData(getLocalStorage(STORAGE_DATA.users));
+    setUserData(getLocalStorage(STORAGE_DATA.users).reverse());
+    setCopiedData(getLocalStorage(STORAGE_DATA.users).reverse());
   }, []);
 
   return (
