@@ -78,13 +78,19 @@ Admin 계정으로 로그인을 통해 userInfo를 관리하고 관련 데이터
 #### 프로젝트 구조
 
 ```html
-📦src ┣ 📂components ┃ ┣ 📜AccountButton.jsx ┃ ┣ 📜Graph.jsx ┃ ┣ 📜Navbar.jsx ┃ ┣ 📜Pagination.js ┃
-┣ 📜SearchBox.jsx ┃ ┣ 📜UserData.js ┃ ┗ 📜UserTable.js ┣ 📂data ┃ ┗ 📜userData.json ┣ 📂hooks ┃ ┗
-📜useInput.js ┣ 📂pages ┃ ┣ 📜Admin.jsx ┃ ┣ 📜Login.jsx ┃ ┣ 📜Signup.jsx ┃ ┗ 📜User.jsx ┣ 📂styles ┃
-┣ 📂icons ┃ ┃ ┗ 📜SearchIcon.jsx ┃ ┣ 📜GlobalStyles.js ┃ ┗ 📜layouts.js ┣ 📂utils ┃ ┣ 📂storage ┃ ┃
-┗ 📜index.js ┃ ┣ 📂test ┃ ┃ ┣ 📜currentUsers.test.js ┃ ┃ ┗ 📜getTotalPage.test.js ┃ ┣ 📜config.js ┃
-┣ 📜constants.js ┃ ┣ 📜currentUsers.js ┃ ┣ 📜getTotalPage.js ┃ ┣ 📜regex.js ┃ ┗ 📜usersData.json ┣
-📜App.js ┣ 📜Routes.js ┗ 📜index.js
+📦src
+┣ 📂components 
+┃ ┗ 📂charts
+┣ 📂hooks
+┣ 📂pages
+┣ 📂styles
+┃ ┗ 📂icons
+┣ 📂utils
+┃ ┗ 📂storage
+┃ ┗ 📂test
+┣ 📜App.js
+┣ 📜Routes.js
+┗ 📜index.js
 ```
 
 #### 공통 component
