@@ -5,9 +5,7 @@ import { SignIn, SignUp } from 'components';
 
 const Login = () => (
   <Container>
-    <Logo href='/user'>
-      <h2>Jaranda</h2>
-    </Logo>
+    <Logo>Jaranda</Logo>
     <SignIn />
     <SignUp />
   </Container>
@@ -22,17 +20,13 @@ const Container = styled.div`
   display: flex;
 `;
 
-// change to Link
-const Logo = styled.a`
+const Logo = styled.h2`
   position: absolute;
   top: 0;
   left: 0;
   z-index: 100;
   transform: translate(15%, 50%);
   cursor: pointer;
-
-  h2 {
-    color: ${COLOR_STYLES.white};
-    font-size: ${FONT_SIZE_STYLES.larger};
-  }
+  color: ${COLOR_STYLES.white};
+  font-size: ${FONT_SIZE_STYLES.larger};
 `;

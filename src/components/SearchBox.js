@@ -1,8 +1,8 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import styled from 'styled-components';
+import SearchIcon from 'styles/icons/SearchIcon';
+import { COLOR_STYLES, FONT_SIZE_STYLES } from 'styles/styles';
 import SearchDropdown from './SearchDropdown';
-import SearchIcon from '../styles/icons/SearchIcon';
-import { COLOR_STYLES, FONT_SIZE_STYLES } from '../styles/styles';
 
 const SearchBox = ({ setUserData, copiedData, setCurrentPage }) => {
   const [dropdownItem, setDropdownItem] = useState('name');
@@ -58,9 +58,9 @@ const SearchBoxContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid ${COLOR_STYLES.primaryDarker};
-  border-left: none;
-  font-size: ${FONT_SIZE_STYLES.small};
+  border-top: 1px solid ${COLOR_STYLES.primaryDarker};
+  border-bottom: 1px solid ${COLOR_STYLES.primaryDarker};
+  font-size: ${FONT_SIZE_STYLES.medium};
   border-radius: 6px;
 `;
 

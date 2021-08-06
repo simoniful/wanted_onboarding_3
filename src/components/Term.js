@@ -1,7 +1,7 @@
 import React from 'react';
-import styled from 'styled-components';
 import { AiOutlineCheck } from 'react-icons/ai';
 import { COLOR_STYLES, FONT_SIZE_STYLES, SIZE_STYLES } from 'styles/styles';
+import styled from 'styled-components';
 
 const Term = ({ isChecked, handleClick }) => {
   return (

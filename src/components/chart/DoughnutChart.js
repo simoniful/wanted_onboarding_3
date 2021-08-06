@@ -1,6 +1,6 @@
-import { layouts as S } from 'styles/layouts';
 import { Doughnut } from 'react-chartjs-2';
-import { COLOR_STYLES } from '../../styles/styles';
+import { layouts as S } from 'styles/layouts';
+import { COLOR_STYLES } from 'styles/styles';
 
 const DoughnutChart = ({ chartData }) => {
   const labelList = Object.keys(chartData);

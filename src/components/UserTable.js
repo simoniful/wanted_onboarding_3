@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import { CenterText } from 'styles/CenterText';
+import { COLOR_STYLES } from 'styles/styles';
+import { currentUsers } from 'utils/currentUsers';
+import { DATA_PER_PAGE } from 'utils/config';
 import Pagination from './Pagination';
 import TableData from './TableData';
-import { CenterText } from '../styles/CenterText';
-import { COLOR_STYLES } from '../styles/styles';
-import { currentUsers } from '../utils/currentUsers';
-import { DATA_PER_PAGE } from '../utils/config';
 
 let userInfo;
 let tableHead;

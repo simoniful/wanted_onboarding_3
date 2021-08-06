@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
-import { COLOR_STYLES, FONT_SIZE_STYLES, SIZE_STYLES } from 'styles/styles';
+import { useHistory } from 'react-router-dom';
 import useForm from 'hooks/useForm';
 import { LOGIN_USER, STORAGE_DATA } from 'utils/config';
 import { loginValidate } from 'utils/regex';
 import { getLocalStorage, setLocalStorage } from 'utils/storage';
-import { useHistory } from 'react-router-dom';
+import { COLOR_STYLES, FONT_SIZE_STYLES, SIZE_STYLES } from 'styles/styles';
+import styled from 'styled-components';
 import SignInForm from './SignInForm';
 
 const SignIn = () => {
@@ -36,7 +36,6 @@ const SignIn = () => {
   const handleSubmitLogin = (e) => {
     e.preventDefault();
     if (!isSignInFormOpen) return setIsSignInFormOpen(true);
-    // if form is open, validate login form and move to userPage, isSignInFormOpen to false
   };
 
   return (

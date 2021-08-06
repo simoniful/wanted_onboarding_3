@@ -1,14 +1,9 @@
-import React, {useState} from 'react';
-import styled from 'styled-components';
+import React from 'react';
+import AccountButton from 'components/AccountButton';
 import { layouts as S } from 'styles/layouts';
 import { useHistory } from 'react-router-dom';
 import { COLOR_STYLES, FONT_SIZE_STYLES } from 'styles/styles';
-import AccountButton from 'components/AccountButton';
-import { getLocalStorage, setLocalStorage } from 'utils/storage';
-import { LOGIN_USER } from '../utils/config';
-
-import { logout } from '../utils/auth';
-
+import styled from 'styled-components';
 
 const Navbar = ({ name }) => {
   const [loginUser, _] = useState(getLocalStorage(LOGIN_USER));
@@ -26,9 +21,7 @@ const Navbar = ({ name }) => {
     <NavWrap>
       <NavContainer>
         <NavContent>
-          <Logo href='/admin'>
-            <h2>Jaranda</h2>
-          </Logo>
+          <Logo>Jaranda</Logo>
           <MenuList>
             {menuList.map((menu, key) => (
               <Menu key={key}>{menu}</Menu>
@@ -42,13 +35,13 @@ const Navbar = ({ name }) => {
                 {name}님 hi
               </Name>
               <SmallMenuList>
-                  {menuList.map((menu, key) => (
+                {menuList.map((menu, key) => (
                   <Menu key={key}>{menu}</Menu>
-                  ))}
+                ))}
               </SmallMenuList>
               <UserMenuList>
                 {userMenu.map((menu, key) => (
-                <Menu key={key}>{menu}</Menu>
+                  <Menu key={key}>{menu}</Menu>
                 ))}
               </UserMenuList>
               <AccountContainer>
@@ -110,13 +103,11 @@ const PopupMenu = styled.div`
   }
 `;
 
-const Logo = styled.a`
+const Logo = styled.h2`
   width: 100%;
   cursor: pointer;
-  h2 {
-    color: ${COLOR_STYLES.white};
-    font-size: ${FONT_SIZE_STYLES.larger};
-  }
+  color: ${COLOR_STYLES.white};
+  font-size: ${FONT_SIZE_STYLES.larger};
 `;
 
 const NavWrap = styled.nav`

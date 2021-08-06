@@ -1,6 +1,6 @@
-import { layouts as S } from 'styles/layouts';
 import { Line } from 'react-chartjs-2';
-import { COLOR_STYLES } from '../../styles/styles';
+import { layouts as S } from 'styles/layouts';
+import { COLOR_STYLES } from 'styles/styles';
 
 const LineChart = ({ chartData }) => {
   const labelList = Object.keys(chartData);

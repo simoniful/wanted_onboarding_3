@@ -1,27 +1,27 @@
-import React, { useEffect, useState } from 'react';
+import { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { layouts as S } from 'styles/layouts';
 import { useHistory } from 'react-router-dom';
 import GlobalStyles from 'styles/GlobalStyles';
-import Navbar from 'components/Navbar';
-import UserTable from 'components/UserTable';
-import SearchBox from 'components/SearchBox';
-import UserCard from 'components/UserCard'
 import styled from 'styled-components';
-import { getLocalStorage, setLocalStorage } from 'utils/storage';
-import AccountButton from '../components/AccountButton';
-import { LOGIN_USER, SEARCH_DROPDOWN_ITEMS } from '../utils/config';
-import { logout } from '../utils/auth';
-import { currentUsers } from '../utils/currentUsers';
-
-
-let teacherList;
-const pageType = 'user';
+import { getLocalStorage, getTeacherList } from 'utils/storage';
+import { LOGIN_USER } from 'utils/config';
+import { logout } from 'utils/auth';
+import Navbar from 'components/Navbar';
+import { AccountButton } from 'components';
+import UserCard from 'components/UserCard';
+import { COLOR_STYLES } from 'styles/styles';
 
 const User = () => {
   const history = useHistory();
-
-  const [loginUser, _] = useState(getLocalStorage(LOGIN_USER));
-
+  const [teacherList] = useState(getTeacherList());
+  const [loginUser] = useState(getLocalStorage(LOGIN_USER));
+  const [isTeacher] = useState(loginUser.userType === 'teacher' ? true : false);
+  const [menuList] = useState(
+    loginUser.userType === 'parent'
+      ? ['학부모 메뉴1', '학부모 메뉴2', '학부모 메뉴3']
+      : ['선생님 메뉴1', '선생님 메뉴2', '선생님 메뉴3'],
+  );
 
   const onLogout = () => (logout(), history.push('/'));
 
@@ -60,138 +60,134 @@ const User = () => {
   return (
     <>
       <GlobalStyles />
-      <UserWrap>
-        <UserNavbar name={loginUser.name} />
-        <SwipeZone>
-      
-        </SwipeZone>
+      <S.Wrap>
+        <Navbar name={loginUser.name} />
         <UserContainer>
           <UserSection>
-            <ChartAside>
-              <S.Sidebar>
-                {teacherList.map((teacher, key)=>(
-                  <UserCard teacherName={teacher.name}/>
+            <S.Content>
+              <PageText>
+                <UserIcon />
+                {` 어서오세요 자란다 ${isTeacher ? `선생님` : `부모님`} 페이지입니다`}
+              </PageText>
+              <MenuList>
+                {menuList.map((sideMenu, key) => (
+                  <Menu key={key}>{sideMenu}</Menu>
                 ))}
+              </MenuList>
+              {isTeacher ? (
+                <>
+                  <ContentText>아이를 좋아하는 자란쌤</ContentText>
+                  <ContentText>함께 놀고 뛰며 아이의 꿈을 키워주세요!</ContentText>
+                  <TeacherImg />
+                </>
+              ) : (
+                <>
+                  <ContentText>96% 부모님이 추천합니다.</ContentText>
+                  <ContentText>딱 맞는 선생님을 무료로 추천 받으세요.</ContentText>
+                  <ParentImg />
+                </>
+              )}
+            </S.Content>
+            <CardAside>
+              <S.Sidebar>
+                <UserAccountBox>
+                  <AccountButton onClick={onLogout} content='로그아웃' />
+                </UserAccountBox>
+                <CardTitle>자란다와 함께하는 {`${isTeacher ? `학생` : `선생님`} `}</CardTitle>
+                <CardBox>
+                  {teacherList.map(({ name }, key) => (
+                    <UserCard teacherName={name} key={key} userType={isTeacher} />
+                  ))}
+                </CardBox>
               </S.Sidebar>
-            </ChartAside>
-            <TableBox>
-              <Welcome>
-                {`어서오세요 ${
-                  loginUser.userType === `teacher` ? `선생님` : `부모님`
-                } 페이지입니다`}
-              </Welcome>
-              <UserSearchBox>
-                <SearchBox  userData={teacherList}
-                  copiedData={copiedData}
-                  setUserData={setUserData}
-                  setCurrentPage={setCurrentPage} />
-              </UserSearchBox>
-            
-            </TableBox>
+            </CardAside>
           </UserSection>
         </UserContainer>
-      </UserWrap>
+      </S.Wrap>
     </>
   );
 };
 
-const Welcome = styled.h1`
-  @media only screen and (max-width: 1015px){
-    position: fixed;
-    top: 0;
-  }
-`;
-
-const UserNavbar = styled(Navbar)`
-
-    position: fixed !important;
-    top: 0;
-
-`
-const MainImg = styled.div`
-  
-  height: 580px;
-  width: 600px;
-`
-
-const UserSearchBox = styled.div`
+const MenuList = styled.ul`
+  display: flex;
   width: 100%;
-  @media only screen and (max-width: 1015px){
-    position: fixed;
-    left: 50%;
-    top: -14px;
-    transform: translate(-50%);
-    width: 530px;
-  }
+  padding: 10px 20px;
+  margin: 50px 0;
+  justify-content: center;
+  color: ${COLOR_STYLES.white};
+  background: ${COLOR_STYLES.primaryGradient};
 `;
 
-const SwipeZone = styled.div`
+const Menu = styled.li`
   width: 100%;
-  height: 200px;
-  background: url(./images/web_53.jpeg);
-
+  padding: 10px 0;
+  text-align: center;
 `;
 
-const UserWrap = styled(S.Wrap)`
-  background-color: #f9f9f9;
-  margin: 0 auto;
-  @media only screen and (max-width: 1015px){
-    background-color: #ececec;
-  }
+const PageText = styled.div`
+  font-size: 20px;
+  margin: 30px 0;
+  text-align: center;
+  align-items: center;
 `;
 
-const UserPageTable = styled(UserTable)`
-  & th:nth-child(5), td:nth-child(5) {
-    display: none !important;
-  }
+const CardTitle = styled.div`
+  padding: 10px 0;
+  margin-top: 58px;
+  color: ${COLOR_STYLES.white};
+  background: ${COLOR_STYLES.primaryDarker};
 `;
 
-const TableBox = styled(S.Content)`
-  width: 70%;
-  background: url(./images/user-img.png)no-repeat;
-
+const ContentText = styled.div`
+  font-size: 20px;
+  margin: 10px 0;
 `;
 
-const ChartAside = styled(S.Aside)`
-  width: 30%;
+const CardAside = styled(S.Aside)`
+  width: 40%;
   min-width: 300px;
-  max-height: 580px;
-  overflow: scroll;
-  background: linear-gradient(to right bottom,#a7cf53,#69d872);
 `;
 
+const UserAccountBox = styled(S.AccountBox)`
+  justify-content: center;
+`;
+
+const CardBox = styled.div`
+  height: 550px;
+  overflow: scroll;
+`;
+
+const UserIcon = styled.img.attrs({
+  src: '../../images/expertise_level_3.png',
+})`
+  width: 24px;
+  height: 24px;
+`;
 const UserContainer = styled(S.Container)`
-  width: 80%;
-  @media only screen and (max-width: 1015px){
-    margin: 0 auto;
+  @media only screen and (max-width: 1287px) {
+    margin: 0 calc((${window.innerWidth}px - 600px) / 2) !important;
   }
 `;
 
 const UserSection = styled(S.Section)`
-
-  @media only screen and (max-width: 1015px){
+  @media only screen and (max-width: 973px) {
     display: block;
-
-    & ${TableBox}{
-      min-width: 528px;
-      width: 100%;
-    }
-    & ${ChartAside}{
-      min-width: 528px;
-      width: 60%;
-      margin: 0 auto;
-    }
   }
 `;
 
-const MenuList = styled.li`
-  width: 100%;
-  background-color: #bbbbbb;
+const TeacherImg = styled.img.attrs({
+  src: 'images/teacher.png',
+})`
+  width: 620px;
+  height: 400px;
+  margin: 10px;
 `;
-
-const Menu = styled.ul`
-  width: 100%;
-  padding: 16px 0;
+const ParentImg = styled.img.attrs({
+  src: 'images/parent.png',
+})`
+  width: 620px;
+  height: 400px;
+  margin: 10px;
 `;
 
 export default User;

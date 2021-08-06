@@ -10,24 +10,21 @@ import AccountButton from 'components/AccountButton';
 import SearchBox from 'components/SearchBox';
 import SignUpModal from 'components/SignUpModal';
 import { getLocalStorage } from 'utils/storage';
-import { LOGIN_USER, STORAGE_DATA } from '../utils/config';
-import { logout } from '../utils/auth';
+import { LOGIN_USER, STORAGE_DATA } from 'utils/config';
+import { logout } from 'utils/auth';
 
 const Admin = () => {
   const history = useHistory();
-  const [loginUser, _] = useState(getLocalStorage(LOGIN_USER));
-
-  // 데이터 테이블 관련 state 입니다.
+  const [loginUser] = useState(getLocalStorage(LOGIN_USER));
   const [userData, setUserData] = useState([]);
   const [copiedData, setCopiedData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
 
   const onLogout = () => (logout(), history.push('/'));
-  const onCreateAccount = () => {};
 
   useEffect(() => {
-    setUserData(getLocalStorage(STORAGE_DATA.users));
-    setCopiedData(getLocalStorage(STORAGE_DATA.users));
+    setUserData(getLocalStorage(STORAGE_DATA.users).reverse());
+    setCopiedData(getLocalStorage(STORAGE_DATA.users).reverse());
   }, []);
 
   return (
@@ -68,7 +65,7 @@ const Admin = () => {
 
 const TableBox = styled(S.Content)`
   width: 60%;
-  min-width: 600px;
+  min-width: 700px;
 `;
 
 const ChartAside = styled(S.Aside)`
@@ -77,21 +74,19 @@ const ChartAside = styled(S.Aside)`
 `;
 
 const AdminContainer = styled(S.Container)`
-  @media only screen and (max-width: 1055px){
+  @media only screen and (max-width: 1055px) {
     margin: 0 auto;
   }
 `;
 
 const AdminSection = styled(S.Section)`
-  
-  @media only screen and (max-width: 1055px){
+  @media only screen and (max-width: 1055px) {
     display: block;
-
-    & ${TableBox}{
+    & ${TableBox} {
       min-width: 528px;
       width: 100%;
     }
-    & ${ChartAside}{
+    & ${ChartAside} {
       min-width: 528px;
       width: 100%;
     }
