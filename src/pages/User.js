@@ -16,8 +16,8 @@ import { logout } from '../utils/auth';
 const User = () => {
   const history = useHistory();
 
-  const [loginUser, _] = useState(getLocalStorage(LOGIN_USER));
-  const [menuList, __] = useState(
+  const [loginUser] = useState(getLocalStorage(LOGIN_USER));
+  const [menuList] = useState(
     loginUser.userType === 'parent'
       ? ['학부모 메뉴1', '학부모 메뉴2', '학부모 메뉴3']
       : ['선생님 메뉴1', '선생님 메뉴2', '선생님 메뉴3'],
