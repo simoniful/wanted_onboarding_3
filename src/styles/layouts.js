@@ -49,5 +49,5 @@ export const layouts = {
 
   ChartWrap: styled.div`
     height: 160px;
-  `
+  `,
 };

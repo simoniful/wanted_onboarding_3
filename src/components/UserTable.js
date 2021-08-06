@@ -2,18 +2,20 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Pagination from './Pagination';
 import TableData from './TableData';
+import { CenterText } from '../styles/CenterText';
 import { COLOR_STYLES } from '../styles/styles';
 import { currentUsers } from '../utils/currentUsers';
-import { DATA_PER_PAGE, GET_USER_STORAGE_KEYWARD } from '../utils/constants';
-import { tempGetStoreage, tempSetStoreage } from '../utils/storage';
+import { DATA_PER_PAGE } from '../utils/config';
 
 let userInfo;
 let tableHead;
+
+
 const UserTable = ({ userData, pageType }) => {
   const [currentUserData, setCurrentUserData] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
   const [firstIndex, setFirstIndex] = useState(null);
   const [lastIndex, setLastIndex] = useState(null);
+  const [currentPage, setCurrentPage] = useState([]);
 
   useEffect(() => {
     const nextLastIndex = currentPage * DATA_PER_PAGE;
@@ -39,7 +41,7 @@ const UserTable = ({ userData, pageType }) => {
 
   
   if (userData.length === 0) {
-    return <p>데이터가 비어 있습니다.</p>;
+    return <CenterText>데이터가 없습니다</CenterText>;
   }
 
   return (
@@ -54,7 +56,7 @@ const UserTable = ({ userData, pageType }) => {
           </tr>
         </thead>
         <tbody>
-          <TableData TableData={currentUserData} pageType={pageType} />
+          <TableData TableData={userData} pageType={pageType} />
         </tbody>
       </TableContainer>
       <Pagination

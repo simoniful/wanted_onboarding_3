@@ -1,75 +1,81 @@
 import React, { useEffect, useState } from 'react';
-
 import { layouts as S } from 'styles/layouts';
-import styled from 'styled-components';
+import { useHistory } from 'react-router-dom';
 import GlobalStyles from 'styles/GlobalStyles';
 import Navbar from 'components/Navbar';
 import UserTable from 'components/UserTable';
-import AccountButton from 'components/AccountButton';
 import SearchBox from 'components/SearchBox';
 import UserCard from 'components/UserCard'
-import { tempGetStorage, tempSetStorage } from 'utils/storage/index';
-import { GET_USER_STORAGE_KEYWORD } from '../utils/config';
+import styled from 'styled-components';
+import { getLocalStorage, setLocalStorage } from 'utils/storage';
+import AccountButton from '../components/AccountButton';
+import { LOGIN_USER, SEARCH_DROPDOWN_ITEMS } from '../utils/config';
+import { logout } from '../utils/auth';
 import { currentUsers } from '../utils/currentUsers';
 
 
-
-let teacherList = [];
+let teacherList;
 const pageType = 'user';
 
-const Admin = () => {
-  // 사용자 test data & 버튼클릭 test 이벤트
-  const [user, setUser] = useState('사용자1');
-  // const [menuList, setMenuList] = useState(['menu1', 'menu2', 'menu3', 'menu4']); // menu mock data
+const User = () => {
+  const history = useHistory();
+
+  const [loginUser, _] = useState(getLocalStorage(LOGIN_USER));
+
+
+  const onLogout = () => (logout(), history.push('/'));
+
   const userMenu = ['마이페이지', '이용안내'];
-  const menuList = ['선생님보기', '신청서작성', '신청내역', '방문일정', '방문일지'];
-  const logout = () => {};
-
-  // 데이터 테이블 관련 state 입니다.
-  const [userData, setUserData] = useState([]);
-  const [copiedData, setCopiedData] = useState([]);
-
-  useEffect(() => {
-    tempSetStorage();
-    setUserData(tempGetStorage(GET_USER_STORAGE_KEYWORD));
-    setCopiedData(tempGetStorage(GET_USER_STORAGE_KEYWORD));
-   
-  }, []);
-
   const [currentUserData, setCurrentUserData] = useState([]);
   const [firstIndex, setFirstIndex] = useState(null);
   const [lastIndex, setLastIndex] = useState(null);
-
+  const [userData, setUserData] = useState([]);
+  const [copiedData, setCopiedData] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  
+  teacherList = []
 
   useEffect(() => {
     setCurrentUserData((currentUsers(userData, firstIndex, lastIndex)));
   }, [userData, firstIndex, lastIndex]);
 
-  teacherList = [];
-  for(let i =0; i<userData.length; i++){
-    if(userData[i].userType==='teacher'){
-      teacherList.push(userData[i])
+  useEffect(() => {
+    setUserData(getLocalStorage( SEARCH_DROPDOWN_ITEMS));
+    setCopiedData(getLocalStorage( SEARCH_DROPDOWN_ITEMS));
+  }, []);
+
+  function pushData(){
+    for(let i =0; i<userData.length; i++){
+      if(userData[i].userType==='teacher'){
+        teacherList.push(userData[i])
+      }
     }
   }
-
-  console.log(teacherList);
-  if (userData.length === 0) {
-    return <p>데이터가 비어 있습니다.</p>;
-  }
+  pushData();
+  pushData();
+  pushData();
+  pushData();
+  
 
   return (
     <>
       <GlobalStyles />
       <UserWrap>
-        <UserNavbar user={user} menuList={menuList} userMenu={userMenu} />
+        <UserNavbar name={loginUser.name} />
         <SwipeZone>
       
         </SwipeZone>
         <UserContainer>
           <UserSection>
             <TableBox>
+              <h1>{`어서오세요 ${
+                loginUser.userType === `teacher` ? `선생님` : `부모님`
+              } 페이지입니다`}</h1>
               <UserSearchBox>
-                <SearchBox userData={teacherList} setUserData={setUserData} copiedData={copiedData} />
+                <SearchBox  userData={teacherList}
+                  copiedData={copiedData}
+                  setUserData={setUserData}
+                  setCurrentPage={setCurrentPage} />
               </UserSearchBox>
               <UserPageTable userData={teacherList} pageType={pageType} />
             </TableBox>
@@ -95,6 +101,7 @@ const UserNavbar = styled(Navbar)`
 `
 
 const UserSearchBox = styled.div`
+  width: 100%;
   @media only screen and (max-width: 800px){
     position: fixed;
     left: 50%;
@@ -161,4 +168,14 @@ const UserSection = styled(S.Section)`
   }
 `;
 
-export default Admin;
+const MenuList = styled.li`
+  width: 100%;
+  background-color: #bbbbbb;
+`;
+
+const Menu = styled.ul`
+  width: 100%;
+  padding: 16px 0;
+`;
+
+export default User;
