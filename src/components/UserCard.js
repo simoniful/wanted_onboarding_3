@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { layouts as S } from 'styles/layouts';
 
 const UserCard = ({ teacherName }) => {
   return (
