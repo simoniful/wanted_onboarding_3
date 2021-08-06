@@ -1,13 +1,10 @@
-import mockData from 'utils/usersData';
-
-// LocalStorage 함수 사용시 keyword 는 config.js 안에 있는 STORAGE.DATA 통해서 설정
 export const setLocalStorage = (keyword, data) => {
   localStorage.removeItem(keyword);
   localStorage.setItem(keyword, JSON.stringify(data));
 };
 
 export const getLocalStorage = (keyword) => {
-  const storageData = JSON.parse(localStorage.getItem(keyword)) || mockData;
+  const storageData = JSON.parse(localStorage.getItem(keyword));
 
   return storageData;
 };
@@ -47,3 +44,6 @@ export function removeStore(key, value) {
     localStorage.setItem(key, JSON.stringify(prevStored));
   }
 }
+
+export const getTeacherList = () =>
+  getLocalStorage('users').filter(({ userType }) => userType === 'teacher');
