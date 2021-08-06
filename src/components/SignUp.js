@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import styled from 'styled-components';
 import { COLOR_STYLES, FONT_SIZE_STYLES, SIZE_STYLES } from 'styles/styles';
 import { InputWrapper } from 'styles/InputWrapper';
@@ -12,6 +12,7 @@ import UserTypeSelect from 'components/UserTypeSelect';
 import useInput from 'hooks/useInput';
 import { STORAGE_DATA } from 'utils/config';
 import { filterObject } from 'utils/filterObject';
+import { useHistory } from 'react-router-dom';
 
 const SignUp = () => {
   const [userData, setUserData] = useState(getLocalStorage(STORAGE_DATA.users));
@@ -19,6 +20,7 @@ const SignUp = () => {
   const [isParentChecked, setIsParentChecked] = useState(true);
   const address = useInput('');
   const cardNumber = useInput('');
+  const history = useHistory();
 
   const signUp = (values) => {
     if (!address.value || !cardNumber.value) {
@@ -65,6 +67,10 @@ const SignUp = () => {
       setIsParentChecked(false);
     }
   };
+
+  const onRefresh = useCallback(() => {
+    history.go(0);
+  }, [history]);
 
   return (
     <Container>
@@ -155,7 +161,7 @@ const SignUp = () => {
 
         <Term isChecked={isTermChecked} handleClick={handleClickTerm} />
 
-        <ButtonSubmit type='submit'>
+        <ButtonSubmit type='submit' onClick={() => onRefresh()}>
           <span>가입하기</span>
         </ButtonSubmit>
       </form>
