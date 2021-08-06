@@ -13,6 +13,22 @@ const PaginationContainer = styled.div`
   }
 `;
 
+const EdgeLeftArrow = styled.p`
+  visibility: ${(props) => (props.inactive ? 'hidden' : 'visible')};
+`;
+
+const PrevLeftArrow = styled.p`
+  visibility: ${(props) => (props.inactive ? 'hidden' : 'visible')};
+`;
+
+const EdgeRightArrow = styled.p`
+  visibility: ${(props) => (props.inactive ? 'hidden' : 'visible')};
+`;
+
+const NextRightArrow = styled.p`
+  visibility: ${(props) => (props.inactive ? 'hidden' : 'visible')};
+`;
+
 const PageUl = styled.ul`
   display: flex;
   justify-content: space-between;
@@ -34,7 +50,10 @@ const Pagination = ({ totalDataNum, paginate, currentPage }) => {
     const totalPageList = Array.from({ length: totalPageNum }, (v, i) => i + 1);
 
     if (currentPage <= ONE_WAY_MIN_PAGE_NUM) {
-      const displayedPageList = totalPageList.slice(0, currentPage + ONE_WAY_MIN_PAGE_NUM - 1);
+      const displayedPageList = totalPageList.slice(0, ONE_WAY_MIN_PAGE_NUM + 2);
+      setPageLists(displayedPageList);
+    } else if (currentPage >= totalPageNum - 2) {
+      const displayedPageList = totalPageList.slice(totalPageNum - 5, totalPageNum);
       setPageLists(displayedPageList);
     } else if (currentPage > ONE_WAY_MIN_PAGE_NUM) {
       const displayedPageList = totalPageList.slice(
@@ -62,8 +81,12 @@ const Pagination = ({ totalDataNum, paginate, currentPage }) => {
 
   return (
     <PaginationContainer>
-      <p onClick={() => goEdgePage(1)}>{'|<'}</p>
-      <p onClick={() => goNextToPage(currentPage - 1)}>{'<'}</p>
+      <EdgeLeftArrow onClick={() => goEdgePage(1)} inactive={currentPage === 1}>
+        {'|<'}
+      </EdgeLeftArrow>
+      <PrevLeftArrow onClick={() => goNextToPage(currentPage - 1)} inactive={currentPage === 1}>
+        {'<'}
+      </PrevLeftArrow>
       <PageUl>
         {pageLists.map((number) => (
           <PageLi key={number} active={currentPage === number}>
@@ -71,8 +94,16 @@ const Pagination = ({ totalDataNum, paginate, currentPage }) => {
           </PageLi>
         ))}
       </PageUl>
-      <p onClick={() => goNextToPage(currentPage + 1)}>{'>'}</p>
-      <p onClick={() => goEdgePage(totalPageNum)}>{'>|'}</p>
+      <NextRightArrow
+        onClick={() => goNextToPage(currentPage + 1)}
+        inactive={currentPage === totalPageNum}>
+        {'>'}
+      </NextRightArrow>
+      <EdgeRightArrow
+        onClick={() => goEdgePage(totalPageNum)}
+        inactive={currentPage === totalPageNum}>
+        {'>|'}
+      </EdgeRightArrow>
     </PaginationContainer>
   );
 };
