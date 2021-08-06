@@ -4,6 +4,12 @@
 
 🔗 Demo Page : [https://jaranda-coco.netlify.app/](https://jaranda-coco.netlify.app/)
 
+### Test ID
+
+**Admin**   : admin / admin123 </br>
+**Parent**  : hamonica22 / monana009 </br>
+**Teacher** : jin66 / 1234 </br>
+
 ## 💬 프로젝트 개요
 
 Jaranda : 유저 정보를 입력받아 회원가입 페이지 구현 / 로그인 & 로그아웃 기능 구현 / 다양한 메뉴를 가진 Admin 홈페이지 구현
