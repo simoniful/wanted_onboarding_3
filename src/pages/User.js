@@ -9,6 +9,7 @@ import { logout } from 'utils/auth';
 import Navbar from 'components/Navbar';
 import { AccountButton } from 'components';
 import UserCard from 'components/UserCard';
+import { COLOR_STYLES } from 'styles/styles';
 
 const User = () => {
   const history = useHistory();
