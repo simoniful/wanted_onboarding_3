@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import { COLOR_STYLES } from '../styles/styles';
 import BarChart from './chart/BarChart';
 import LineChart from './chart/LineChart';
 import DoughnutChart from './chart/DoughnutChart';
+import { COLOR_STYLES } from '../styles/styles';
 
 const Chart = ({ userData }) => {
   const getCntObj = (addressList) => {

@@ -1,8 +1,8 @@
 import React from 'react';
-import styled from 'styled-components';
+import AccountButton from 'components/AccountButton';
 import { layouts as S } from 'styles/layouts';
 import { COLOR_STYLES, FONT_SIZE_STYLES } from 'styles/styles';
-import AccountButton from 'components/AccountButton';
+import styled from 'styled-components';
 
 const Navbar = ({ name }) => {
   const menuList = ['공통메뉴1', '공통메뉴2', '공통메뉴3'];

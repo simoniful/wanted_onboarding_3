@@ -5,10 +5,6 @@ const Address = (props) => {
   function fetchAddressApi() {
     new window.daum.Postcode({
       oncomplete(data) {
-        // full 주소명 받기
-        // const res = data.userSelectedType === 'R' ? data.roadAddress : data.jibunAddress;
-
-        // 시군구 데이터 까지만 받기
         props.onChange({ target: { value: `${data.sido} ${data.sigungu}` } });
       },
     }).open();

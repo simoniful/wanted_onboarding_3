@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
-import styled from 'styled-components';
 import { COLOR_STYLES, FONT_SIZE_STYLES, SIZE_STYLES } from 'styles/styles';
+import styled from 'styled-components';
 
 function CardNumber(props) {
   const { value, onChange } = props;
@@ -13,10 +13,8 @@ function CardNumber(props) {
   };
 
   const closeModal = (e) => {
-    // 저장버튼을 눌렀을때
     if (e.currentTarget.id === 'save-btn') {
       const a = [...cardNumberRef.current.childNodes].map((node) => node.value);
-      // 돔 접근 이거 처리 해야하는뎅
       cardNumberRef.current.childNodes.value = '';
       onChange({ target: { value: a.join('-') } });
     }

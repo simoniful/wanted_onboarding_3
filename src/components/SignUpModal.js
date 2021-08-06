@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
 import SignUp from 'components/SignUp';
 import AccountButton from 'components/AccountButton';
+import styled from 'styled-components';
 
 function SignUpModal() {
   const [modalVisible, setModalVisible] = useState(false);

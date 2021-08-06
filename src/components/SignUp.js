@@ -1,7 +1,5 @@
 import React, { useCallback, useState } from 'react';
-import styled from 'styled-components';
-import { COLOR_STYLES, FONT_SIZE_STYLES, SIZE_STYLES } from 'styles/styles';
-import { InputWrapper } from 'styles/InputWrapper';
+import { useHistory } from 'react-router-dom';
 import useForm from 'hooks/useForm';
 import { signupValidate } from 'utils/regex';
 import { getLocalStorage, setLocalStorage } from 'utils/storage';
@@ -12,7 +10,9 @@ import UserTypeSelect from 'components/UserTypeSelect';
 import useInput from 'hooks/useInput';
 import { STORAGE_DATA } from 'utils/config';
 import { filterObject } from 'utils/filterObject';
-import { useHistory } from 'react-router-dom';
+import { COLOR_STYLES, FONT_SIZE_STYLES, SIZE_STYLES } from 'styles/styles';
+import { InputWrapper } from 'styles/InputWrapper';
+import styled from 'styled-components';
 
 const SignUp = () => {
   const [userData, setUserData] = useState(getLocalStorage(STORAGE_DATA.users));

@@ -1,7 +1,7 @@
 import React from 'react';
-import styled from 'styled-components';
 import { FONT_SIZE_STYLES, SIZE_STYLES } from 'styles/styles';
 import { InputWrapper } from 'styles/InputWrapper';
+import styled from 'styled-components';
 
 const SignInForm = ({ isSignInFormOpen, values, errors, handleChange }) => {
   return !isSignInFormOpen ? (

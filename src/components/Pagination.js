@@ -1,46 +1,7 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
-import styled from 'styled-components';
 import { DATA_PER_PAGE, ONE_WAY_MIN_PAGE_NUM } from 'utils/config';
 import { getTotalPageNum } from 'utils/getTotalPageNum';
-
-const PaginationContainer = styled.div`
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-
-  & p {
-    cursor: pointer;
-  }
-`;
-
-const EdgeLeftArrow = styled.p`
-  visibility: ${(props) => (props.inactive ? 'hidden' : 'visible')};
-`;
-
-const PrevLeftArrow = styled.p`
-  visibility: ${(props) => (props.inactive ? 'hidden' : 'visible')};
-`;
-
-const EdgeRightArrow = styled.p`
-  visibility: ${(props) => (props.inactive ? 'hidden' : 'visible')};
-`;
-
-const NextRightArrow = styled.p`
-  visibility: ${(props) => (props.inactive ? 'hidden' : 'visible')};
-`;
-
-const PageUl = styled.ul`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`;
-
-const PageLi = styled.li`
-  color: ${(props) => (props.active ? '#87bf44' : 'black')};
-  text-decoration: ${(props) => (props.active ? 'underline' : 'none')};
-  margin: 15px;
-  cursor: pointer;
-`;
+import styled from 'styled-components';
 
 const Pagination = ({ totalDataNum, paginate, currentPage }) => {
   const [pageLists, setPageLists] = useState([]);
@@ -109,3 +70,42 @@ const Pagination = ({ totalDataNum, paginate, currentPage }) => {
 };
 
 export default Pagination;
+
+const PaginationContainer = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+
+  & p {
+    cursor: pointer;
+  }
+`;
+
+const EdgeLeftArrow = styled.p`
+  visibility: ${(props) => (props.inactive ? 'hidden' : 'visible')};
+`;
+
+const PrevLeftArrow = styled.p`
+  visibility: ${(props) => (props.inactive ? 'hidden' : 'visible')};
+`;
+
+const EdgeRightArrow = styled.p`
+  visibility: ${(props) => (props.inactive ? 'hidden' : 'visible')};
+`;
+
+const NextRightArrow = styled.p`
+  visibility: ${(props) => (props.inactive ? 'hidden' : 'visible')};
+`;
+
+const PageUl = styled.ul`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+const PageLi = styled.li`
+  color: ${(props) => (props.active ? '#87bf44' : 'black')};
+  text-decoration: ${(props) => (props.active ? 'underline' : 'none')};
+  margin: 15px;
+  cursor: pointer;
+`;
