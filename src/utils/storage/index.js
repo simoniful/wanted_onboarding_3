@@ -1,6 +1,5 @@
 import mockData from 'utils/usersData';
 
-// LocalStorage 함수 사용시 keyword 는 config.js 안에 있는 STORAGE.DATA 통해서 설정
 export const setLocalStorage = (keyword, data) => {
   localStorage.removeItem(keyword);
   localStorage.setItem(keyword, JSON.stringify(data));
@@ -16,7 +15,6 @@ export const clearLocalStorage = () => {
   localStorage.clear();
 };
 
-// 스토리지 관련 임시 함수
 export function CheckPropDoup(storeArray, propVal) {
   for (let i = 0, k = storeArray.length; i < k; i += 1) {
     if (storeArray[i] === propVal) return true;
