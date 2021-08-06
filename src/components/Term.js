@@ -8,7 +8,12 @@ const Term = ({ isChecked, handleClick }) => {
     <TermWrapper isChecked={isChecked} onClick={handleClick}>
       <input type='checkbox' id='term' />
       <AiOutlineCheck />
-      <a href='#'>이용약관</a>
+      <a
+        href='https://tenor.com/view/party-surprise-scary-horror-gif-13089463'
+        target='_blank'
+        rel='noreferrer'>
+        이용약관
+      </a>
       <label htmlFor='term'>을 모두 읽었으며 이에 동의합니다.</label>
     </TermWrapper>
   );
