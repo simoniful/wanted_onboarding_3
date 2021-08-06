@@ -12,9 +12,7 @@ const Navbar = ({ name }) => {
     <NavWrap>
       <NavContainer>
         <NavContent>
-          <Logo href='/admin'>
-            <h2>Jaranda</h2>
-          </Logo>
+          <Logo>Jaranda</Logo>
           <MenuList>
             {menuList.map((menu, key) => (
               <Menu key={key}>{menu}</Menu>
@@ -81,13 +79,11 @@ const PopupMenu = styled.div`
   }
 `;
 
-const Logo = styled.a`
+const Logo = styled.h2`
   width: 100%;
   cursor: pointer;
-  h2 {
-    color: ${COLOR_STYLES.white};
-    font-size: ${FONT_SIZE_STYLES.larger};
-  }
+  color: ${COLOR_STYLES.white};
+  font-size: ${FONT_SIZE_STYLES.larger};
 `;
 
 const NavWrap = styled.nav`
