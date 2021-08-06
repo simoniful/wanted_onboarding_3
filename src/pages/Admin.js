@@ -21,11 +21,10 @@ const Admin = () => {
   const [currentPage, setCurrentPage] = useState(1);
 
   const onLogout = () => (logout(), history.push('/'));
-  const onCreateAccount = () => {};
 
   useEffect(() => {
-    setUserData(getLocalStorage(STORAGE_DATA.users));
-    setCopiedData(getLocalStorage(STORAGE_DATA.users));
+    setUserData(getLocalStorage(STORAGE_DATA.users).reverse());
+    setCopiedData(getLocalStorage(STORAGE_DATA.users).reverse());
   }, []);
 
   return (
@@ -66,7 +65,7 @@ const Admin = () => {
 
 const TableBox = styled(S.Content)`
   width: 60%;
-  min-width: 600px;
+  min-width: 700px;
 `;
 
 const ChartAside = styled(S.Aside)`
