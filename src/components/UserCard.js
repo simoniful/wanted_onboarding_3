@@ -1,24 +1,46 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const UserCard = ({ teacherName }) => {
+const UserCard = ({ teacherName, userType }) => {
   return (
     <CardWrap>
-      <div>
-        <ImgBox>
-          <UserImg />
-        </ImgBox>
-        <p>신규</p>
-      </div>
-      <TextBox>
-        <ImOnTheTextLevel>
-          <UserIcon />
-          <TextLevel>잘 자란 선생님</TextLevel>
-        </ImOnTheTextLevel>
-        <TextName>{teacherName}</TextName>
-        <TextSchool>학교</TextSchool>
-        <TextComment>의대생과 함께하는 이해 쏙쏙 수학 수업</TextComment>
-      </TextBox>
+      {userType ? (
+        <>
+          <div>
+            <ImgBox>
+              <StudentImg />
+            </ImgBox>
+            <p>신규</p>
+          </div>
+          <TextBox>
+            <ImOnTheTextLevel>
+              <UserIcon />
+              <TextLevel>잘 자란 학생</TextLevel>
+            </ImOnTheTextLevel>
+            <TextName>{teacherName}</TextName>
+            <TextSchool>학교</TextSchool>
+            <TextComment>미술과 공룡 그리기를 좋아하는 친구</TextComment>
+          </TextBox>
+        </>
+      ) : (
+        <>
+          <div>
+            <ImgBox>
+              <TeacherImg />
+            </ImgBox>
+            <p>신규</p>
+          </div>
+          <TextBox>
+            <ImOnTheTextLevel>
+              <UserIcon />
+              <TextLevel>잘 자란 선생님</TextLevel>
+            </ImOnTheTextLevel>
+            <TextName>{teacherName}</TextName>
+            <TextSchool>학교</TextSchool>
+            <TextComment>의대생과 함께하는 이해 쏙쏙 수학 수업</TextComment>
+          </TextBox>
+        </>
+      )}
     </CardWrap>
   );
 };
@@ -45,11 +67,17 @@ const ImgBox = styled.div`
   margin-bottom: 10px;
 `;
 
-const UserImg = styled.img.attrs({
-  src: '../../images/teacherImgSample.png',
+const StudentImg = styled.img.attrs({
+  src: '../../images/studentLogo.png',
 })`
   width: 64px;
-  height: 80px;
+  height: 64px;
+`;
+const TeacherImg = styled.img.attrs({
+  src: '../../images/teacherLogo.png',
+})`
+  width: 64px;
+  height: 64px;
 `;
 
 const UserIcon = styled.img.attrs({
