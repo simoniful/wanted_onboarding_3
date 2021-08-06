@@ -25,13 +25,13 @@ const Navbar = ({ name }) => {
             <h1>{name}</h1>
             <PopupMenu>
               <SmallMenuList>
-                {menuList.map((menu) => (
-                  <Menu>{menu}</Menu>
+                {menuList.map((menu, key) => (
+                  <Menu key={key}>{menu}</Menu>
                 ))}
               </SmallMenuList>
               <UserMenuList>
-                {userMenu.map((menu) => (
-                  <Menu>{menu}</Menu>
+                {userMenu.map((menu, key) => (
+                  <Menu key={key}>{menu}</Menu>
                 ))}
               </UserMenuList>
               <AccountContainer>
