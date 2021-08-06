@@ -15,7 +15,7 @@ import { logout } from '../utils/auth';
 
 const Admin = () => {
   const history = useHistory();
-  const [loginUser, _] = useState(getLocalStorage(LOGIN_USER));
+  const [loginUser] = useState(getLocalStorage(LOGIN_USER));
   const [userData, setUserData] = useState([]);
   const [copiedData, setCopiedData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
