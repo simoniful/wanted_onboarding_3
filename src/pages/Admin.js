@@ -16,8 +16,6 @@ import { logout } from '../utils/auth';
 const Admin = () => {
   const history = useHistory();
   const [loginUser, _] = useState(getLocalStorage(LOGIN_USER));
-
-  // 데이터 테이블 관련 state 입니다.
   const [userData, setUserData] = useState([]);
   const [copiedData, setCopiedData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);

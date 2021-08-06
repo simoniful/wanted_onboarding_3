@@ -1,11 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 import { COLOR_STYLES, FONT_SIZE_STYLES } from '../styles/styles';
 
 const AccountButton = ({ onClick, content, width, height }) => (
   <Button width={width} height={height} onClick={onClick}>
-    <Link to='/login'>{content}</Link>
+    {content}
   </Button>
 );
 
