@@ -1,21 +1,13 @@
+  
 import React from 'react';
 import AccountButton from 'components/AccountButton';
 import { layouts as S } from 'styles/layouts';
-import { useHistory } from 'react-router-dom';
 import { COLOR_STYLES, FONT_SIZE_STYLES } from 'styles/styles';
 import styled from 'styled-components';
 
 const Navbar = ({ name }) => {
-  const [loginUser, _] = useState(getLocalStorage(LOGIN_USER));
-  const [menuList, __] = useState(
-    loginUser.userType === 'parent'
-      ? ['선생님보기', '신청서작성', '신청내역', '방문일정', '방문일지']
-      : ['선생님메뉴', '신청서보기', '수락내역', '일정', '방문일지'],
-  );
-  const history = useHistory();
-  
-  const userMenu = ['마이페이지', '이용안내'];
-  const onLogout = () => (logout(), history.push('/'));
+  const menuList = ['공통메뉴1', '공통메뉴2', '공통메뉴3'];
+  const userMenu = ['1', '2'];
 
   return (
     <NavWrap>
@@ -29,11 +21,8 @@ const Navbar = ({ name }) => {
           </MenuList>
           <Account>
             <AccountImg></AccountImg>
-          
+            <UserName>{name}</UserName>
             <PopupMenu>
-              <Name>
-                {name}님 hi
-              </Name>
               <SmallMenuList>
                 {menuList.map((menu, key) => (
                   <Menu key={key}>{menu}</Menu>
@@ -44,12 +33,9 @@ const Navbar = ({ name }) => {
                   <Menu key={key}>{menu}</Menu>
                 ))}
               </UserMenuList>
-              <AccountContainer>
-                <AccountButton width='70%;' height='34px;' onClick={onLogout} content='로그아웃'></AccountButton>
-              </AccountContainer>
+             
             </PopupMenu>
           </Account>
-          
         </NavContent>
       </NavContainer>
     </NavWrap>
@@ -57,38 +43,40 @@ const Navbar = ({ name }) => {
 };
 
 const theme = {
-  threshold: '1015px',
+  threshold: '800px',
 };
 
-const Name = styled.h1`
-  width: 100%;
-  display: block;
-  text-align: center;
-  padding: 8px;
-  color: purple;
-  font-weight: bold;
+const UserName = styled.h1`
+  width:44px;
 `
 
+
 const AccountContainer = styled(S.Container)`
-  width: 100px;
   margin: 4px auto !important;
   text-align: center;
+
 `;
 
 const PopupMenu = styled.div`
   width: 160px;
   position: absolute;
-  top: 56px;
-  right: 3%;
+  top: 70px;
+  right: 13%;
   background: white;
   border: 1px solid #ececec;
   border-radius: 3px;
   box-shadow: 0 6px 12px rgb(0 0 0 / 18%);
   display: none;
 
+  @media only screen and ${`(max-width: ${theme.threshold})`} {
+    position: fiex;
+    right: 4%;
+    z-index: 9999;
+  }
+
+
   @media only screen and ${`(min-width: ${theme.threshold})`} {
     display: none;
-    right: 11%;
     & ul {
       display: none;
     }
@@ -100,6 +88,7 @@ const PopupMenu = styled.div`
     :hover {
       color: ${COLOR_STYLES.primary};
     }
+
   }
 `;
 
@@ -112,19 +101,13 @@ const Logo = styled.h2`
 
 const NavWrap = styled.nav`
   width: 100%;
-  height: 62px;
+  height: 100%;
   padding: 0;
   color: ${COLOR_STYLES.white};
   background: ${COLOR_STYLES.primaryGradient};
-
-  @media only screen and ${`(max-width: ${theme.threshold})`}{
-    color: linear-gradient(to right bottom,#a7cf53,#69d872);
-  }
-
   & h2 {
     @media only screen and ${`(max-width: ${theme.threshold})`} {
       font-size: ${FONT_SIZE_STYLES.large};
-      color: black;
     }
   }
 `;
@@ -132,8 +115,6 @@ const NavWrap = styled.nav`
 const NavContainer = styled(S.Container)`
   @media only screen and ${`(max-width: ${theme.threshold})`} {
     width: 95%;
-    position: fixed;
-
   }
 `;
 
@@ -142,7 +123,7 @@ const NavContent = styled.div`
   align-items: center;
   justify-content: space-between;
   display: flex;
-  height: 62px;
+  height: 10vh;
   padding: 0 15px;
 `;
 
@@ -151,15 +132,14 @@ const MenuList = styled.ul`
   align-items: center;
   width: 540%;
   margin-left: 8%;
-  @media only screen and ${`(max-width: ${theme.threshold})`}{
-    opacity: 0;
+  @media only screen and ${`(max-width: ${theme.threshold})`} {
+    display: none;
     margin: 0 auto;
   }
 `;
 
 const UserMenuList = styled.ol`
   border-top: solid 2px #ececec;
-
   @media only screen and ${`(min-width: ${theme.threshold})`} {
     border: none;
   }
@@ -188,13 +168,12 @@ const SmallMenuList = styled(MenuList)`
 
 const Account = styled.div`
   display: flex;
-  position: relaive;
   justify-content: flex-end;
   align-items: center;
   width: 100%;
-  height: 60px;
+  height: 52px;
+  
   color: ${COLOR_STYLES.greyDarker};
-
   :hover ${PopupMenu} {
     display: block;
   }
@@ -202,8 +181,8 @@ const Account = styled.div`
 
 const AccountImg = styled.div`
   background-image: url(https://jaranda.kr/assets/image/mypage.svg);
-  width: 22px;
-  height: 22px;
+  width: 24px;
+  height: 24px;
   padding: 5px 0;
   filter: opacity(0.5) drop-shadow(0 0 0 black);
   :hover {

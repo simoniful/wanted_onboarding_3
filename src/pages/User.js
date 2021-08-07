@@ -1,7 +1,7 @@
+import React, {useEffect} from 'react';
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { layouts as S } from 'styles/layouts';
-import { useHistory } from 'react-router-dom';
 import GlobalStyles from 'styles/GlobalStyles';
 import styled from 'styled-components';
 import { getLocalStorage, getTeacherList } from 'utils/storage';
@@ -11,10 +11,12 @@ import Navbar from 'components/Navbar';
 import { AccountButton } from 'components';
 import UserCard from 'components/UserCard';
 import { COLOR_STYLES } from 'styles/styles';
+import { currentUsers } from 'utils/currentUsers';
+import { SEARCH_DROPDOWN_ITEMS } from 'utils/config';
 
 const User = () => {
   const history = useHistory();
-  const [teacherList] = useState(getTeacherList());
+  let [teacherList] = useState(getTeacherList());
   const [loginUser] = useState(getLocalStorage(LOGIN_USER));
   const [isTeacher] = useState(loginUser.userType === 'teacher' ? true : false);
   const [menuList] = useState(
@@ -64,10 +66,12 @@ const User = () => {
         <Navbar name={loginUser.name} />
         <UserContainer>
           <UserSection>
-            <S.Content>
+            <UserContent>
               <PageText>
                 <UserIcon />
-                {` 어서오세요 자란다 ${isTeacher ? `선생님` : `부모님`} 페이지입니다`}
+                어서오세요 자란다
+                {isTeacher ? '선생님' : '부모님'}
+                페이지 입니다
               </PageText>
               <MenuList>
                 {menuList.map((sideMenu, key) => (
@@ -87,7 +91,7 @@ const User = () => {
                   <ParentImg />
                 </>
               )}
-            </S.Content>
+            </UserContent>
             <CardAside>
               <S.Sidebar>
                 <UserAccountBox>
@@ -107,6 +111,10 @@ const User = () => {
     </>
   );
 };
+
+const UserContent = styled(S.Content)`
+  width: 60%;
+`
 
 const MenuList = styled.ul`
   display: flex;
@@ -132,6 +140,7 @@ const PageText = styled.div`
 `;
 
 const CardTitle = styled.div`
+
   padding: 10px 0;
   margin-top: 58px;
   color: ${COLOR_STYLES.white};
@@ -150,6 +159,7 @@ const CardAside = styled(S.Aside)`
 
 const UserAccountBox = styled(S.AccountBox)`
   justify-content: center;
+  width: 100%;
 `;
 
 const CardBox = styled.div`
@@ -165,13 +175,32 @@ const UserIcon = styled.img.attrs({
 `;
 const UserContainer = styled(S.Container)`
   @media only screen and (max-width: 1287px) {
-    margin: 0 calc((${window.innerWidth}px - 600px) / 2) !important;
+    width: 80%;
+    margin: 0 auto;
   }
 `;
 
 const UserSection = styled(S.Section)`
   @media only screen and (max-width: 973px) {
     display: block;
+
+    & ${CardAside}{
+      width: 80%;
+      margin: 0 auto;
+    }
+
+    & ${UserContent}{
+      width: 80%;
+      margin: 0 auto;
+    }
+
+    & ${UserAccountBox}{
+      position: absolute;
+      top: 70px;
+      right: -2%;
+      width: 30%;
+      opacitiy:1;
+    }
   }
 `;
 
