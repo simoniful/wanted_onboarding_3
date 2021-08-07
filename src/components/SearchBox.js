@@ -65,9 +65,12 @@ const SearchBoxContainer = styled.div`
 `;
 
 const SearchInput = styled.input`
-  width: calc(100% - 48px);
-  min-width: calc(300px - 48px);
-  padding: 0 12px;
+  width: calc(100% - 150px);
+  min-width: calc(528px - 150px);
+  height: 48px;
+  padding: 8px 12px;
+
+  border: 1px solid ${COLOR_STYLES.primaryDarker};
   border-radius: 6px 0 0 6px;
   border: none;
   :focus {

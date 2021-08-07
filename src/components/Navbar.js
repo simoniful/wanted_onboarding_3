@@ -1,3 +1,4 @@
+  
 import React from 'react';
 import AccountButton from 'components/AccountButton';
 import { layouts as S } from 'styles/layouts';
@@ -20,7 +21,7 @@ const Navbar = ({ name }) => {
           </MenuList>
           <Account>
             <AccountImg></AccountImg>
-            <h1>{name}</h1>
+            <UserName>{name}</UserName>
             <PopupMenu>
               <SmallMenuList>
                 {menuList.map((menu, key) => (
@@ -32,9 +33,7 @@ const Navbar = ({ name }) => {
                   <Menu key={key}>{menu}</Menu>
                 ))}
               </UserMenuList>
-              <AccountContainer>
-                <AccountButton width='70%;' height='34px;' content='로그아웃'></AccountButton>
-              </AccountContainer>
+             
             </PopupMenu>
           </Account>
         </NavContent>
@@ -47,21 +46,34 @@ const theme = {
   threshold: '800px',
 };
 
+const UserName = styled.h1`
+  width:44px;
+`
+
+
 const AccountContainer = styled(S.Container)`
   margin: 4px auto !important;
   text-align: center;
+
 `;
 
 const PopupMenu = styled.div`
   width: 160px;
   position: absolute;
-  top: 50px;
-  right: 20px;
+  top: 70px;
+  right: 13%;
   background: white;
   border: 1px solid #ececec;
   border-radius: 3px;
   box-shadow: 0 6px 12px rgb(0 0 0 / 18%);
   display: none;
+
+  @media only screen and ${`(max-width: ${theme.threshold})`} {
+    position: fiex;
+    right: 4%;
+    z-index: 9999;
+  }
+
 
   @media only screen and ${`(min-width: ${theme.threshold})`} {
     display: none;
@@ -76,6 +88,7 @@ const PopupMenu = styled.div`
     :hover {
       color: ${COLOR_STYLES.primary};
     }
+
   }
 `;
 
@@ -92,7 +105,6 @@ const NavWrap = styled.nav`
   padding: 0;
   color: ${COLOR_STYLES.white};
   background: ${COLOR_STYLES.primaryGradient};
-
   & h2 {
     @media only screen and ${`(max-width: ${theme.threshold})`} {
       font-size: ${FONT_SIZE_STYLES.large};
@@ -128,7 +140,6 @@ const MenuList = styled.ul`
 
 const UserMenuList = styled.ol`
   border-top: solid 2px #ececec;
-
   @media only screen and ${`(min-width: ${theme.threshold})`} {
     border: none;
   }
@@ -161,8 +172,8 @@ const Account = styled.div`
   align-items: center;
   width: 100%;
   height: 52px;
+  
   color: ${COLOR_STYLES.greyDarker};
-
   :hover ${PopupMenu} {
     display: block;
   }
