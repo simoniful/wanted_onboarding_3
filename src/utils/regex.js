@@ -61,5 +61,13 @@ export function signupValidate(values) {
     errors.age = '나이는 숫자로 입력해주세요.';
   }
 
+  if (!values.address) {
+    errors.address = '주소를 입력하세요.';
+  }
+
+  if (!values.cardNumber) {
+    errors.cardNumber = '카드번호를 입력하세요.';
+  }
+
   return errors;
 }

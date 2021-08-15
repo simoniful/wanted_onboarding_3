@@ -1,11 +1,10 @@
 import React from 'react';
 
-const Address = (props) => {
-  const { value, name } = props;
+const Address = ({ value, name, onChange }) => {
   function fetchAddressApi() {
     new window.daum.Postcode({
       oncomplete(data) {
-        props.onChange({ target: { value: `${data.sido} ${data.sigungu}` } });
+        onChange({ target: { name, value: `${data.sido} ${data.sigungu}` } });
       },
     }).open();
   }

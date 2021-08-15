@@ -1,40 +1,31 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { COLOR_STYLES, FONT_SIZE_STYLES, SIZE_STYLES } from 'styles/styles';
-import { InputWrapper } from 'styles/InputWrapper';
-import useForm from 'hooks/useForm';
-import { signupValidate } from 'utils/regex';
-import { getLocalStorage, setLocalStorage } from 'utils/storage';
-import CardNumber from 'components/CardNumber';
 import Address from 'components/Address';
+import CardNumber from 'components/CardNumber';
 import Term from 'components/Term';
 import UserTypeSelect from 'components/UserTypeSelect';
-import useInput from 'hooks/useInput';
+import useForm from 'hooks/useForm';
+import { getLocalStorage, setLocalStorage } from 'utils/storage';
+import { signupValidate } from 'utils/regex';
 import { STORAGE_DATA } from 'utils/config';
 import { filterObject } from 'utils/filterObject';
+import { COLOR_STYLES, FONT_SIZE_STYLES, SIZE_STYLES } from 'styles/styles';
+import { InputWrapper } from 'styles/InputWrapper';
 
 const SignUp = () => {
   const [userData, setUserData] = useState(getLocalStorage(STORAGE_DATA.users));
   const [isTermChecked, setIsTermChecked] = useState(false);
   const [isParentChecked, setIsParentChecked] = useState(true);
-  const address = useInput('');
-  const cardNumber = useInput('');
 
   const signUp = (values) => {
-    if (!address.value || !cardNumber.value) {
-      address.checkIsError();
-      cardNumber.checkIsError();
-      return;
+    if (!isTermChecked) {
+      return alert('이용약관에 동의 후 가입 가능합니다.');
     }
-
-    if (!isTermChecked) return alert('이용약관에 동의 후 가입 가능합니다.');
 
     const userType = isParentChecked ? 'parent' : 'teacher';
     const newValues = filterObject(values, 'checkingPassword');
     const newUser = {
       ...newValues,
-      address: address.value,
-      cardNumber: cardNumber.value,
       userType,
     };
     const updatedUserData = [...userData, newUser];
@@ -42,10 +33,7 @@ const SignUp = () => {
     setUserData(updatedUserData);
     setLocalStorage(STORAGE_DATA.users, updatedUserData);
     setIsTermChecked(false);
-    address.clearValue();
-    cardNumber.clearValue();
     alert('회원가입이 성공적으로 되었습니다. 더 진행하시려면 로그인을 해주십시오.');
-
     return true;
   };
 
@@ -54,7 +42,7 @@ const SignUp = () => {
   const handleClickTerm = (e) => {
     if (e.target.id === 'term') return;
 
-    setIsTermChecked((isChecked) => !isChecked);
+    setIsTermChecked((isTermChecked) => !isTermChecked);
   };
 
   const handleClickType = (e) => {
@@ -142,15 +130,27 @@ const SignUp = () => {
               value={values.age || ''}
               required
             />
-            {errors.age && <label htmlFor='name'>{errors.age}</label>}
+            {errors.age && <label htmlFor='age'>{errors.age}</label>}
           </InputWrapper>
         </InputDouble>
 
-        <InputWrapper error={address.isError}>
-          <Address id='address' {...address} />
+        <InputWrapper error={errors.address}>
+          <Address
+            id='address'
+            name='address'
+            onChange={handleChange}
+            value={values.address || ''}
+          />
+          {errors.address && <label htmlFor='address'>{errors.address}</label>}
         </InputWrapper>
-        <InputWrapper error={cardNumber.isError}>
-          <CardNumber id='cardNumber' {...cardNumber} />
+        <InputWrapper error={errors.cardNumber}>
+          <CardNumber
+            id='cardNumber'
+            name='cardNumber'
+            onChange={handleChange}
+            value={values.cardNumber || ''}
+          />
+          {errors.cardNumber && <label htmlFor='cardNumber'>{errors.cardNumber}</label>}
         </InputWrapper>
 
         <Term isChecked={isTermChecked} handleClick={handleClickTerm} />

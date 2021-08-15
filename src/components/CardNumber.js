@@ -2,21 +2,20 @@ import React, { useState, useRef } from 'react';
 import { COLOR_STYLES, FONT_SIZE_STYLES, SIZE_STYLES } from 'styles/styles';
 import styled from 'styled-components';
 
-function CardNumber(props) {
-  const { value, onChange } = props;
+function CardNumber({ name, value, onChange }) {
   const cardNumberRef = useRef();
   const [modalVisible, setModalVisible] = useState(false);
 
   const openModal = () => {
     setModalVisible(true);
-    onChange({ target: { value: '' } });
+    onChange({ target: { name, value: '' } });
   };
 
   const closeModal = (e) => {
     if (e.currentTarget.id === 'save-btn') {
       const a = [...cardNumberRef.current.childNodes].map((node) => node.value);
       cardNumberRef.current.childNodes.value = '';
-      onChange({ target: { value: a.join('-') } });
+      onChange({ target: { name, value: a.join('-') } });
     }
     setModalVisible(false);
   };
